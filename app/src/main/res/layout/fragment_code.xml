@@ -7,9 +7,10 @@
 
     <TextView
         android:id="@+id/barcode"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="58mm"
+        android:layout_height="40mm"
+        android:textAlignment="textStart"
         android:textColor="@android:color/black"
-        android:textSize="100dp" />
+        android:textSize="37mm"/>
 
 </FrameLayout>

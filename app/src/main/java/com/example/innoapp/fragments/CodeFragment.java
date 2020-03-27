@@ -35,6 +35,6 @@ public class CodeFragment extends Fragment {
 
         EAN13CodeBuilder bb = new EAN13CodeBuilder(code);
         barcode.setText(bb.getCode());
-        return inflater.inflate(R.layout.fragment_code, container, false);
+        return rootView;
     }
 }
