@@ -1,7 +1,11 @@
-package com.example.innoapp;
+package com.example.innoapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
+import com.example.innoapp.R;
+import com.example.innoapp.fragments.CodeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
