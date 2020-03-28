@@ -37,13 +37,15 @@ private DatabaseReference mDatabase;
     @Override
     public void onClick(View v) {
         String emailString  = email.getText().toString();
-        emailString = emailString.replaceAll("[^A-Za-z0-9]", ""); // оставляю только цифры и латинские буквы, например: goshan164@gmail.com = goshan164gmailcom
+        // оставляю только цифры и латинские буквы, например: goshan164@gmail.com = goshan164gmailcom
+        emailString = emailString.replaceAll("[^A-Za-z0-9]", "");
         Log.d("TEST",emailString);
         DatabaseReference userRef = mDatabase.child("users").child(emailString);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){ // если существует юзер с такой почтой пустить его в приложение
+                // если существует пользователь с такой почтой пустить его в приложение
+                if(dataSnapshot.exists()){
                     Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                     startActivity(intent);
                 }
