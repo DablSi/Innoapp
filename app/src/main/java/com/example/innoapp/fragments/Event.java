@@ -1,5 +1,5 @@
 package com.example.innoapp.fragments;
-
+//author Makar Shevchenko
 import java.security.acl.Group;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,12 +15,14 @@ public class Event {
     private HashMap<String, String> data;
     private LinkedList<Group> groups;
     private boolean is_optional;
+    private String place;
 
     //clear constructor
     Event()
     {
         this.name = "Event";
         this.date = new Date();
+        this.place = "Innopolis";
         this.is_optional = true;
     }
 
@@ -54,6 +56,10 @@ public class Event {
         this.is_optional = newIs_optional;
     }
 
+    public void setPlace(String newPlace) {
+        this.place = newPlace;
+    }
+
     //getters
     public String getName() {
         return name;
@@ -73,5 +79,9 @@ public class Event {
 
     public boolean isIs_optional() {
         return is_optional;
+    }
+
+    public String getPlace() {
+        return place;
     }
 }
