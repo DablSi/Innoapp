@@ -1,44 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#039BE5</color>
-    <color name="colorPrimaryDark">#0288D1</color>
-    <color name="colorAccent">#FFA000</color>
-    <color name="grey_100">#F5F5F5</color>
-    <color name="grey_300">#e6e6e6</color>
-    <color name="grey_500">#a7a7a7</color>
-    <color name="maps">#FB47E7</color>
-    <color name="about">#D3E12D</color>
-    <color name="settings">#35B8D6</color>
-    <color name="background1">#FFFFFF</color>
-
-    <color name="color_green">#488E48</color>
-    <color name="dark_brown">#663300</color>
-    <color name="selected_color">#f4f4f4</color>
-    <color name="selected_text_color">#6ca554</color>
-    <color name="amount">#5fa84e</color>
-    <color name="gray">#888888</color>
-    <color name="text_color">#ffffff</color>
-    <color name="dark_gray">#444444</color>
-    <color name="light_gray">#aaaaaa</color>
-    <color name="white">#FFFFFF</color>
-    <color name="red">#A32929</color>
-    <color name="yellow">#CC9900</color>
-    <color name="wood_brown">#994D00</color>
-    <color name="gray_png">#8a8b8a</color>
-    <color name="blue_png">#0d5b87</color>
-    <color name="gray_verydark">#444444</color>
-    <color name="line_separator">#22FFFFFF</color>
-    <color name="dark_mask">#dd000000</color>
-    <color name="light_blue">#ff33CCFF</color>
-    <color name="purple">#ff5b2971</color>
-    <color name="scanner_line">#00ceff</color>
-
-
-    <color name="material_drawer_secondary_text">#5fa84e</color>
-
-    <!-- Material DEFAULT drawer colors -->
-    <color name="material_drawer_selected">#f4f4f4</color>
-    <color name="material_drawer_selected_text">#6ca554</color>
-    <color name="material_drawer_header_selection_text">#191919</color>
-
+    <color name="colorPrimary">#80bc00</color>
+    <color name="colorPrimaryDark">#348f41</color>
+    <color name="colorSecondary">#1a428a</color>
+    <color name="colorSecondaryLight">#0071ce</color>
+    <color name="colorAccent">#ff5c35</color>
 </resources>
