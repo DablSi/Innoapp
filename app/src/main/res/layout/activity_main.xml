@@ -25,10 +25,10 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/mapsTabLayout"
-        android:paddingTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:paddingTop="5dp"
         app:tabIndicatorColor="@android:color/holo_green_light" />
 
     <androidx.viewpager.widget.ViewPager
@@ -37,6 +37,7 @@
         android:layout_height="900px"
         android:layout_below="@+id/mapsTabLayout"
         android:layout_centerHorizontal="true"
+        android:paddingTop="3dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </RelativeLayout>
