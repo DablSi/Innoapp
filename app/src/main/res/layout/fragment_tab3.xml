@@ -11,5 +11,6 @@
         android:src="@drawable/thirdf"
         android:scaleType="fitXY"
         tools:ignore="MissingConstraints"
+        android:onClick="zoomMap"
         android:layout_centerHorizontal = "true"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
