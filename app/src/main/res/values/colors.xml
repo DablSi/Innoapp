@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#039BE5</color>
-    <color name="colorPrimaryDark">#0288D1</color>
-    <color name="colorAccent">#FFA000</color>
+    <color name="colorPrimary">#80bc00</color>
+    <color name="colorPrimaryDark">#348f41</color>
+    <color name="colorSecondary">#1a428a</color>
+    <color name="colorSecondaryLight">#0071ce</color>
+    <color name="colorAccent">#ff5c35</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_300">#e6e6e6</color>
     <color name="grey_500">#a7a7a7</color>
@@ -53,5 +55,4 @@
     <color name="inno_purple">#60269e</color>
     <color name="inno_sea">#009383</color>
     <color name="inno_red">#ff5c35</color>
-
 </resources>
