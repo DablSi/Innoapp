@@ -2,4 +2,7 @@
     <string name="app_name">Innoapp</string>
     <string name="notification">Оповещение</string>
     <string name="email_wrong">Неправильный E-Mail</string>
+    <string name="event_card_image_description">Изображение события</string>
+    <string name="event_card_participation_off">Принять участие</string>
+    <string name="event_card_participation_on">Вы участвуете</string>
 </resources>
