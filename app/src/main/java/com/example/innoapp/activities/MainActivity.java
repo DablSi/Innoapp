@@ -20,6 +20,7 @@ import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder13;
 import com.google.android.material.tabs.TabLayout;
 
+import static com.example.innoapp.activities.LoginActivity.CODE;
 import static com.example.innoapp.activities.LoginActivity.LOGIN;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        code = sp.getString(CODE, "");
         tvBarcode = findViewById(R.id.tvBarcode);//штрих код
         initTabs();// инициализация табов
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");//шрифт штрих кода
@@ -82,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             tvBarcode.setPadding(0, 25, 0, 0);
         } else {
             tvBarcode.setTextSize(TypedValue.COMPLEX_UNIT_MM, 40);
-            //tvBarcode.setTextSize(250);
             RelativeLayout.LayoutParams layoutParamsBarcode = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 725);
             layoutParamsBarcode.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             layoutParamsBarcode.addRule(RelativeLayout.CENTER_IN_PARENT);
@@ -92,22 +93,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-    boolean mapBool1 = false;
-
-    /*public void onButtonClickMap1(View v) {
-        if (mapBool1) {
-            RelativeLayout.LayoutParams layoutParamsMapUI = new RelativeLayout.LayoutParams(900, 700);
-            map1ImageView.setLayoutParams(layoutParamsMapUI);
-
-            mapBool1 = false;
-        } else {
-
-            RelativeLayout.LayoutParams layoutParamsMapUI = new RelativeLayout.LayoutParams(900, 700);
-            map1ImageView.setLayoutParams(layoutParamsMapUI);
-            mapBool1 = true;
-        }
-    }*/
 }
 
 
