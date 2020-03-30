@@ -11,25 +11,35 @@ import java.util.LinkedList;
 public class Event {
     private String name;
     private Date date;
+    private Date dateEnd;
     private HashMap<String, String> data;
     private LinkedList<Group> groups;
     private boolean is_optional;
     private String place;
+    private String description;
+    private int countVisitors;
 
     Event()
     {
         name = "Event";
         date = new Date();
+        dateEnd = new Date();
         place = "Innopolis";
         is_optional = true;
+        description = "";
+        countVisitors = 0;
     }
 
-    Event(String newName, Date newDate, HashMap<String, String> newData, LinkedList<Group> newGroups, boolean newIs_optional) {
+    Event(String newName, Date newDate, Date newDateEnd, HashMap<String, String> newData, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
         setName(newName);
         setDate(newDate);
+        setDateEnd(newDateEnd);
         setData(newData);
         setGroups(newGroups);
         setIs_optional(newIs_optional);
+        setPlace(newPlace);
+        setDescription(newDescription);
+        setCountVisitors(newCountVisitors);
     }
 
     // setters
@@ -39,6 +49,10 @@ public class Event {
 
     public void setDate(Date newDate) {
         date = newDate;
+    }
+
+    public void setDateEnd(Date newDateEnd) {
+        dateEnd = newDateEnd;
     }
 
     public void setData(HashMap<String,String> newData) {
@@ -57,6 +71,14 @@ public class Event {
         place = newPlace;
     }
 
+    public void setDescription(String newDescription) {
+        description = newDescription;
+    }
+
+    public void setCountVisitors(int newCountVisitors) {
+        countVisitors = newCountVisitors;
+    }
+
     // getters
     public String getName() {
         return name;
@@ -64,6 +86,10 @@ public class Event {
 
     public Date getDate() {
         return date;
+    }
+
+    public Date getDateEnd() {
+        return dateEnd;
     }
 
     public HashMap<String, String> getData() {
@@ -80,5 +106,13 @@ public class Event {
 
     public String getPlace() {
         return place;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getCountVisitors() {
+        return countVisitors;
     }
 }
