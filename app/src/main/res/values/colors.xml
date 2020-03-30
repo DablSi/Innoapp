@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<<<<<<< Updated upstream
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-</resources>
-=======
     <color name="colorPrimary">#80bc00</color>
     <color name="colorPrimaryDark">#348f41</color>
     <color name="colorSecondary">#1a428a</color>
@@ -62,4 +56,3 @@
     <color name="inno_sea">#009383</color>
     <color name="inno_red">#ff5c35</color>
 </resources>
->>>>>>> Stashed changes
