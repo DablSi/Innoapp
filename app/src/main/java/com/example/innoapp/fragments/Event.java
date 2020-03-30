@@ -11,8 +11,7 @@ import java.util.LinkedList;
 public class Event {
     private String name;
     private Date date;
-    private Date dateEnd;
-    private HashMap<String, String> data;
+    private String duration;
     private LinkedList<Group> groups;
     private boolean is_optional;
     private String place;
@@ -23,18 +22,18 @@ public class Event {
     {
         name = "Event";
         date = new Date();
-        dateEnd = new Date();
-        place = "Innopolis";
+        duration = "0 минут";
         is_optional = true;
+        place = "Innopolis";
         description = "";
         countVisitors = 0;
     }
 
-    Event(String newName, Date newDate, Date newDateEnd, HashMap<String, String> newData, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
+    //Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
+    Event(String newName, Date newDate, String newDuration, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
         setName(newName);
         setDate(newDate);
-        setDateEnd(newDateEnd);
-        setData(newData);
+        setDuration(newDuration);
         setGroups(newGroups);
         setIs_optional(newIs_optional);
         setPlace(newPlace);
@@ -51,12 +50,8 @@ public class Event {
         date = newDate;
     }
 
-    public void setDateEnd(Date newDateEnd) {
-        dateEnd = newDateEnd;
-    }
-
-    public void setData(HashMap<String,String> newData) {
-        data = newData;
+    public void setDuration(String newDuration) {
+        this.duration = newDuration;
     }
 
     public void setGroups(LinkedList<Group> newGroups) {
@@ -88,12 +83,8 @@ public class Event {
         return date;
     }
 
-    public Date getDateEnd() {
-        return dateEnd;
-    }
-
-    public HashMap<String, String> getData() {
-        return data;
+    public String getDuration() {
+        return duration;
     }
 
     public LinkedList<Group> getGroups() {
