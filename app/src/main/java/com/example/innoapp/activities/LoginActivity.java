@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private DatabaseReference mDatabase;
 
     public static final String LOGIN = "login";
+    public static final String CODE = "code";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString(LOGIN, email.getText().toString());
+                    MainActivity.code = (String) dataSnapshot.child("code").getValue();
+                    editor.putString(CODE, MainActivity.code);
                     editor.commit();
                     finish();
                 } else {

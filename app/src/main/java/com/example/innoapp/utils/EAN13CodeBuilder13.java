@@ -1,16 +1,10 @@
 package com.example.innoapp.utils;
 
-
-/**
- * Генерирует изображение штрих-код на основе данного числа
- * Автор: Вячеслав Арчибасов
- */
-
-public class EAN13CodeBuilder {
+public class EAN13CodeBuilder13 {
     private String codeStringValue;
     private String generatedCode;
 
-    public EAN13CodeBuilder(String codeString) {
+    public EAN13CodeBuilder13(String codeString) {
         codeStringValue = codeString;
         parse();
     }
