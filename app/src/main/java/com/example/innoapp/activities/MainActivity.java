@@ -12,12 +12,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.adapter.TabsPagerFragmentAdapters;
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder13;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.tabs.TabLayout;
 
 import static com.example.innoapp.activities.LoginActivity.CODE;
@@ -92,6 +94,16 @@ public class MainActivity extends AppCompatActivity {
             barcodeScale = true;
         }
 
+    }
+
+    public void zoomMap(View v) {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+        View mView = getLayoutInflater().inflate(R.layout.dialog_custom_layout, null);
+        PhotoView photoView = mView.findViewById(R.id.imageView);
+        photoView.setImageResource(R.drawable.firstf);
+        mBuilder.setView(mView);
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
     }
 }
 
