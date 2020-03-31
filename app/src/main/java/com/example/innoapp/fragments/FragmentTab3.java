@@ -13,7 +13,7 @@ import com.example.innoapp.R;
 
 public class FragmentTab3 extends Fragment {
     private static final int LAYOUT = R.layout.fragment_tab3;
-    private View view;
+
     public static FragmentTab3 getInstance()
     {
         Bundle args = new Bundle();
@@ -27,8 +27,7 @@ public class FragmentTab3 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(LAYOUT, container, false);
-        return view;
+        return inflater.inflate(LAYOUT, container, false);
     }
 
 

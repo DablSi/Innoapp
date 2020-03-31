@@ -16,8 +16,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.adapter.TabsPagerFragmentAdapters;
 import com.example.innoapp.R;
+import com.example.innoapp.adapter.TabsPagerFragmentAdapters;
 import com.example.innoapp.utils.EAN13CodeBuilder13;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.tabs.TabLayout;
@@ -39,16 +39,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (sp.getString(LOGIN, "").equals(""))
+        if (sp.getString(LOGIN, "").equals("")) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+
         code = sp.getString(CODE, "");
         tvBarcode = findViewById(R.id.tvBarcode);//штрих код
         initTabs();// инициализация табов
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");//шрифт штрих кода
         tvBarcode.setTypeface(font);//установка шрифта штрих кода
-        EAN13CodeBuilder13 bb = new EAN13CodeBuilder13(code);//ввод значения штрих кода
-        tvBarcode.setText(bb.getCode());
+       EAN13CodeBuilder13 bb = new EAN13CodeBuilder13(code);//ввод значения штрих кода
+       tvBarcode.setText(bb.getCode());
         map1ImageView = findViewById(R.id.map1ImageView);
         map2ImageView = findViewById(R.id.map2ImageView);
         map3ImageView = findViewById(R.id.map3ImageView);
