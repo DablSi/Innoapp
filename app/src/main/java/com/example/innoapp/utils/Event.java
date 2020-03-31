@@ -1,12 +1,13 @@
-package com.example.innoapp.fragments;
+package com.example.innoapp.utils;
 // author Makar Shevchenko
+
 import java.security.acl.Group;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 /*
- *  Класс событий для генерации карточек событий
+ *  Events class for event card generation
  */
 public class Event {
     private String name;
@@ -16,8 +17,7 @@ public class Event {
     private boolean is_optional;
     private String place;
 
-    Event()
-    {
+    Event() {
         name = "Event";
         date = new Date();
         place = "Innopolis";
@@ -41,7 +41,7 @@ public class Event {
         date = newDate;
     }
 
-    public void setData(HashMap<String,String> newData) {
+    public void setData(HashMap<String, String> newData) {
         data = newData;
     }
 

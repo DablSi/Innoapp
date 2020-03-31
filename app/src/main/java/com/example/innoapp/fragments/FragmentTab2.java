@@ -11,17 +11,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.innoapp.R;
 
+// university map tab floor 2
 public class FragmentTab2 extends Fragment {
     private static final int LAYOUT = R.layout.fragment_tab2;
     private View view;
-    public static FragmentTab2 getInstance()
-    {
+
+    public static FragmentTab2 getInstance() {
         Bundle args = new Bundle();
         FragmentTab2 fragment2 = new FragmentTab2();
         fragment2.setArguments(args);
         return fragment2;
     }
-
 
 
     @Nullable
