@@ -1,6 +1,12 @@
 package com.example.innoapp.utils;
 
+
 import android.util.Log;
+
+
+
+// builds EAN-13 barcode
+// author - Vyacheslav Archibasov
 
 public class EAN13CodeBuilder13 {
     private String codeStringValue;

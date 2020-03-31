@@ -46,20 +46,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         String emailString = email.getText().toString();
-        // оставляю только цифры и латинские буквы, например: goshan164@gmail.com = goshan164gmailcom
+        // I leave only numbers and latin letters, for example: goshan164@gmail.com = goshan164gmailcom
         emailString = emailString.replaceAll("[^A-Za-z0-9]", "");
         Log.d("TEST", emailString);
         DatabaseReference userRef = mDatabase.child("users").child(emailString);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // если существует пользователь с такой почтой пустить его в приложение
+                // if there is a user with such email, then log him in
                 if (dataSnapshot.exists()) {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString(LOGIN, email.getText().toString());
                     for (DataSnapshot i : dataSnapshot.child("groups").getChildren()) {
                         String topic = (String) i.getValue();
+                        // добавляю пользователей к их группам
                         FirebaseMessaging.getInstance().subscribeToTopic(Objects.requireNonNull(topic))
                                 .addOnCompleteListener(task -> {
                                     String msg = "SUCCESS";
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    // чтобы человек не мог вернуться в главную активность кнопкой назад
+    // not to let user return to the main activity using the back button
     @Override
     public void onBackPressed() {
     }
