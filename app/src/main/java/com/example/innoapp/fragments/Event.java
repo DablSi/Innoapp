@@ -1,4 +1,4 @@
-package com.example.innoapp.utils;
+package com.example.innoapp.fragments;
 // author Makar Shevchenko
 
 import java.security.acl.Group;
@@ -9,29 +9,36 @@ import java.util.LinkedList;
 /*
  *  Events class for event card generation
  */
-@SuppressWarnings("WeakerAccess")
 public class Event {
     private String name;
     private Date date;
-    private HashMap<String, String> data;
+    private String duration;
     private LinkedList<Group> groups;
     private boolean is_optional;
     private String place;
+    private String description;
+    private int countVisitors;
 
     Event() {
         name = "Event";
         date = new Date();
-        place = "Innopolis";
+        duration = "0 минут";
         is_optional = true;
+        place = "Innopolis";
+        description = "";
+        countVisitors = 0;
     }
 
-    Event(String newName, Date newDate, HashMap<String, String> newData, LinkedList<Group> newGroups, String newPlace, boolean newIs_optional) {
+    // Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
+    Event(String newName, Date newDate, String newDuration, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
         setName(newName);
         setDate(newDate);
-        setData(newData);
+        setDuration(newDuration);
         setGroups(newGroups);
         setIs_optional(newIs_optional);
         setPlace(newPlace);
+        setDescription(newDescription);
+        setCountVisitors(newCountVisitors);
     }
 
     // setters
@@ -43,8 +50,8 @@ public class Event {
         date = newDate;
     }
 
-    public void setData(HashMap<String, String> newData) {
-        data = newData;
+    public void setDuration(String newDuration) {
+        this.duration = newDuration;
     }
 
     public void setGroups(LinkedList<Group> newGroups) {
@@ -59,6 +66,14 @@ public class Event {
         place = newPlace;
     }
 
+    public void setDescription(String newDescription) {
+        description = newDescription;
+    }
+
+    public void setCountVisitors(int newCountVisitors) {
+        countVisitors = newCountVisitors;
+    }
+
     // getters
     public String getName() {
         return name;
@@ -68,8 +83,8 @@ public class Event {
         return date;
     }
 
-    public HashMap<String, String> getData() {
-        return data;
+    public String getDuration() {
+        return duration;
     }
 
     public LinkedList<Group> getGroups() {
@@ -82,5 +97,13 @@ public class Event {
 
     public String getPlace() {
         return place;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getCountVisitors() {
+        return countVisitors;
     }
 }
