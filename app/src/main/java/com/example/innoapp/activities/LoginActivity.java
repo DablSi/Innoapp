@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 });
 
                     }
-
                     MainActivity.code = (String) dataSnapshot.child("code").getValue();
                     editor.putString(CODE, MainActivity.code);
                     editor.apply();

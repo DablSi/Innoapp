@@ -19,13 +19,7 @@
             android:exported="true" />
 
         <activity android:name=".activities.Events" />
-        <activity android:name=".activities.FAQActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activities.FAQActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

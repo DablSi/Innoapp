@@ -33,10 +33,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layoutIdQuestions, parent, false);
         DataAdapterHolder viewHolder = new DataAdapterHolder(view);
-        if (viewHolderCount < questions.length) {
-            viewHolder.questionView.setText(questions[viewHolderCount]);
-            viewHolderCount++;
-        }
+        viewHolder.questionView.setText(questions[viewHolderCount]);
+        viewHolderCount++;
         return viewHolder;
 
     }
