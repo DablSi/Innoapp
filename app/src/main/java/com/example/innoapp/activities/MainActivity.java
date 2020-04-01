@@ -1,5 +1,6 @@
 package com.example.innoapp.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -8,16 +9,17 @@ import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.adapter.TabsPagerFragmentAdapters;
+import com.example.innoapp.TabsPagerFragmentAdapters;
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder13;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.tabs.TabLayout;
 
 import static com.example.innoapp.activities.LoginActivity.CODE;
@@ -26,11 +28,6 @@ import static com.example.innoapp.activities.LoginActivity.LOGIN;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvBarcode;
-    private ViewPager mapsViewPager;
-    private ImageView map1ImageView;
-    private ImageView map2ImageView;
-    private ImageView map3ImageView;
-
 
     public static String code;
 
@@ -42,28 +39,28 @@ public class MainActivity extends AppCompatActivity {
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         code = sp.getString(CODE, "");
-        tvBarcode = findViewById(R.id.tvBarcode);//штрих код
-        initTabs();// инициализация табов
-        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");//шрифт штрих кода
-        tvBarcode.setTypeface(font);//установка шрифта штрих кода
-        EAN13CodeBuilder13 bb = new EAN13CodeBuilder13(code);//ввод значения штрих кода
+        // barcode
+        tvBarcode = findViewById(R.id.tvBarcode);
+        // tabs initialisation
+        initTabs();
+        // barcode font
+        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");
+        // sets the barcode
+        tvBarcode.setTypeface(font);
+        // sets barcode's value
+        EAN13CodeBuilder13 bb = new EAN13CodeBuilder13(code);
         tvBarcode.setText(bb.getCode());
-        map1ImageView = findViewById(R.id.map1ImageView);
-        map2ImageView = findViewById(R.id.map2ImageView);
-        map3ImageView = findViewById(R.id.map3ImageView);
-        //настройки штрих кода
+        // barcode settings
         RelativeLayout.LayoutParams layoutParamsBarcode = new RelativeLayout.LayoutParams(500, 350);
         layoutParamsBarcode.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         layoutParamsBarcode.addRule(RelativeLayout.CENTER_HORIZONTAL);
         tvBarcode.setLayoutParams(layoutParamsBarcode);
         tvBarcode.setPadding(0, 25, 0, 0);
-
-
     }
 
     private void initTabs() {
         TabLayout mapsTabLayout = findViewById(R.id.mapsTabLayout);
-        mapsViewPager = findViewById(R.id.mapsViewPager);
+        ViewPager mapsViewPager = findViewById(R.id.mapsViewPager);
         TabsPagerFragmentAdapters adapters = new TabsPagerFragmentAdapters(getSupportFragmentManager());
         mapsViewPager.setAdapter(adapters);
         mapsTabLayout.setupWithViewPager(mapsViewPager);
@@ -71,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
     boolean barcodeScale = false;
 
-    public void onButtonClickBarcode(View v) //зум штрих кода
-    {
-        float dp = getResources().getDisplayMetrics().density;
+    // zooms barcode
+    public void onButtonClickBarcode(View v) {
         if (barcodeScale) {
             tvBarcode.setTextSize(100);
             barcodeScale = false;
@@ -94,8 +90,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    @SuppressLint("InflateParams")
+    public void zoomMap(View v) {
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+        View mView = getLayoutInflater().inflate(R.layout.dialog_custom_layout, null);
+        PhotoView photoView = mView.findViewById(R.id.imageView);
+        int id = v.getId();
+        int res = R.drawable.firstf;
+        if (id == R.id.map2ImageView) {
+            res = R.drawable.secondf;
+        } else if (id == R.id.map3ImageView) {
+            res = R.drawable.thirdf;
+        }
+        photoView.setImageResource(res);
+        mBuilder.setView(mView);
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+    }
 }
-
-
-
-
