@@ -42,7 +42,7 @@ public class MapActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        // Вызов onStop нужно передавать инстансам MapView и MapKit.
+        // stop all of the instances
         mapView.onStop();
         MapKitFactory.getInstance().onStop();
         super.onStop();
@@ -50,7 +50,7 @@ public class MapActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        // Вызов onStart нужно передавать инстансам MapView и MapKit.
+        // start all of the instances
         super.onStart();
         MapKitFactory.getInstance().onStart();
         mapView.onStart();
