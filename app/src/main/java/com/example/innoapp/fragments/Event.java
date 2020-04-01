@@ -29,7 +29,7 @@ public class Event {
         countVisitors = 0;
     }
 
-    // Name, date, duration, groups, optionality, place, description, number of visitors
+    // Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
     Event(String newName, Date newDate, String newDuration, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
         setName(newName);
         setDate(newDate);
