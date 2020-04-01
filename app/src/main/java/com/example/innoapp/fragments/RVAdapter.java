@@ -10,10 +10,10 @@ import com.example.innoapp.R;
 import java.util.List;
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
-    // Список карточек
+    // List of cards
     List cards;
 
-    // Взятие экземпляра карточки
+    // Take a card object
     public static class CardViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         CardViewHolder(CardView cv) {
@@ -22,26 +22,26 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
         }
     }
 
-    // Передача списка карточек
+    // Card List Transfer
     RVAdapter(List cards){
         this.cards = cards;
     }
 
-    // Создание новой карточки по каркасу в cardview.xml
+    // Create new card by cardview.xml
     @Override
     public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         CardView cv = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
         return new CardViewHolder(cv);
     }
 
-    // Задание соответствующих атрибутов для конкретной карточки
+    // Setting attributes for a card
     @Override
     public void onBindViewHolder(CardViewHolder cardViewHolder, int position) {
-        // Взятие экземпляра карточки
+        // get card
         CardView cardView = cardViewHolder.cardView;
-        // Взятие экземпляра названия события
+        // get event name
         TextView cardName = (TextView)cardView.findViewById(R.id.cardName);
-        // Установка загруженного названия для события
+        // set event name
         cardName.setText(cards.get(position).getName());
         TextView content = (TextView)cardView.findViewById(R.id.content);
         content.setText(cards.get(position).content);
