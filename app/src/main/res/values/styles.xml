@@ -20,5 +20,8 @@
     <style name="TextLabel" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
-
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
