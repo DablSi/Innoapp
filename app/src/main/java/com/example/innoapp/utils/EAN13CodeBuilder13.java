@@ -4,7 +4,6 @@ package com.example.innoapp.utils;
 import android.util.Log;
 
 
-
 // builds EAN-13 barcode
 // author - Vyacheslav Archibasov
 
@@ -85,7 +84,6 @@ public class EAN13CodeBuilder13 {
                     + leftString.substring(5);
         }
         if (firstFlag == 1) {
-            // /System.out.println("leftString: "+leftString);
             leftCode = "$!" + leftString.substring(0, 1)
                     + leftString.substring(1, 2)
                     + DigitToUpperCase(leftString.substring(2, 3))
@@ -160,11 +158,11 @@ public class EAN13CodeBuilder13 {
 
     private void parse() {
         String fullString = getFullCode();
-        Log.d("Full code: " , fullString);
+        Log.d("Full code: ", fullString);
 
         generatedCode = createEAN13Code(fullString);
 
-        Log.d("Generated code: " , generatedCode);
+        Log.d("Generated code: ", generatedCode);
 
     }
 }

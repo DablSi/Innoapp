@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     editor.putString(LOGIN, email.getText().toString());
                     for (DataSnapshot i : dataSnapshot.child("groups").getChildren()) {
                         String topic = (String) i.getValue();
-                        // добавляю пользователей к их группам
+                        // add users to their groups
                         FirebaseMessaging.getInstance().subscribeToTopic(Objects.requireNonNull(topic))
                                 .addOnCompleteListener(task -> {
                                     String msg = "SUCCESS";

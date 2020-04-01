@@ -10,9 +10,10 @@ import com.example.innoapp.fragments.FragmentTab1;
 import com.example.innoapp.fragments.FragmentTab2;
 import com.example.innoapp.fragments.FragmentTab3;
 
-public class TabsPagerFragmentAdapters extends FragmentPagerAdapter
-{
+public class TabsPagerFragmentAdapters extends FragmentPagerAdapter {
     private String[] tabs;
+
+    @SuppressWarnings("deprecation")
     public TabsPagerFragmentAdapters(@NonNull FragmentManager fm) {
         super(fm);
         tabs = new String[]{
@@ -28,11 +29,11 @@ public class TabsPagerFragmentAdapters extends FragmentPagerAdapter
         return tabs[position];
     }
 
+    @SuppressWarnings("ConstantConditions")
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position)
-        {
+        switch (position) {
             case 0:
                 return FragmentTab1.getInstance();
             case 1:

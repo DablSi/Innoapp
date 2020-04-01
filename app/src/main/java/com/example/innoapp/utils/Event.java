@@ -9,6 +9,7 @@ import java.util.LinkedList;
 /*
  *  Events class for event card generation
  */
+@SuppressWarnings("WeakerAccess")
 public class Event {
     private String name;
     private Date date;
@@ -24,12 +25,13 @@ public class Event {
         is_optional = true;
     }
 
-    Event(String newName, Date newDate, HashMap<String, String> newData, LinkedList<Group> newGroups, boolean newIs_optional) {
+    Event(String newName, Date newDate, HashMap<String, String> newData, LinkedList<Group> newGroups, String newPlace, boolean newIs_optional) {
         setName(newName);
         setDate(newDate);
         setData(newData);
         setGroups(newGroups);
         setIs_optional(newIs_optional);
+        setPlace(newPlace);
     }
 
     // setters
