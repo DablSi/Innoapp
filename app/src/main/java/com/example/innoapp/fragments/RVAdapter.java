@@ -8,45 +8,59 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.innoapp.R;
 
+import java.util.Date;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.CardViewHolder> {
-    // Список карточек
-    Event event;
 
-    // Взятие экземпляра карточки
-    public static class CardViewHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
-        CardViewHolder(CardView cv) {
-            super(cv);
-            cardView = cv;
+public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
+    private Event[] mDataset;
+
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public CardView cardView;
+        public MyViewHolder(CardView v) {
+            super(v);
+            cardView = v;
         }
     }
 
-    // Передача списка карточек
-    public RVAdapter(Event event){
-        this.event = event;
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public RVAdapter(Event[] myDataset) {
+        mDataset = myDataset;
     }
 
-    // Создание новой карточки по каркасу в cardview.xml
+    // Create new views (invoked by the layout manager)
     @Override
-    public CardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        CardView cv = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
-        return new CardViewHolder(cv);
+    public RVAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // create a new view
+        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
+
+        MyViewHolder vh = new MyViewHolder(v);
+        return vh;
     }
 
-    // Задание соответствующих атрибутов для конкретной карточки
+    // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(CardViewHolder cardViewHolder, int position) {
-        // Взятие экземпляра карточки
-        CardView cardView = cardViewHolder.cardView;
-        // Взятие экземпляра названия события
-        TextView cardName = (TextView)cardView.findViewById(R.id.cardName);
-        // Установка загруженного названия для события
-        cardName.setText(event.getName());
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        // setting card parameters:
+        // name
+        TextView cardName = (TextView) holder.cardView.findViewById(R.id.cardName);
+        cardName.setText(mDataset[position].getName());
+
+        // date
+        Date date = mDataset[position].getDate();
+        String textDate = Integer.toString(date.getDay())+" " + Integer.toString(date.getMonth())
+                + " " + Integer.toString(date.getYear());
+        TextView cardDate = (TextView) holder.cardView.findViewById(R.id.cardDate);
+        cardDate.setText(textDate);
     }
 
+    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return 1;
+        return mDataset.length;
     }
 }

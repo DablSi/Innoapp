@@ -11,53 +11,46 @@ import com.example.innoapp.R;
 import com.example.innoapp.fragments.RVAdapter;
 
 import java.security.acl.Group;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Events extends AppCompatActivity {
 
-    // карточка
-    private Event event;
-    // Ссылка на RecyclerView в activity_events.xml
-    private RecyclerView rv;
+    // Экземпляр списка RecyclerView
+    private RecyclerView recyclerView;
+    // Обработчик списка
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private Event[] dataEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
-        // взятие ссылки на RecyclerView в activity_events.xml
-        rv=(RecyclerView)findViewById(R.id.rv);
+        recyclerView = (RecyclerView) findViewById(R.id.rv);
 
-        // Установка в RecyclerViev LayoutManager (список)
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
+        // size of RV can't be changed
+        recyclerView.setHasFixedSize(true);
 
-        // Загрузка карточки
-        initializeData();
-        // Отображение карточки
-        initializeAdapter();
-        
+        // linear layout manager
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        //  set dataEvents
+        int countCards=3;
+        dataEvents = new Event[4];
+        for(int i=0;i<countCards;i++)
+        {
+            // Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
+            Date d = new Date(2020+i,12-i,1+2*i);
+            LinkedList<Group> ll= new LinkedList<Group>();
+            dataEvents[i]= new Event("Событие "+Integer.toString(i),d,"1 час",ll,
+                    false,"Актовый зал",
+                    "Презентация: какие трудности ждут Android-разработчика.",31);
+        }
+        // an adapter
+        mAdapter = new RVAdapter(dataEvents);
+        recyclerView.setAdapter(mAdapter);
     }
-
-    private void initializeData(){
-
-        //Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
-        Date d = new Date();
-        LinkedList<Group> ll = new LinkedList<Group>();
-        event = new Event("Завтрак ", d, "30 минут", ll, false, "Столовая", "Подаётся гречка с сосисками, манная каша, булочки с джемом, чай и морс.", 31);
-       /*
-        Date d1 = new Date();
-        LinkedList<Group> ll1 = new LinkedList<Group>();
-        cards.add(new Event("Лекция: проблемы разрабатывающего карточки", d1, "1 час", ll1, true, "Актовый зал", "Узнай самые актуальные проблемы Android-разработчика и решения, которые принял ведущий разработки карточек Иннополиса.", 14));
-       */
-    }
-
-    private void initializeAdapter(){
-        RVAdapter adapter = new RVAdapter(event);
-        rv.setAdapter(adapter);
-    }
-
 }
