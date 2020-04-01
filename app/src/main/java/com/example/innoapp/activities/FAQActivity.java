@@ -1,4 +1,5 @@
 package com.example.innoapp.activities;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -18,7 +19,8 @@ public class FAQActivity extends AppCompatActivity {
     private RecyclerView questionsList;
     private DataAdapter adapter;
     String questions[] = {"Супер умный вопрос", "Ещё один супер умный вопрос", "Умные вопросы требуют умных ответов", "Очередной супер умный вопрос", "Я не знаю, что писать в этом вопросе"};
-    String answers[] = {"Супер умный ццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццццц", "Ещё один супер умный ответ", "Умные ответы требуют умных вопросов", "Очередной супер умный ответ", "Я не знаю, что писать в этом ответе"};
+    String answers[] = {"Супер умный", "Ещё один супер умный ответ", "Умные ответы требуют умных вопросов", "Очередной супер умный ответ", "Я не знаю, что писать в этом ответе"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +28,9 @@ public class FAQActivity extends AppCompatActivity {
         questionsList = findViewById(R.id.questionsList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         questionsList.setLayoutManager(layoutManager);
-        adapter = new DataAdapter(questions,answers, this);
+        adapter = new DataAdapter(questions, answers, this);
         questionsList.setAdapter(adapter);
     }
-
-
 
 
 }
