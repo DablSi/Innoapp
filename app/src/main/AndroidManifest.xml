@@ -20,6 +20,7 @@
 
         <activity android:name=".activities.Events" />
         <activity android:name=".activities.FAQActivity" />
+        <activity android:name=".activities.MapActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
