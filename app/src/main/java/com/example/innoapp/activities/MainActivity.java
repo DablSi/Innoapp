@@ -16,7 +16,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.innoapp.TabsPagerFragmentAdapters;
+import com.example.innoapp.adapter.TabsPagerFragmentAdapters;
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder13;
 import com.github.chrisbanes.photoview.PhotoView;
@@ -109,3 +109,4 @@ public class MainActivity extends AppCompatActivity {
         mDialog.show();
     }
 }
+
