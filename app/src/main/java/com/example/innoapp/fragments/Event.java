@@ -1,12 +1,13 @@
 package com.example.innoapp.fragments;
 // author Makar Shevchenko
+
 import java.security.acl.Group;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 /*
- *  Класс событий для генерации карточек событий
+ *  Events class for event card generation
  */
 public class Event {
     private String name;
@@ -18,8 +19,7 @@ public class Event {
     private String description;
     private int countVisitors;
 
-    Event()
-    {
+    Event() {
         name = "Event";
         date = new Date();
         duration = "0 минут";
@@ -29,7 +29,7 @@ public class Event {
         countVisitors = 0;
     }
 
-    //Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
+    // Name, date, duration, groups, optionality, place, description, number of visitors
     Event(String newName, Date newDate, String newDuration, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
         setName(newName);
         setDate(newDate);
