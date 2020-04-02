@@ -38,19 +38,21 @@ public class Events extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         //  set dataEvents
-        int countCards=3;
-        dataEvents = new Event[4];
+        int countCards=5;
+        dataEvents = new Event[countCards];
         for(int i=0;i<countCards;i++)
         {
-            // Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
+            // Название, дата, дата конца, группы, кастомное, место, описание, количество посетителей
             Date d = new Date(2020+i,12-i,1+2*i);
+            Date d1 = new Date(2020+i,12-i,2+3*i);
             LinkedList<Group> ll= new LinkedList<Group>();
-            dataEvents[i]= new Event("Событие "+Integer.toString(i),d,"1 час",ll,
+            dataEvents[i]= new Event("Событие "+Integer.toString(i),d,d1,ll,
                     false,"Актовый зал",
-                    "Презентация: какие трудности ждут Android-разработчика.",31);
+                    "012345678901234567890123456789012345678901234567890123456789012345",31);
         }
         // an adapter
         mAdapter = new RVAdapter(dataEvents);
         recyclerView.setAdapter(mAdapter);
     }
+
 }
