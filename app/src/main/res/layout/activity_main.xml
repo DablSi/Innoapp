@@ -33,18 +33,20 @@
                 android:id="@+id/txt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="APRIL 2ND"
+                android:text="@string/txt_date_main_menu"
                 android:layout_marginBottom="6dp"
-                android:textSize="16dp" />
+                android:textSize="16dp"
+                tools:ignore="SpUsage" />
 
             <TextView
                 android:id="@+id/txt_greeting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hey, Student!"
+                android:text="@string/txt_greeting_main_menu"
                 android:textColor="#000000"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="SpUsage" />
 
         </LinearLayout>
 
@@ -110,7 +112,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         style="@style/TextAppearance.AppCompat.Body1"
@@ -120,13 +123,14 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="24dp"
-                        android:text="Maps"
+                        android:text="@string/btn_maps_main_menu"
                         android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                        tools:ignore="SpUsage" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -161,7 +165,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         style="@style/TextAppearance.AppCompat.Body1"
@@ -171,13 +176,14 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="24dp"
-                        android:text="FAQ"
+                        android:text="@string/btn_faq_main_menu"
                         android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                        tools:ignore="SpUsage" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -212,7 +218,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         style="@style/TextAppearance.AppCompat.Body1"
@@ -222,13 +229,14 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="24dp"
-                        android:text="Voting"
+                        android:text="@string/btn_voting_main_menu"
                         android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                        tools:ignore="SpUsage" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -263,7 +271,8 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         style="@style/TextAppearance.AppCompat.Body1"
@@ -273,13 +282,14 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="24dp"
-                        android:text="Schedule"
+                        android:text="@string/btn_schedule_main_menu"
                         android:textSize="16dp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                        tools:ignore="SpUsage" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -313,16 +323,18 @@
                         android:textColor="#FFFFFF"
                         android:textSize="18dp"
                         android:textAlignment="center"
-                        android:text="Here is your personal barcode. Please use it in the dining room for meals \n Thank you" />
+                        android:text="@string/txt_description_main_menu"
+                        tools:ignore="SpUsage" />
 
                         <TextView
                             android:id="@+id/tvBarcode"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="barcode"
+                            android:text="@string/txt_barcode_main_menu"
                             android:textAlignment="center"
                             android:textColor="@android:color/background_dark"
-                            android:textSize="90dp" />
+                            android:textSize="90dp"
+                            tools:ignore="SpUsage" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -335,9 +347,11 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="bottom"
-            android:src="@color/colorPrimary" />
+            android:src="@color/colorPrimary"
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
 </LinearLayout>
 
+<!--TODO:ADD THIS ATTRIBUTE AFTER CHECKING MAIN ACTIVITY CODE-->
 <!--    android:onClick="onButtonClickBarcode"-->
