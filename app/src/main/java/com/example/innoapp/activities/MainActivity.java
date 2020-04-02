@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        startActivity(new Intent(MainActivity.this, MapActivity.class));
+        startActivity(new Intent(MainActivity.this, FAQActivity.class));
         code = sp.getString(CODE, "");
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);

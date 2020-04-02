@@ -33,8 +33,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layoutIdQuestions, parent, false);
         DataAdapterHolder viewHolder = new DataAdapterHolder(view);
-        viewHolder.questionView.setText(questions[viewHolderCount]);
-        viewHolderCount++;
+        try {
+            viewHolder.questionView.setText(questions[viewHolderCount]);
+            viewHolderCount++;
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
         return viewHolder;
 
     }
