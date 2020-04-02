@@ -7,36 +7,48 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".activities.MainActivity">
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_above="@id/mapsTabLayout"
+        android:layout_alignParentLeft="true"
+        android:background="@android:color/transparent"
+        android:paddingLeft="15dp"
+        android:src="@drawable/back" />
+
     <TextView
         android:id="@+id/mapTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="Maps"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/background_dark"
         android:layout_marginRight="15dp"
-        />
+        android:layout_marginTop="3dp"
+        android:paddingTop="10dp"
+        android:text="Maps"
+        android:textColor="@android:color/background_dark"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
     <com.google.android.material.tabs.TabLayout
-        android:layout_marginTop="15dp"
-        android:layout_below = "@+id/mapTextView"
         android:id="@+id/mapsTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        android:layout_below="@+id/mapTextView"
+        android:paddingTop="15dp"
         app:tabIndicatorColor="@android:color/holo_green_light"
-        app:tabIndicatorHeight = "6dp"
-        />
+        app:tabIndicatorHeight="6dp"
+        app:tabTextAppearance="@style/TabLayoutTextStyle" />
 
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_marginTop="15dp"
         android:id="@+id/mapsViewPager"
         android:layout_width="match_parent"
         android:layout_height="800px"
         android:layout_below="@+id/mapsTabLayout"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.yandex.mapkit.mapview.MapView

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class MapActivity extends AppCompatActivity {
     private final Point TARGET_LOCATION = new Point(55.752080, 48.744609);
 
     private MapView mapView;
+    private ImageButton back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,14 @@ public class MapActivity extends AppCompatActivity {
         MapKitFactory.initialize(this);
         setContentView(R.layout.map_activity);
         super.onCreate(savedInstanceState);
-        mapView = (MapView)findViewById(R.id.mapview);
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        mapView = (MapView) findViewById(R.id.mapview);
         mapView.getMap().move(
                 new CameraPosition(TARGET_LOCATION, 14.0f, 0.0f, 0.0f),
                 new Animation(Animation.Type.SMOOTH, 5),
@@ -55,6 +64,7 @@ public class MapActivity extends AppCompatActivity {
         MapKitFactory.getInstance().onStart();
         mapView.onStart();
     }
+
     private void initTabs() {
         TabLayout mapsTabLayout = findViewById(R.id.mapsTabLayout);
         ViewPager mapsViewPager = findViewById(R.id.mapsViewPager);
@@ -62,6 +72,7 @@ public class MapActivity extends AppCompatActivity {
         mapsViewPager.setAdapter(adapters);
         mapsTabLayout.setupWithViewPager(mapsViewPager);
     }
+
     @SuppressLint("InflateParams")
     public void zoomMap(View v) {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MapActivity.this);

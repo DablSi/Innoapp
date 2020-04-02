@@ -24,11 +24,22 @@
                 android:layout_marginRight="70px"
                 android:background="#FFFFFF">
 
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/back"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/back"/>
+
                 <TextView
                     android:id="@+id/fAQTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="220px"
                     android:layout_alignParentRight="true"
+                    android:paddingTop="3dp"
                     android:text="FAQ"
                     android:textColor="@android:color/background_dark"
                     android:textSize="35dp"
