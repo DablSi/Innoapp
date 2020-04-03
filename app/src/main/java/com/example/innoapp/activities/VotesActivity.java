@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -71,6 +72,7 @@ public class VotesActivity extends Activity
             voteRadioGroup.setLayoutParams(voteRadioGroupParams);
             relativeLayout2.addView(voteRadioGroup);
             final boolean[] b = {false};
+            final int [] lastP = {-1};
             //
             for (int i2 = 1; i2 < array[i1].length; i2++) {
                 RadioButton voteRadioButton = new RadioButton(this);
@@ -88,11 +90,24 @@ public class VotesActivity extends Activity
                 voteRadioButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(b[0] == false)
+                        if (lastP[0] > -1)
+                        {
+                            if(lastP[0] != finalI - 1)
+                            {
+                                myArray[lastP[0]] = myArray[lastP[0]] - 1;
+                                myArray[finalI - 1] = myArray[finalI - 1] + 1;
+                            }
+                        }
+                        else {
+                            myArray[finalI - 1] = myArray[finalI - 1] + 1;
+                        }
+                        lastP[0] = finalI - 1;
+
+                        /*if(b[0] == false)
                         {
                         myArray[finalI - 1] = myArray[finalI - 1] + 1;
                         b[0] = true;
-                        }
+                        }*/
                         for (int i3 = 1; i3 <  array[finalI2].length; i3++)
                         {
                             radioButtonsArrayList.get(i3 - 1).setText(array[finalI2][i3] + "           " + Integer.toString(myArray[i3 - 1]));
@@ -103,6 +118,11 @@ public class VotesActivity extends Activity
 
         }
 
-
+        ImageView imageView1 = new ImageView(this);
+        RelativeLayout.LayoutParams imageView1Params = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        imageView1Params.setMargins(0,50,0,0);
+        imageView1.setLayoutParams(imageView1Params);
+        imageView1.setImageResource(R.drawable.profile_image1);
+        voteLinearLayout.addView(imageView1);
     }
 }
