@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:id="@+id/fragmentLinearLayout"
-        android:layout_width="340dp"
+        android:layout_width="840px"
         android:layout_height="wrap_content"
         android:background="#80BC00"
         android:layout_centerHorizontal = "true">
@@ -21,20 +21,37 @@
         android:textColor="@android:color/background_light"
         android:textSize="27dp" />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        <RadioGroup
             android:id="@+id/radios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_below = "@+id/voteTextView">
 
-            <RadioButton
-                android:id="@+id/fragmentRadioButton1"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:layout_below="@+id/fragmentRadioButton1"
+                android:text="Голосование"
                 android:textColor="@android:color/background_light"
-                android:text="1" />
+                android:textSize="17dp" />
+
+            <RadioButton
+                android:id="@+id/fragmentRadioButton1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textColor="@android:color/background_light"
+                android:textSize="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/fragmentRadioButton1"
+                    android:text="Голосование"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="17dp" />
+            </RadioButton>
             <RadioButton
                 android:id="@+id/fragmentRadioButton2"
                 android:layout_width="wrap_content"
