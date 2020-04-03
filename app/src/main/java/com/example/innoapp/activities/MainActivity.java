@@ -31,16 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
 //    private TextView tvBarcode;
 //
-//    public static String code;
+      public static String code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-//        if (sp.getString(LOGIN, "").equals(""))
-//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//        code = sp.getString(CODE, "");
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (sp.getString(LOGIN, "").equals(""))
+               startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        code = sp.getString(CODE, "");
 //        // barcode
 //        tvBarcode = findViewById(R.id.tvBarcode);
 //        // tabs initialisation
