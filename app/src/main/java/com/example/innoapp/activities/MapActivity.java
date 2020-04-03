@@ -32,7 +32,7 @@ public class MapActivity extends AppCompatActivity {
         MapKitFactory.initialize(this);
         setContentView(R.layout.map_activity);
         super.onCreate(savedInstanceState);
-        mapView = (MapView)findViewById(R.id.mapview);
+        mapView = findViewById(R.id.mapview);
         mapView.getMap().move(
                 new CameraPosition(TARGET_LOCATION, 14.0f, 0.0f, 0.0f),
                 new Animation(Animation.Type.SMOOTH, 5),

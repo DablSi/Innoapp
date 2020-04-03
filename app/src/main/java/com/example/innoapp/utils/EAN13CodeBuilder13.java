@@ -27,9 +27,9 @@ public class EAN13CodeBuilder13 {
         String codeToParse = codeStringValue;
 
         for (int index = 0; index < 6; index++) {
-            chetVal += Integer.valueOf(
+            chetVal += Integer.parseInt(
                     codeToParse.substring(index * 2 + 1, index * 2 + 2));
-            nechetVal += Integer.valueOf(
+            nechetVal += Integer.parseInt(
                     codeToParse.substring(index * 2, index * 2 + 1));
         }
 
@@ -46,7 +46,7 @@ public class EAN13CodeBuilder13 {
 
     private String DigitToUpperCase(String digit) {
         String letters = "ABCDEFGHIJ";
-        int position = Integer.valueOf(digit);
+        int position = Integer.parseInt(digit);
 
         return letters.substring(position, position + 1);
 
@@ -54,14 +54,14 @@ public class EAN13CodeBuilder13 {
 
     private String DigitToLowerCase(String digit) {
         String letters = "abcdefghij";
-        int position = Integer.valueOf(digit);
+        int position = Integer.parseInt(digit);
 
         return letters.substring(position, position + 1);
 
     }
 
     private String createEAN13Code(String rawCode) {
-        int firstFlag = Integer.valueOf(
+        int firstFlag = Integer.parseInt(
 
                 rawCode.substring(0, 1)
 

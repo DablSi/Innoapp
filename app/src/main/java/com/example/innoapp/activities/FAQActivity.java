@@ -20,20 +20,15 @@ public class FAQActivity extends AppCompatActivity {
     private RecyclerView questionsList;
     private DataAdapter adapter;
     private ImageButton back;
-    String questions[] = {"Супер умный вопрос", "Ещё один супер умный вопрос", "Умные вопросы требуют умных ответов", "Очередной супер умный вопрос", "Я не знаю, что писать в этом вопросе"};
-    String answers[] = {"Супер умный", "Ещё один супер умный ответ", "Умные ответы требуют умных вопросов", "Очередной супер умный ответ", "Я не знаю, что писать в этом ответе"};
+    String[] questions = {"Супер умный вопрос", "Ещё один супер умный вопрос", "Умные вопросы требуют умных ответов", "Очередной супер умный вопрос", "Я не знаю, что писать в этом вопросе"};
+    String[] answers = {"Супер умный", "Ещё один супер умный ответ", "Умные ответы требуют умных вопросов", "Очередной супер умный ответ", "Я не знаю, что писать в этом ответе"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.faq_activity);
         back = findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        back.setOnClickListener(v -> finish());
         questionsList = findViewById(R.id.questionsList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         questionsList.setLayoutManager(layoutManager);

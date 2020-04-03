@@ -29,9 +29,8 @@ import static com.example.innoapp.activities.LoginActivity.LOGIN;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private TextView tvBarcode;
-//
-//    public static String code;
+    private TextView tvBarcode;
+    public static String code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
 //        code = sp.getString(CODE, "");
 //        // barcode
 //        tvBarcode = findViewById(R.id.tvBarcode);
-//        // tabs initialisation
-//        //initTabs();
 //        // barcode font
 //        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");
 //        // sets the barcode
@@ -60,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 //        tvBarcode.setPadding(0, 25, 0, 0);
     }
 
-//
-//
+
+
 //    boolean barcodeScale = false;
 //
 //    // zooms barcode
@@ -85,24 +82,6 @@ public class MainActivity extends AppCompatActivity {
 //            barcodeScale = true;
 //        }
 //
-//    }
-//
-//    @SuppressLint("InflateParams")
-//    public void zoomMap(View v) {
-//        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-//        View mView = getLayoutInflater().inflate(R.layout.dialog_custom_layout, null);
-//        PhotoView photoView = mView.findViewById(R.id.imageView);
-//        int id = v.getId();
-//        int res = R.drawable.firstf;
-//        if (id == R.id.map2ImageView) {
-//            res = R.drawable.secondf;
-//        } else if (id == R.id.map3ImageView) {
-//            res = R.drawable.thirdf;
-//        }
-//        photoView.setImageResource(res);
-//        mBuilder.setView(mView);
-//        AlertDialog mDialog = mBuilder.create();
-//        mDialog.show();
 //    }
 }
 
