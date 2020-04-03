@@ -19,34 +19,6 @@
             android:exported="true" />
 
         <activity android:name=".activities.Events" />
-        <activity android:name=".activities.FAQActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-        <activity android:name=".activities.VotesActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.MapActivity">
-            <intent-filter>
-                <action android:name="android.intent.action." />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.ProfileActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activities.VotesActivity" />
         <activity android:name=".activities.ProfileActivity" />
         <activity android:name=".activities.FAQActivity" />
