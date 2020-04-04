@@ -18,30 +18,17 @@ import java.util.concurrent.TimeUnit;
 
 
 public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
-    private Event[] mDataset;
+    public Event[] mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
-        // This vars is need to work with concrete card
-        int currentCardPosition;
-        Context mContext;
 
-        public MyViewHolder(CardView v, Context context) {
+        public MyViewHolder(CardView v) {
             super(v);
             cardView = v;
-
-            // Listener of buttons
-            mContext=context;
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    if(mContext instanceof Events){
-                        ((Events)mContext).OpenDescription();
-                    }
-                }
-            });
         }
     }
 
@@ -56,14 +43,12 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
         // create a new view
         CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
 
-        MyViewHolder vh = new MyViewHolder(v,v.getContext());
-        return new MyViewHolder(v, v.getContext());
+        return new MyViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.currentCardPosition = position;
         if(position<getItemCount()) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
@@ -73,8 +58,6 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
             cardName.setText(mDataset[position].getName());
 
             // description
-            // NEXUS 5X 33 liters - 1 string
-            // NEXUS 5X 16.5dp - 1 string
             TextView cardDescription = (TextView) holder.cardView.findViewById(R.id.cardDescription);
             String description = mDataset[position].getDescription();
             cardDescription.setText(description);
