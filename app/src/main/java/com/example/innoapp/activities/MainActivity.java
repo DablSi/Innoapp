@@ -2,10 +2,14 @@ package com.example.innoapp.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tvBarcode;
     DatabaseReference mDatabase;
+    private NotificationManager mNotificationManager;
 
     public static String code;
 
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         // tabs initialisation
         initTabs();
         // barcode font
-        Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/EanP72TtNormal.ttf");
         // sets the barcode
         tvBarcode.setTypeface(font);
         // sets barcode's value
@@ -78,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
         tvBarcode.setLayoutParams(layoutParamsBarcode);
         tvBarcode.setPadding(0, 25, 0, 0);
         planningPush();
-
-
-
-
     }
 
     private void initTabs() {
@@ -96,11 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
     // zooms barcode
     public void onButtonClickBarcode(View v) {
-
-
-
-
-
         if (barcodeScale) {
             tvBarcode.setTextSize(100);
             barcodeScale = false;
@@ -139,9 +135,9 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-long timeUp;
-    long seconds;
-    int cnt  = 1;
+
+    long timeUp;
+    int cnt = 1;
     String contentText;
 
     private void planningPush() {
@@ -155,61 +151,49 @@ long timeUp;
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot i : dataSnapshot.getChildren()){
+                for (DataSnapshot i : dataSnapshot.getChildren()) {
 
                     // забираю все данные из event из БД
 
-                    String description = (String) i.child("description").getValue();
+                    String name = (String) i.child("name").getValue();
                     boolean is_optional = (boolean) i.child("is_optional").getValue();
-                    String place = (String)i.child("place").getValue();
+                    String place = (String) i.child("place").getValue();
                     String startDate = (String) i.child("dateStart").getValue();
 
                     // высчитываю время
                     try {
-                         timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
-                    } catch (ParseException e) {
+                        timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    // нахожу разницу 
+                    // нахожу разницу
                     long diff = timeUp - System.currentTimeMillis();
-                    seconds = TimeUnit.MILLISECONDS.toSeconds(diff);
 
-                    timer.scheduleAtFixedRate(new TimerTask() {
+                    try {
+                        if (is_optional) {
+                            contentText = "Просим по желанию пройти в " + place + " через 10 минут там начнется мероприятие " + name;
+                        } else {
+                            contentText = "Просим пройти в " + place + " через 10 минут там начнется обязательное мероприятие " + name;
 
-                        @Override
-                        public void run() {
-                            if(is_optional) {
-                                contentText= "Просим по желанию пройти в " + place + "через 10 минут там начнется мероприятие " + description;
-                            }
-                            else{
-                                contentText = "Просим пройти в " + place + "через 10 минут там начнется обязательное мероприятие мероприятие " + description;
-
-                            }
-                            // создаю пуш
-
-
-                            runOnUiThread(() -> {
-                                    NotificationCompat.Builder builder =
-                                            new NotificationCompat.Builder(MainActivity.this, "default_channel")
-                                                    .setSmallIcon(R.mipmap.ic_launcher)
-                                                    .setContentTitle("Опопвещение о мероприятии")
-                                                    .setContentText(contentText);
-                                    Notification notification = builder.build();
-                                    NotificationManager notificationManager =
-                                            (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-                                    notificationManager.notify(cnt,notification);
-
-                                cnt+=1;
-
-
-                                Log.d("WTF","I AM TIRED");
-                            });
                         }
-                        // говорю через сколько выполнить умножаю на 1000 так как перевожу в милисекунды, а отнимаю 600k так как за 10 минут предупреждаю
-                    }, seconds*1000-600000,0);
+                        // создаю пуш
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        createPush("Опопвещение о мероприятии");
 
-
+                                        cnt += 1;
+                                        Log.d("WTF", "I AM TIRED");
+                                    }
+                                });
+                            }
+                        }, diff - 600000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
 
                 }
             }
@@ -220,16 +204,39 @@ long timeUp;
             }
         };
         userRef.addListenerForSingleValueEvent(valueEventListener);
+    }
 
+    private void createPush(String title) {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(MainActivity.this.getApplicationContext(), "notify_001");
+        Intent ii = new Intent(MainActivity.this.getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, ii, 0);
 
+        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+        bigText.setBigContentTitle(title);
 
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
+        mBuilder.setContentTitle(title);
+        mBuilder.setContentText(contentText);
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        mBuilder.setStyle(bigText);
+        mBuilder.setAutoCancel(true);
 
+        mNotificationManager =
+                (NotificationManager) MainActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = "Your_channel_id";
+            NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+            mBuilder.setChannelId(channelId);
+        }
 
-
-
-
-
+        mNotificationManager.notify(cnt, mBuilder.build());
     }
 }
 
