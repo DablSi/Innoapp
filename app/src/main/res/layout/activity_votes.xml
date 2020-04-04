@@ -6,7 +6,7 @@
     android:background="#FFFFFF">
 
     <LinearLayout
-        android:id="@+id/voteLinearLayout"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -17,6 +17,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="220px"
                 android:layout_alignParentRight="true"
@@ -28,9 +29,42 @@
                 android:textColor="@android:color/background_dark"
                 android:textSize="35dp"
                 android:textStyle="bold" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below = "@+id/text1">
+            <Spinner
+                android:id="@+id/groups"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:background="@drawable/spinner_image"
+
+                android:layout_centerHorizontal = "true"
+                android:textColor="@android:color/background_dark"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/textViewSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/inno_green"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
         </RelativeLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:orientation="vertical">
+
+        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/voteLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
