@@ -30,10 +30,16 @@ public class VotesActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         voteLinearLayout = (LinearLayout) findViewById(R.id.voteLinearLayout);
         vоtes = new LinkedList<Vote>();
         CreateSpinner(groupsS);
-
     }
 
     private void CreateSpinner(String[] sGroups) {
