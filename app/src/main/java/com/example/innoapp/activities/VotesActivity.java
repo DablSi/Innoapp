@@ -26,6 +26,7 @@ public class VotesActivity extends Activity {
     private int countID = 0;
     private boolean b1 = false;
     String[] groupsS = {"Group 1", "Group 2", "Group 3", "Group 4", "Group 5", "Group 6"};
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
@@ -34,37 +35,33 @@ public class VotesActivity extends Activity {
         CreateSpinner(groupsS);
 
     }
-    private void CreateSpinner(String[] sGroups)
-    {
-        TextView textViewSpinner = (TextView) findViewById(R.id.textViewSpinner) ;
+
+    private void CreateSpinner(String[] sGroups) {
         Spinner groups = (Spinner) findViewById(R.id.groups);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, groupsS);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groups.setAdapter(adapter);
-        textViewSpinner.setText(sGroups[0]);
-        //
 
-        //
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 voteLinearLayout.removeAllViews();
                 // Получаем выбранный объект
                 vоtes.removeAll(vоtes);
-                String item = (String)parent.getItemAtPosition(position);
-                textViewSpinner.setText(item);
-                switch (item){
-                    case("Group 1"):
+                String item = (String) parent.getItemAtPosition(position);
+                switch (item) {
+                    case ("Group 1"):
                         vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, false));
+                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
                         vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
                         CreateVotes(vоtes);
                         break;
-                    case("Group 2"):
+                    case ("Group 2"):
                         vоtes.add(new Vote("Favourite season124?", new String[]{"Win314ter", "Spr134ing", "Sum4mer", "Autumn"}, false));
                         vоtes.add(new Vote("Favourite season1241?", new String[]{"Win134ter", "Spri134ng", "Sum134mer", "Aut4umn"}, true));
                         CreateVotes(vоtes);
                         break;
-                    case("Group 3"):
+                    case ("Group 3"):
                         vоtes.add(new Vote("favourite season?125125126236", new String[]{"Winter", "Spring", "Summer", "Autumn"}, false));
                         vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
                         CreateVotes(vоtes);
@@ -94,12 +91,12 @@ public class VotesActivity extends Activity {
             voteLinearLayout.addView(relativeLayout1);
 
             RelativeLayout relativeLayout2 = new RelativeLayout(this);
-            RelativeLayout.LayoutParams relativeLayout2Params = new RelativeLayout.LayoutParams(840, LinearLayout.LayoutParams.WRAP_CONTENT);
+            RelativeLayout.LayoutParams relativeLayout2Params = new RelativeLayout.LayoutParams(920, LinearLayout.LayoutParams.WRAP_CONTENT);
             relativeLayout2Params.addRule(RelativeLayout.CENTER_IN_PARENT);
             relativeLayout2.setLayoutParams(relativeLayout2Params);
             relativeLayout2.setBackgroundColor(getResources().getColor(R.color.inno_green));
             relativeLayout2.setBackgroundResource(R.drawable.rectangle);
-            relativeLayout2.setPadding(25, 10, 0, 0);
+            relativeLayout2.setPadding(25, 10, 0, 25);
             relativeLayout1.addView(relativeLayout2);
             relativeLayout1.setId(RelativeLayout.generateViewId());
 
@@ -107,6 +104,7 @@ public class VotesActivity extends Activity {
             voteTextView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             voteTextView.setText(i.name);
             voteTextView.setTextSize(22);
+            voteTextView.setPadding(0, 0, 0, 10);
             relativeLayout2.addView(voteTextView);
             voteTextView.setTextColor(getResources().getColor(R.color.white));
             voteTextView.setId(TextView.generateViewId());
@@ -116,7 +114,6 @@ public class VotesActivity extends Activity {
                 RelativeLayout.LayoutParams voteRadioGroupParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                 voteRadioGroupParams.addRule(RelativeLayout.BELOW, voteTextView.getId());
                 voteRadioGroup.setLayoutParams(voteRadioGroupParams);
-                voteRadioGroup.setPadding(0, 10, 0, 25);
                 relativeLayout2.addView(voteRadioGroup);
 
 
@@ -150,15 +147,12 @@ public class VotesActivity extends Activity {
                     });
                 }
             } else {
-                // здесь ты делаешь CheckBox :^)
                 for (int j = 0; j < i.variants.length; j++) {
                     CheckBox voteCheckBox = new CheckBox(this);
                     RelativeLayout.LayoutParams voteCheckBoxParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    if (j > 0)
-                    {
+                    if (j > 0) {
                         voteCheckBoxParams.addRule(RelativeLayout.BELOW, checkBoxArrayList.get(j - 1).getId());
-                    }
-                    else {
+                    } else {
                         voteCheckBoxParams.addRule(RelativeLayout.BELOW, voteTextView.getId());
                     }
                     voteCheckBox.setLayoutParams(voteCheckBoxParams);
@@ -174,11 +168,10 @@ public class VotesActivity extends Activity {
                     voteCheckBox.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(ch[0]) {
+                            if (ch[0]) {
                                 voted[finalI] = voted[finalI] - 1;
                                 ch[0] = false;
-                            }
-                            else{
+                            } else {
                                 voted[finalI] = voted[finalI] + 1;
                                 ch[0] = true;
                             }
@@ -191,15 +184,7 @@ public class VotesActivity extends Activity {
                 }
 
             }
-
         }
-
-        ImageView imageView1 = new ImageView(this);
-        RelativeLayout.LayoutParams imageView1Params = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        imageView1Params.setMargins(0, 50, 0, 0);
-        imageView1.setLayoutParams(imageView1Params);
-        imageView1.setImageResource(R.drawable.profile_image1);
-        voteLinearLayout.addView(imageView1);
     }
 
     class Vote {
