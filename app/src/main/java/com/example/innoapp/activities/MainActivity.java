@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import static com.example.innoapp.activities.LoginActivity.CODE;
 import static com.example.innoapp.activities.LoginActivity.LOGIN;
@@ -33,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);
         txtDescriptionBarcode = findViewById(R.id.txt_description_barcode);
+        FloatingActionButton fabSettings = findViewById(R.id.fab_setting);
+        CardView btnMaps = findViewById(R.id.btn_maps);
+        CardView btnFAQ = findViewById(R.id.btn_faq);
+        CardView btnSchedule = findViewById(R.id.btn_schedule);
+        CardView btnVoting = findViewById(R.id.btn_voting);
         // set barcode's font
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");
         tvBarcode.setTypeface(font);
@@ -41,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
         tvBarcode.setText(bb.getCode());
         // barcode settings
         tvBarcode.setPadding(0, 20, 20, 20);
+        fabSettings.setOnClickListener(view -> Snackbar.make(view, "This section is still in development", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
+        btnSchedule.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, Events.class)));
+        btnVoting.setOnClickListener(view -> Snackbar.make(view, "This section is still in development", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show());
+        btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
+        btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
+
     }
     // zooms barcode
     public void onButtonClickBarcode(View v) {

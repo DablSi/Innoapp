@@ -23,7 +23,7 @@
             android:layout_marginEnd="193dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+            app:layout_constraintEnd_toStartOf="@+id/fab_setting"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -49,7 +49,7 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/fab_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_settings_white_18dp"
@@ -82,18 +82,20 @@
             android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView4"
+                android:id="@+id/btn_maps"
                 android:layout_width="160dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 app:cardElevation="5dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
+                app:layout_constraintEnd_toStartOf="@+id/btn_faq"
                 app:layout_constraintHorizontal_bias="0.564"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+                app:layout_constraintTop_toBottomOf="@+id/btn_schedule"
                 app:layout_constraintVertical_bias="0.0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -136,16 +138,18 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView3"
+                android:id="@+id/btn_faq"
                 android:layout_width="160dp"
                 android:layout_height="110dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 app:cardElevation="5dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/materialCardView4"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:layout_constraintStart_toEndOf="@+id/btn_maps"
+                app:layout_constraintTop_toBottomOf="@+id/btn_voting"
                 app:layout_constraintVertical_bias="1.0">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -189,17 +193,19 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView"
+                android:id="@+id/btn_voting"
                 android:layout_width="160dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/materialCardView3"
+                app:layout_constraintBottom_toTopOf="@+id/btn_faq"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/materialCardView2"
+                app:layout_constraintStart_toEndOf="@+id/btn_schedule"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -243,15 +249,17 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+                android:id="@+id/btn_schedule"
                 android:layout_width="160dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardElevation="5dp"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toTopOf="@+id/materialCardView4"
-                app:layout_constraintEnd_toStartOf="@+id/materialCardView"
+                app:layout_constraintBottom_toTopOf="@+id/btn_maps"
+                app:layout_constraintEnd_toStartOf="@+id/btn_voting"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
                 <androidx.constraintlayout.widget.ConstraintLayout
