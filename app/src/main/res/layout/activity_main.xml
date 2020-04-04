@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<LinearLayout android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".activities.MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -323,6 +321,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
+                        android:id="@+id/txt_description_barcode"
                         android:textColor="#FFFFFF"
                         android:textSize="18dp"
                         android:textAlignment="center"
@@ -331,13 +330,15 @@
 
                         <TextView
                             android:id="@+id/tvBarcode"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
                             android:text="@string/txt_barcode_main_menu"
+                            android:onClick="onButtonClickBarcode"
+                            android:background="@color/white"
                             android:textAlignment="center"
                             android:textColor="@android:color/background_dark"
-                            android:textSize="90dp"
+                            android:textSize="120dp"
                             tools:ignore="SpUsage" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -349,14 +350,10 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="10dp"
             android:layout_gravity="bottom"
             android:src="@color/colorPrimary"
             tools:ignore="ContentDescription" />
     </FrameLayout>
 
 </LinearLayout>
-
-
-<!--TODO: ADD THIS ATTRIBUTE AFTER CHECKING ACTIVITY CODE-->
-<!--    android:onClick="onButtonClickBarcode"-->

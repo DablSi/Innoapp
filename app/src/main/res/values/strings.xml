@@ -12,5 +12,7 @@
     <string name="btn_voting_main_menu">Voting</string>
     <string name="btn_schedule_main_menu">Schedule</string>
     <string name="txt_description_main_menu">Here is your personal barcode. Please use it in the dining room for meals \n Thank you</string>
-    <string name="txt_barcode_main_menu">barcode</string>
+    <string name="txt_barcode_main_menu">000</string>
+    <string name="txt_login_email">Email</string>
+    <string name="btn_login">Войти</string>
 </resources>
