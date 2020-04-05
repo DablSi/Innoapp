@@ -22,7 +22,7 @@ import static com.example.innoapp.activities.LoginActivity.LOGIN;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvBarcode, txtDescriptionBarcode;
-    public  static String code = "124958761310";
+    public static String code = "124958761310";
     private boolean barcodeScale = false;
 
     @Override
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
 
     }
+
     // zooms barcode
     public void onButtonClickBarcode(View v) {
         if (barcodeScale) {
