@@ -7,22 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.innoapp.R;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHolder> {
     private static int viewHolderCount = 0;
-    private String[] Questions;
-    private String[] Answers;
+    private String[] questions;
+    private String[] answers;
     private Context parent;
-    public DataAdapter(String[] q, String[] a, Context parent)
-    {
-        Questions = q;
-        Answers = a;
+
+    public DataAdapter(String[] q, String[] a, Context parent) {
+        questions = q;
+        answers = a;
         this.parent = parent;
     }
+
     @NonNull
     @Override
     public DataAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,9 +33,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layoutIdQuestions, parent, false);
         DataAdapterHolder viewHolder = new DataAdapterHolder(view);
-        viewHolder.questionView.setText(Questions[viewHolderCount]);
-        viewHolderCount++;
-
+        try {
+            viewHolder.questionView.setText(questions[viewHolderCount]);
+            viewHolderCount++;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
+        }
         return viewHolder;
 
     }
@@ -45,14 +50,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
 
     @Override
     public int getItemCount() {
-        return Questions.length;
+        return questions.length;
     }
 
     class DataAdapterHolder extends RecyclerView.ViewHolder {
 
         TextView questionView;
-         TextView answerView;
-         ImageView imageCheck;
+        TextView answerView;
+        ImageView imageCheck;
 
         public DataAdapterHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,34 +67,31 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
             int position = getAdapterPosition();
 
 
-            itemView.setOnClickListener(new View.OnClickListener()
-            {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 boolean answerI = false;
                 int lastPosition;
+
                 @Override
                 public void onClick(View v) {
-                   int positionIndex = getAdapterPosition();
-                    if(answerI)
-                    {
+                    int positionIndex = getAdapterPosition();
+                    if (answerI) {
                         answerView.setText("");
                         imageCheck.setImageResource(R.drawable.check_mark1);
                         answerI = false;
 
-                    }
-                    else
-                    {
-                        answerView.setText(Answers[positionIndex]);
+                    } else {
+                        answerView.setText(answers[positionIndex]);
                         lastPosition = positionIndex;
                         imageCheck.setImageResource(R.drawable.check_mark2);
                         answerI = true;
                     }
 
-                    //answerView.setText(Answers[positionIndex]);
+                    //answerView.setText(answers[positionIndex]);
                 }
             });
         }
-        void bind(String textQuestion)
-        {
+
+        void bind(String textQuestion) {
             questionView.setText(textQuestion);
         }
     }

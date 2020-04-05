@@ -16,6 +16,12 @@
         <activity android:name=".activities.Events"
                   android:parentActivityName=".activities.MainActivity">
         </activity>
+        <service
+            android:name=".services.FetchService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".activities.FAQActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.VotesActivity"/>
+        <activity android:name=".activities.MapActivity" />
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/FullScreen" />
