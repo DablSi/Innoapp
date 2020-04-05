@@ -1,8 +1,15 @@
 package com.example.innoapp.activities;
 
+import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -16,6 +23,22 @@ import com.example.innoapp.utils.EAN13CodeBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static com.example.innoapp.activities.LoginActivity.CODE;
 import static com.example.innoapp.activities.LoginActivity.LOGIN;
 
@@ -24,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvBarcode, txtDescriptionBarcode;
     public static String code = "124958761310";
     private boolean barcodeScale = false;
+    DatabaseReference mDatabase;
+    private NotificationManager mNotificationManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         CardView btnVoting = findViewById(R.id.btn_voting);
         // set barcode's font
         Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/EanP72TtNormal.ttf");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         tvBarcode.setTypeface(font);
         // sets barcode's value
         EAN13CodeBuilder bb = new EAN13CodeBuilder(code);
@@ -56,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .setAction("Action", null).show());
         btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
-
+        planningPush();
     }
 
     // zooms barcode
@@ -73,5 +99,109 @@ public class MainActivity extends AppCompatActivity {
             barcodeScale = true;
         }
     }
+
+    long timeUp;
+    int cnt = 1;
+    String contentText;
+
+    private void planningPush() {
+        Timer timer = new Timer();
+        // задаю формат с помощью которого буду парсить потом значение из БД
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
+
+        DatabaseReference userRef = mDatabase.child("events");
+
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot i : dataSnapshot.getChildren()) {
+
+                    // забираю все данные из event из БД
+
+                    String name = (String) i.child("name").getValue();
+                    boolean is_optional = (boolean) i.child("is_optional").getValue();
+                    String place = (String) i.child("place").getValue();
+                    String startDate = (String) i.child("dateStart").getValue();
+
+                    // высчитываю время
+                    try {
+                        timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    // нахожу разницу
+                    long diff = timeUp - System.currentTimeMillis();
+
+                    try {
+                        if (is_optional) {
+                            contentText = "Просим по желанию пройти в " + place + " через 10 минут там начнется мероприятие " + name;
+                        } else {
+                            contentText = "Просим пройти в " + place + " через 10 минут там начнется обязательное мероприятие " + name;
+
+                        }
+                        // создаю пуш
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        createPush("Опопвещение о мероприятии");
+
+                                        cnt += 1;
+                                        Log.d("WTF", "I AM TIRED");
+                                    }
+                                });
+                            }
+                        }, diff - 600000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        userRef.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+    private void createPush(String title) {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(MainActivity.this.getApplicationContext(), "notify_001");
+        Intent ii = new Intent(MainActivity.this.getApplicationContext(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, ii, 0);
+
+        NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
+        bigText.setBigContentTitle(title);
+
+        mBuilder.setContentIntent(pendingIntent);
+        mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
+        mBuilder.setContentTitle(title);
+        mBuilder.setContentText(contentText);
+        mBuilder.setPriority(Notification.PRIORITY_MAX);
+        mBuilder.setStyle(bigText);
+        mBuilder.setAutoCancel(true);
+
+        mNotificationManager =
+                (NotificationManager) MainActivity.this.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String channelId = "Your_channel_id";
+            NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "Channel human readable title",
+                    NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+            mBuilder.setChannelId(channelId);
+        }
+
+        mNotificationManager.notify(cnt, mBuilder.build());
+    }
 }
+
 

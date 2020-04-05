@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Profile"
+            android:textColor="@android:color/background_dark"
+            android:textSize="20dp" />
+
+
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="match_parent"
+            android:layout_height="470dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="0dp"
+            app:srcCompat="@drawable/profile_image2" />
+
+        <TextView
+            android:id="@+id/mailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="160dp"
+            android:text="eMail"
+            android:textColor="@android:color/background_dark"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/avaTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:text="A"
+            android:textColor="@android:color/background_light"
+            android:textSize="45dp" />
+
+        <ImageView
+            android:id="@+id/instaImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="220dp"
+            app:srcCompat="@drawable/profile_image4" />
+
+        <ImageView
+            android:id="@+id/faceBookImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="220dp"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@+id/instaImageView"
+            app:srcCompat="@drawable/profile_image3" />
+
+        <ImageView
+            android:id="@+id/VKImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="220dp"
+            android:layout_toRightOf="@+id/instaImageView"
+            app:srcCompat="@drawable/profile_image5" />
+
+        <RelativeLayout
+            android:id="@+id/languageLayout"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="325dp"
+            android:background="#F1F2F7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/languageImage"
+                android:text="Язык"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="240dp"
+                android:layout_toRightOf="@+id/languageImage"
+                android:text="RU"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/languageImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/profile_image6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/languageImage"
+                android:text="Язык"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/darkThemeLayout"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="370dp"
+            android:background="#F1F2F7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/darkThemeImage"
+                android:text="Тёмная тема"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/darkThemeImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/profile_image7" />
+
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="220dp"
+                android:layout_toRightOf="@+id/darkThemeImage"
+                android:checked="false"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:theme="@style/SwitchTheme" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/notificationsLayout"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="415dp"
+            android:background="#F1F2F7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/notificationsImage"
+                android:text="Уведомления"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/notificationsImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/profile_image8" />
+
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="220dp"
+                android:layout_toRightOf="@+id/notificationsImage"
+                android:checked="false"
+                android:textOff="OFF"
+                android:textOn="ON"
+                android:theme="@style/SwitchTheme" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/logOutLayout"
+            android:layout_width="300dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="480dp"
+            android:background="#F1F2F7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/logOutImage"
+                android:text="Выход"
+                android:textColor="@android:color/background_dark"
+                android:textSize="16dp" />
+
+            <ImageView
+                android:id="@+id/logOutImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/profile_image9" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/lower_image" />
+
+
+</LinearLayout>
