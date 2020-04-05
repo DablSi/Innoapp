@@ -1,5 +1,4 @@
 package com.example.innoapp.activities;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -72,10 +71,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 });
 
                     }
-                    MainActivity.code = (String) dataSnapshot.child("code").getValue();
-                    editor.putString(CODE, MainActivity.code);
-                    editor.apply();
-                    finish();
+                   MainActivity.code = (String) dataSnapshot.child("code").getValue();
+                   editor.putString(CODE, MainActivity.code);
+                   editor.apply();
+                   finish();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setTitle(R.string.notification)
