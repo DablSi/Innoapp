@@ -21,7 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -49,18 +51,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // I leave only numbers and latin letters, for example: goshan164@gmail.com = goshan164gmailcom
         emailString = emailString.replaceAll("[^A-Za-z0-9]", "");
         Log.d("TEST", emailString);
+
         DatabaseReference userRef = mDatabase.child("users").child(emailString);
         ValueEventListener valueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                HashSet<String> groups = new HashSet<>();
                 // if there is a user with such email, then log him in
                 if (dataSnapshot.exists()) {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putString(LOGIN, email.getText().toString());
+
                     for (DataSnapshot i : dataSnapshot.child("groups").getChildren()) {
                         String topic = (String) i.getValue();
-                        // add users to their groups
+                        groups.add(topic);
+                                // add users to their groups
                         FirebaseMessaging.getInstance().subscribeToTopic(Objects.requireNonNull(topic))
                                 .addOnCompleteListener(task -> {
                                     String msg = "SUCCESS";
@@ -72,10 +79,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 });
 
                     }
+<<<<<<< Updated upstream
                     MainActivity.code = (String) dataSnapshot.child("code").getValue();
                     editor.putString(CODE, MainActivity.code);
                     editor.apply();
                     finish();
+=======
+
+                   editor.putStringSet("GROUPS",groups);
+                   MainActivity.code = (String) dataSnapshot.child("code").getValue();
+                   editor.putString(CODE, MainActivity.code);
+                   editor.apply();
+                   finish();
+>>>>>>> Stashed changes
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setTitle(R.string.notification)
