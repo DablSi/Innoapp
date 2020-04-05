@@ -28,10 +28,11 @@ import java.util.Set;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText email;
+    private EditText emailEditText;
     private DatabaseReference mDatabase;
 
     public static final String LOGIN = "login";
+    public static final String EMAIL = "email";
     public static final String CODE = "code";
 
     @Override
@@ -40,16 +41,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         Button btn = findViewById(R.id.loginButton);
-        email = findViewById(R.id.input_email);
+        emailEditText = findViewById(R.id.input_email);
         btn.setOnClickListener(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
     public void onClick(View v) {
-        String emailString = email.getText().toString();
+        String email = emailEditText.getText().toString();
         // I leave only numbers and latin letters, for example: goshan164@gmail.com = goshan164gmailcom
-        emailString = emailString.replaceAll("[^A-Za-z0-9]", "");
+        String emailString = email.replaceAll("[^A-Za-z0-9]", "");
         Log.d("TEST", emailString);
 
         DatabaseReference userRef = mDatabase.child("users").child(emailString);
@@ -62,8 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (dataSnapshot.exists()) {
                     SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sp.edit();
-                    editor.putString(LOGIN, email.getText().toString());
-
+                    editor.putString(LOGIN, emailEditText.getText().toString());
                     for (DataSnapshot i : dataSnapshot.child("groups").getChildren()) {
                         String topic = (String) i.getValue();
                         groups.add(topic);
@@ -79,19 +79,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 });
 
                     }
-<<<<<<< Updated upstream
+                    editor.putStringSet("GROUPS",groups);
                     MainActivity.code = (String) dataSnapshot.child("code").getValue();
                     editor.putString(CODE, MainActivity.code);
+                    editor.putString(EMAIL, email);
                     editor.apply();
                     finish();
-=======
-
-                   editor.putStringSet("GROUPS",groups);
-                   MainActivity.code = (String) dataSnapshot.child("code").getValue();
-                   editor.putString(CODE, MainActivity.code);
-                   editor.apply();
-                   finish();
->>>>>>> Stashed changes
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setTitle(R.string.notification)

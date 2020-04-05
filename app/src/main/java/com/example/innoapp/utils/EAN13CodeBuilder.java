@@ -1,17 +1,11 @@
 package com.example.innoapp.utils;
 
 
-import android.util.Log;
-
-
-// builds EAN-13 barcode
-// author - Vyacheslav Archibasov
-
-public class EAN13CodeBuilder13 {
+public class EAN13CodeBuilder {
     private String codeStringValue;
     private String generatedCode;
 
-    public EAN13CodeBuilder13(String codeString) {
+    public EAN13CodeBuilder(String codeString) {
         codeStringValue = codeString;
         parse();
     }
@@ -27,9 +21,9 @@ public class EAN13CodeBuilder13 {
         String codeToParse = codeStringValue;
 
         for (int index = 0; index < 6; index++) {
-            chetVal += Integer.valueOf(
+            chetVal += Integer.parseInt(
                     codeToParse.substring(index * 2 + 1, index * 2 + 2));
-            nechetVal += Integer.valueOf(
+            nechetVal += Integer.parseInt(
                     codeToParse.substring(index * 2, index * 2 + 1));
         }
 
@@ -46,7 +40,7 @@ public class EAN13CodeBuilder13 {
 
     private String DigitToUpperCase(String digit) {
         String letters = "ABCDEFGHIJ";
-        int position = Integer.valueOf(digit);
+        int position = Integer.parseInt(digit);
 
         return letters.substring(position, position + 1);
 
@@ -54,14 +48,14 @@ public class EAN13CodeBuilder13 {
 
     private String DigitToLowerCase(String digit) {
         String letters = "abcdefghij";
-        int position = Integer.valueOf(digit);
+        int position = Integer.parseInt(digit);
 
         return letters.substring(position, position + 1);
 
     }
 
     private String createEAN13Code(String rawCode) {
-        int firstFlag = Integer.valueOf(
+        int firstFlag = Integer.parseInt(
 
                 rawCode.substring(0, 1)
 
@@ -84,6 +78,7 @@ public class EAN13CodeBuilder13 {
                     + leftString.substring(5);
         }
         if (firstFlag == 1) {
+            // /System.out.println("leftString: "+leftString);
             leftCode = "$!" + leftString.substring(0, 1)
                     + leftString.substring(1, 2)
                     + DigitToUpperCase(leftString.substring(2, 3))
@@ -158,11 +153,11 @@ public class EAN13CodeBuilder13 {
 
     private void parse() {
         String fullString = getFullCode();
-        Log.d("Full code: ", fullString);
+        System.out.println("Full code: " + fullString);
 
         generatedCode = createEAN13Code(fullString);
 
-        Log.d("Generated code: ", generatedCode);
+        System.out.println("Generated code: " + generatedCode);
 
     }
 }

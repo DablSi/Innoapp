@@ -6,87 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".activities.Events">
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="96dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="512dp">
-
-                <ToggleButton
-                    android:id="@+id/cardParticipation"
-                    android:layout_width="match_parent"
-                    android:layout_height="64dp"
-                    android:layout_gravity="bottom|fill_horizontal"
-                    android:background="@color/inno_green"
-                    android:textColor="@color/background1"
-                    android:textColorHint="@color/amount"
-                    android:textOff="@string/event_card_participation_off"
-                    android:textOn="@string/event_card_participation_on"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/cardTime"
-                    android:layout_width="188dp"
-                    android:layout_height="18dp"
-                    android:layout_gravity="start|top"
-                    android:layout_marginStart="204dp"
-                    android:layout_marginTop="388dp"
-                    android:text="00:00"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/cardDate"
-                    android:layout_width="188dp"
-                    android:layout_height="18dp"
-                    android:layout_gravity="start|top"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="388dp"
-                    android:text="1 января 1970"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/cardName"
-                    style="@style/AppTheme"
-                    android:layout_width="376dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="start|top"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="272dp"
-                    android:text="Название события"
-                    android:textSize="24sp" />
-
-                <ImageView
-                    android:id="@+id/cardImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="256dp"
-                    android:layout_gravity="start|top"
-                    android:contentDescription="@string/event_card_image_description"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background" />
-
-                <TextView
-                    android:id="@+id/cardPlace"
-                    android:layout_width="376dp"
-                    android:layout_height="36dp"
-                    android:layout_gravity="start|top"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="336dp"
-                    android:text="Место"
-                    android:textSize="18sp" />
-
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
