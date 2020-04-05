@@ -1,39 +1,39 @@
 package com.example.innoapp.fragments;
 // author Makar Shevchenko
-
 import java.security.acl.Group;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 /*
- *  Events class for event card generation
+ *  Класс событий для генерации карточек событий
  */
 public class Event {
     private String name;
     private Date date;
-    private String duration;
+    private Date dateEnd;
     private LinkedList<Group> groups;
     private boolean is_optional;
     private String place;
     private String description;
     private int countVisitors;
 
-    Event() {
+    public Event()
+    {
         name = "Event";
         date = new Date();
-        duration = "0 минут";
+        dateEnd = new Date();
         is_optional = true;
         place = "Innopolis";
         description = "";
         countVisitors = 0;
     }
 
-    // Название, дата, длительность, группы, кастомное, место, описание, количество посетителей
-    Event(String newName, Date newDate, String newDuration, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
+    // Название, дата, дата конца, группы, кастомное, место, описание, количество посетителей
+    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
         setName(newName);
         setDate(newDate);
-        setDuration(newDuration);
+        setDateEnd(newDateEnd);
         setGroups(newGroups);
         setIs_optional(newIs_optional);
         setPlace(newPlace);
@@ -50,8 +50,8 @@ public class Event {
         date = newDate;
     }
 
-    public void setDuration(String newDuration) {
-        this.duration = newDuration;
+    public void setDateEnd(Date newDateEnd) {
+        dateEnd = newDateEnd;
     }
 
     public void setGroups(LinkedList<Group> newGroups) {
@@ -83,8 +83,8 @@ public class Event {
         return date;
     }
 
-    public String getDuration() {
-        return duration;
+    public Date getDateEnd() {
+        return dateEnd;
     }
 
     public LinkedList<Group> getGroups() {

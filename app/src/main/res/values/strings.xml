@@ -5,4 +5,5 @@
     <string name="event_card_image_description">Изображение события</string>
     <string name="event_card_participation_off">Принять участие</string>
     <string name="event_card_participation_on">Вы участвуете</string>
+    <string name="event_card_count_visitors_text">Идёт</string>
 </resources>

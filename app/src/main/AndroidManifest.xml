@@ -13,12 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.Events"
+                  android:parentActivityName=".activities.MainActivity">
+        </activity>
         <service
             android:name=".services.FetchService"
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".activities.Events" />
         <activity android:name=".activities.FAQActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
