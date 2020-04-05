@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.Events"
-                  android:parentActivityName=".activities.MainActivity">
-        </activity>
+        <activity
+            android:name=".activities.Events"
+            android:parentActivityName=".activities.MainActivity"></activity>
         <service
             android:name=".services.FetchService"
             android:enabled="true"
@@ -29,8 +29,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.VotesActivity"/>
+        <activity android:name=".activities.VotesActivity" />
         <activity android:name=".activities.MapActivity" />
+        <activity android:name=".activities.ProfileActivity" />
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/FullScreen" />

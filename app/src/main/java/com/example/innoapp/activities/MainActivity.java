@@ -75,11 +75,9 @@ public class MainActivity extends AppCompatActivity {
         tvBarcode.setText(bb.getCode());
         // barcode settings
         tvBarcode.setPadding(0, 20, 20, 20);
-        fabSettings.setOnClickListener(view -> Snackbar.make(view, "This section is still in development", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        fabSettings.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ProfileActivity.class)));
         btnSchedule.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, Events.class)));
-        btnVoting.setOnClickListener(view -> Snackbar.make(view, "This section is still in development", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        btnVoting.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, VotesActivity.class)));
         btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
         planningPush();
