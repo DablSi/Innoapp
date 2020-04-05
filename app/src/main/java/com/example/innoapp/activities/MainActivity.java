@@ -35,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,8 +45,11 @@ import static com.example.innoapp.activities.LoginActivity.LOGIN;
 
 public class MainActivity extends AppCompatActivity {
 
+    int id = 1;
+
     private TextView tvBarcode, txtDescriptionBarcode;
     public static String code = "124958761310";
+    HashSet<String> groups;
     private boolean barcodeScale = false;
     DatabaseReference mDatabase;
     private NotificationManager mNotificationManager;
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         code = sp.getString(CODE, "124958761310");
+        groups = (HashSet<String>) sp.getStringSet("GROUPS",new HashSet<String>());
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);
         txtDescriptionBarcode = findViewById(R.id.txt_description_barcode);
@@ -82,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
         planningPush();
     }
-
     // zooms barcode
     public void onButtonClickBarcode(View v) {
         if (barcodeScale) {
@@ -99,8 +103,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     long timeUp;
-    int cnt = 1;
+
     String contentText;
+    boolean dependence = false;
 
     private void planningPush() {
         Timer timer = new Timer();
@@ -114,59 +119,76 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot i : dataSnapshot.getChildren()) {
-
-                    // забираю все данные из event из БД
-
-                    String name = (String) i.child("name").getValue();
-                    boolean is_optional = (boolean) i.child("is_optional").getValue();
-                    String place = (String) i.child("place").getValue();
-                    String startDate = (String) i.child("dateStart").getValue();
-
-                    // высчитываю время
-                    try {
-                        timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    // нахожу разницу
-                    long diff = timeUp - System.currentTimeMillis();
-
-                    try {
-                        if (is_optional) {
-                            contentText = "Просим по желанию пройти в " + place + " через 10 минут там начнется мероприятие " + name;
-                        } else {
-                            contentText = "Просим пройти в " + place + " через 10 минут там начнется обязательное мероприятие " + name;
-
-                        }
-                        // создаю пуш
-                        timer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        createPush("Опопвещение о мероприятии");
-
-                                        cnt += 1;
-                                        Log.d("WTF", "I AM TIRED");
-                                    }
-                                });
+                    for (DataSnapshot j : i.child("invitedgroups").getChildren()) {
+                        String invitedgroup = (String) j.getValue();
+                        for (String s : groups) {
+                            if (s.equals(invitedgroup)) {
+                                dependence = true;
+                                break;
                             }
-                        }, diff - 600000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        }
                     }
+                    if (dependence) {
 
+                        // забираю все данные из event из БД
+
+                        id = (int) i.child("id").getValue();
+                        String name = (String) i.child("name").getValue();
+                        boolean is_optional = (boolean) i.child("is_optional").getValue();
+                        String place = (String) i.child("place").getValue();
+                        String startDate = (String) i.child("dateStart").getValue();
+
+                        // высчитываю время
+                        try {
+                            timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        // нахожу разницу
+                        long diff = timeUp - System.currentTimeMillis();
+
+                        try {
+                            if (is_optional) {
+                                contentText = "Просим по желанию пройти в " + place + " через 10 минут там начнется мероприятие " + name;
+                            } else {
+                                contentText = "Просим пройти в " + place + " через 10 минут там начнется обязательное мероприятие " + name;
+
+                            }
+                            // создаю пуш
+                            timer.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            createPush("Опопвещение о мероприятии");
+
+
+                                            Log.d("WTF", "I AM TIRED");
+                                        }
+                                    });
+                                }
+                            }, diff - 600000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         };
+
         userRef.addListenerForSingleValueEvent(valueEventListener);
+
     }
+
+
 
     private void createPush(String title) {
         NotificationCompat.Builder mBuilder =
@@ -198,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
             mBuilder.setChannelId(channelId);
         }
 
-        mNotificationManager.notify(cnt, mBuilder.build());
+        mNotificationManager.notify(id, mBuilder.build());
     }
 }
 
