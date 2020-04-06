@@ -36,8 +36,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
         try {
             viewHolder.questionView.setText(questions[viewHolderCount]);
             viewHolderCount++;
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
         }
         return viewHolder;
@@ -87,7 +86,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
                         answerI = true;
                     }
 
-                    //answerView.setText(answers[positionIndex]);
                 }
             });
         }

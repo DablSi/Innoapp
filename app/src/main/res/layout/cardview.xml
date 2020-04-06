@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="350dp">
+
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/cardDuration"
+            android:layout_width="123dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="114dp"
+            android:text="2 часа"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardDate"
+            android:layout_width="160dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="148dp"
+            android:text="31 сентября 1970"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardCountVisitors"
+            android:layout_width="128dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="80dp"
+            android:text="1000 человек"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardTime"
+            android:layout_width="52dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginStart="168dp"
+            android:layout_marginBottom="148dp"
+            android:text="00:00"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardName"
+            style="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="start|top"
+            android:layout_marginTop="16dp"
+            android:text="Название события"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/cardDescription"
+            style="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_gravity="start|top"
+            android:layout_marginTop="80dp"
+            android:clickable="true"
+            android:text="012345678901234567890123456789012345678901234567890123456789012345"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardPlace"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="182dp"
+            android:text="Место"
+            android:textAlignment="textStart"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardCountVisitorsText"
+            android:layout_width="48dp"
+            android:layout_height="18dp"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="80dp"
+            android:text="@string/event_card_count_visitors_text"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <ToggleButton
+        android:id="@+id/cardParticipation"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|fill_horizontal"
+        android:background="@color/inno_green"
+        android:textColor="@color/background1"
+        android:textColorHint="@color/amount"
+        android:textOff="@string/event_card_participation_off"
+        android:textOn="@string/event_card_participation_on"
+        android:textSize="18sp" />
+
+</androidx.cardview.widget.CardView>
