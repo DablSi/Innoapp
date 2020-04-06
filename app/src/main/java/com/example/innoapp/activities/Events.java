@@ -52,7 +52,7 @@ public class Events extends AppCompatActivity {
         setContentView(R.layout.activity_events);
 
         recyclerView = (RecyclerView) findViewById(R.id.rv);
-        Snackbar.make(recyclerView, "Данна секция все еще в разработке", Snackbar.LENGTH_LONG)
+        Snackbar.make(recyclerView, "Данная секция все еще в разработке", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
         // size of RV can't be changed
         recyclerView.setHasFixedSize(true);

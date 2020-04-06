@@ -15,10 +15,12 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.innoapp.R;
+import com.example.innoapp.services.FirebaseBackgroundService;
 import com.example.innoapp.utils.EAN13CodeBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference mDatabase;
     private NotificationManager mNotificationManager;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         code = sp.getString(CODE, "124958761310");
+        startService(new Intent(MainActivity.this, FirebaseBackgroundService.class));
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);
         txtDescriptionBarcode = findViewById(R.id.txt_description_barcode);
@@ -139,20 +143,22 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                         // создаю пуш
-                        timer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        createPush("Опопвещение о мероприятии");
+                        if (diff > 600000) {
+                            timer.schedule(new TimerTask() {
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            createPush("Опопвещение о мероприятии");
 
-                                        cnt += 1;
-                                        Log.d("WTF", "I AM TIRED");
-                                    }
-                                });
-                            }
-                        }, diff - 600000);
+                                            cnt += 1;
+                                            Log.d("WTF", "I AM TIRED");
+                                        }
+                                    });
+                                }
+                            }, diff - 600000);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
