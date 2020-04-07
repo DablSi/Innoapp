@@ -8,10 +8,22 @@
         android:layout_height="match_parent"
         tools:context=".activities.Events"
         android:background="@color/white">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Schedule"
+        android:textSize="35dp"
+        android:id="@+id/textViewSchedule"
+        android:textColor="#000000"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
+
     <HorizontalScrollView
         android:id="@+id/eventsHorizontalScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewSchedule">
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/eventsTabLayout"
         android:layout_width="match_parent"
@@ -26,7 +38,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/eventsViewPager"
         android:layout_width="match_parent"
-        android:layout_height="800px"
+        android:layout_height="500dp"
         android:layout_below="@+id/eventsHorizontalScrollView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"

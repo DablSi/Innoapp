@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.innoapp.R;
+import com.example.innoapp.fragments.FragmentTabEvents;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DataAdapterEvents extends RecyclerView.Adapter<DataAdapterEvents.DataAdapterHolderEvents> {
