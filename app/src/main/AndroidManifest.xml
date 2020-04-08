@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activities.event_card"></activity>
         <activity android:name=".activities.Events">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -20,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".services.FetchService"
             android:enabled="true"
@@ -33,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.VotesActivity"/>
+        <activity android:name=".activities.VotesActivity" />
         <activity android:name=".activities.MapActivity" />
         <activity
             android:name=".activities.LoginActivity"

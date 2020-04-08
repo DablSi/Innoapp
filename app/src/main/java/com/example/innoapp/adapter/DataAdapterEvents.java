@@ -4,26 +4,30 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.innoapp.R;
+import com.example.innoapp.fragments.Event;
 import com.example.innoapp.fragments.FragmentTabEvents;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+
+
 public class DataAdapterEvents extends RecyclerView.Adapter<DataAdapterEvents.DataAdapterHolderEvents> {
     private int viewHolderCount = 0;
     private String[] datesList;
     private String[] eventsList;
-   // private String[] answers;
+    private int numTab;
     private Context parent;
 
-        public DataAdapterEvents(String[]d , String[]e, Context parent) {
+        public DataAdapterEvents(String[]d , String[]e, int numTab, Context parent) {
         datesList = d;
-            eventsList = e;
-       // answers = a;
+        eventsList = e;
+        this.numTab = numTab-1;
         this.parent = parent;
     }
 
@@ -38,6 +42,9 @@ public class DataAdapterEvents extends RecyclerView.Adapter<DataAdapterEvents.Da
         try {
             viewHolder.datesView.setText(datesList[viewHolderCount]);
             viewHolder.eventsView.setText(eventsList[viewHolderCount]);
+            // set id for event on this tab (it need for opening card)
+            viewHolder.eventId.setText(Integer.toString(viewHolderCount));
+            viewHolder.eventTabId.setText(Integer.toString(numTab));
             viewHolderCount++;
         } catch (ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
@@ -61,11 +68,17 @@ public class DataAdapterEvents extends RecyclerView.Adapter<DataAdapterEvents.Da
 
         TextView datesView;
         TextView eventsView;
+        TextView eventId;
+        TextView eventTabId;
+        RelativeLayout relativeLayout;
 
         public DataAdapterHolderEvents(@NonNull View itemView) {
             super(itemView);
             datesView = itemView.findViewById(R.id.datesView);
             eventsView = itemView.findViewById(R.id.eventsView);
+            eventId = itemView.findViewById(R.id.eventId);
+            eventTabId = itemView.findViewById(R.id.eventTabId);
+            relativeLayout = itemView.findViewById(R.id.rl);
             int position = getAdapterPosition();
 
 
@@ -74,3 +87,4 @@ public class DataAdapterEvents extends RecyclerView.Adapter<DataAdapterEvents.Da
 
     }
 }
+
