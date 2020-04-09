@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#80bc00</color>
     <color name="colorPrimaryDark">#348f41</color>
     <color name="colorSecondary">#1a428a</color>
@@ -33,8 +34,9 @@
     <color name="light_blue">#ff33CCFF</color>
     <color name="purple">#ff5b2971</color>
     <color name="scanner_line">#00ceff</color>
-
-
+	<color name="vertical_stepper_view_grey_100">#BDBDBD</color>
+	<color name="vertical_stepper_view_black_87">#DE000000</color>
+	<color name="vertical_stepper_view_black_38">#61000000</color>
     <color name="material_drawer_secondary_text">#5fa84e</color>
 
     <!-- Material DEFAULT drawer colors -->

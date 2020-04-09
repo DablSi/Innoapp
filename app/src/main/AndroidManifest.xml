@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".services.FetchService"
             android:enabled="true"
@@ -35,9 +36,12 @@
         </activity>
         <activity android:name=".activities.VotesActivity"/>
         <activity android:name=".activities.MapActivity" />
+
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/FullScreen" />
+
     </application>
+
 
 </manifest>

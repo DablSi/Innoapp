@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.Events"
-        android:background="@color/white">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Events"
+    android:background="@color/white">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,16 +24,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewSchedule">
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/eventsTabLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        app:tabIndicatorColor="@android:color/holo_green_light"
-        app:tabIndicatorHeight="6dp"
-        app:tabTextAppearance="@style/TabLayoutTextStyle"
-        android:background="@color/white"
-        app:tabTextColor="#000000"/>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/eventsTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            app:tabIndicatorColor="@android:color/holo_green_light"
+            app:tabIndicatorHeight="6dp"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            android:background="@color/white"
+            app:tabTextColor="#000000"/>
     </HorizontalScrollView>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/eventsViewPager"
@@ -44,4 +44,4 @@
         android:layout_marginTop="15dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    </RelativeLayout>
+</RelativeLayout>
