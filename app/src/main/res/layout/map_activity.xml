@@ -16,7 +16,8 @@
         android:layout_alignParentLeft="true"
         android:background="@android:color/transparent"
         android:paddingLeft="15dp"
-        android:src="@drawable/back" />
+        android:src="@drawable/back"
+        tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />
 
     <TextView
         android:id="@+id/mapTextView"
@@ -26,10 +27,11 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="3dp"
         android:paddingTop="10dp"
-        android:text="Maps"
+        android:text="@string/txt_maps_title"
         android:textColor="@android:color/background_dark"
         android:textSize="35dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded,SpUsage" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/mapsTabLayout"
@@ -49,7 +51,8 @@
         android:layout_below="@+id/mapsTabLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:ignore="PxUsage" />
 
     <com.yandex.mapkit.mapview.MapView
         android:id="@+id/mapview"
