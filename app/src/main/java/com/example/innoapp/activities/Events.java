@@ -80,74 +80,18 @@ public class Events extends AppCompatActivity {
 
         // Array below should be taken from server
         eList = new LinkedList<EventList1>();
-        eList.add(new EventList1(new String[]{"10:00-11:00"}, new String[]{"Какое то событие"}));//1
-        eList.add(new EventList1(new String[]{"10:00-11:00","14:00-15:00","10:00-11:00","14:00-15:00"}, new String[]{"Breakfast","Lunch", "Breakfast","Lunch"}));//2
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//3
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//4
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//5
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//6
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие1111"}));//7
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//8
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//9
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//10
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//11
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие22222"}));//12
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//13
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//14
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//15
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//16
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//17
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//18
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//19
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//20
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//21
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//22
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//23
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//24
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//25
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//26
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//27
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//28
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//29
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//30
-        eList.add(new EventList1(new String[]{"10-11"}, new String[]{"Какое то событие"}));//31
-        String[][] datesInList = {eList.get(0).datesInList, eList.get(1).datesInList, eList.get(2).datesInList, eList.get(3).datesInList, eList.get(4).
-                datesInList, eList.get(5).datesInList, eList.get(6).datesInList, eList.get(7).datesInList,
-                eList.get(8).datesInList, eList.get(9).datesInList,
-                eList.get(10).datesInList, eList.get(11).datesInList, eList.get(12).datesInList,
-                eList.get(13).datesInList, eList.get(14).datesInList, eList.get(15).datesInList,
-                eList.get(16).datesInList, eList.get(17).datesInList, eList.get(18).datesInList,
-                eList.get(19).datesInList, eList.get(20).datesInList, eList.get(21).datesInList,
-                eList.get(22).datesInList, eList.get(23).datesInList, eList.get(24).datesInList,
-                eList.get(25).datesInList, eList.get(26).datesInList, eList.get(27).datesInList,
-                eList.get(28).datesInList, eList.get(29).datesInList, eList.get(30).datesInList};
-        String[][] eventsInList = {eList.get(0).eventsInList, eList.get(1).eventsInList,
-                eList.get(2).eventsInList, eList.get(3).eventsInList, eList.get(4).eventsInList,
-                eList.get(5).eventsInList, eList.get(6).eventsInList, eList.get(7).eventsInList,
-                eList.get(8).eventsInList, eList.get(9).eventsInList, eList.get(10).eventsInList,
-                eList.get(11).eventsInList, eList.get(12).eventsInList, eList.get(13).eventsInList,
-                eList.get(14).eventsInList, eList.get(15).eventsInList, eList.get(16).eventsInList,
-                eList.get(17).eventsInList, eList.get(18).eventsInList, eList.get(19).eventsInList,
-                eList.get(20).eventsInList, eList.get(21).eventsInList, eList.get(22).eventsInList,
-                eList.get(23).eventsInList, eList.get(24).eventsInList, eList.get(25).eventsInList,
-                eList.get(26).eventsInList, eList.get(27).eventsInList, eList.get(28).eventsInList,
-                eList.get(29).eventsInList, eList.get(30).eventsInList};
+
+
         eList.add(new EventList1(
                 new Event[]{new Event("Какое то событие",new Date(2020,1,1,10,0),
                         new Date(2020,1,1,11,0),
                         new LinkedList<Group>(),false,"Место","Описание", 0)}));//1
-        eList.add(new EventList1(new Event[]{new Event("Breakfast",new Date(2020,2,1,10,0),
+        eList.add(new EventList1(new Event[]{new Event("Breakfast",new Date(2020,1,2,10,0),
                             new Date(2020,1,2,11,0),
                             new LinkedList<Group>(),false,"Место","Описание", 0),
                             new Event("Lunch",new Date(2020,1,2,14,0),
                             new Date(2020,1,2,15,0),
-                            new LinkedList<Group>(),false,"Место","Описание", 0),
-                            new Event("Breakfast",new Date(2020,1,2,10,0),
-                            new Date(2020,1,2,11,0),
-                            new LinkedList<Group>(),false,"Место","Описание", 0),
-                            new Event("Lunch",new Date(2020,1,2,14,0),
-                            new Date(2020,1,2,15,0),
-                            new LinkedList<Group>(),false,"Место","Описание", 0),}));//2
+                            new LinkedList<Group>(),false,"Место","Описание", 0)}));//2
 
         // get information about events from eList
         String[][] datesInList = new String[eList.size()][];
