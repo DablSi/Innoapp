@@ -55,7 +55,8 @@ public class FragmentTabEvents extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view1 = inflater.inflate(R.layout.fragment_tab_events, container, false);
             VerticalStepperView eventsList1 = (VerticalStepperView) view1;
-            eventsList1.setStepperAdapter( new MainStepperAdapter( context, datesInList1[mPage - 1], eventsInList1[mPage - 1]));
+            eventsList1.setStepperAdapter( new MainStepperAdapter( context, datesInList1[mPage - 1],
+                    eventsInList1[mPage - 1], mPage-1));
             return view1;
     }
 

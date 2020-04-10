@@ -10,11 +10,13 @@ public class MainStepperAdapter extends VerticalStepperAdapter {
     String [] dataArray;
     public String [] eventsArray;
     int count;
-    public MainStepperAdapter( Context context, String [] array1, String [] array2 ) {
+    int tabId;
+    public MainStepperAdapter( Context context, String [] array1, String [] array2, int newTabId ) {
         super( context );
         dataArray = array1;
         count = array1.length;
         eventsArray = array2;
+        tabId = newTabId;
     }
 
     @Override
@@ -44,7 +46,7 @@ public class MainStepperAdapter extends VerticalStepperAdapter {
     }
     @Override
     public View onCreateContentView( Context context, int position ) {
-        View content = new MainItemView(context, dataArray, eventsArray, position);
+        View content = new MainItemView(context, dataArray, eventsArray, position, tabId);
         return content;
     }
 }

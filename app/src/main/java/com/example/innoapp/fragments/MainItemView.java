@@ -12,11 +12,13 @@ public class MainItemView extends LinearLayout {
     String [] itemsList;
     String [] dateList;
     int itemPosition;
-    public MainItemView( Context context, String[] array1, String[] array2, int position) {
+    int tabId;
+    public MainItemView( Context context, String[] array1, String[] array2, int position, int newTabId) {
         super( context );
         itemsList = array2;
         dateList = array1;
         itemPosition = position;
+        tabId = newTabId;
         initialize( context );
     }
 
@@ -41,6 +43,10 @@ public class MainItemView extends LinearLayout {
         itemDates.setText(dateList[itemPosition]);
         TextView itemEvents = (TextView) findViewById(R.id.itemEvents);
         itemEvents.setText(itemsList[itemPosition]);
+        TextView itemId = (TextView) findViewById(R.id.eventId);
+        itemId.setText(Integer.toString(itemPosition));
+        TextView itemTabId = (TextView) findViewById(R.id.eventTabId);
+        itemTabId.setText(Integer.toString(tabId));
 
 
     }
