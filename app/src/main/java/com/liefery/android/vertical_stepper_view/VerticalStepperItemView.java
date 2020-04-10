@@ -61,6 +61,7 @@ public class VerticalStepperItemView extends FrameLayout {
         int defStyleAttr ) {
         super( context, attrs, defStyleAttr );
         initialize( context );
+
     }
 
     @TargetApi( Build.VERSION_CODES.LOLLIPOP )
@@ -88,6 +89,8 @@ public class VerticalStepperItemView extends FrameLayout {
 
         circle = (VerticalStepperItemCircleView) findViewById( R.id.vertical_stepper_view_item_circle );
         wrapper = (LinearLayout) findViewById( R.id.vertical_stepper_view_item_wrapper );
+        title = (TextView) findViewById( R.id.vertical_stepper_view_item_title );
+        summary = (TextView) findViewById( R.id.vertical_stepper_view_item_summary );
         contentWrapper = (FrameLayout) findViewById( R.id.vertical_stepper_view_item_content_wrapper );
 
         connector = new ConnectorLineDrawer( context );
@@ -230,7 +233,7 @@ public class VerticalStepperItemView extends FrameLayout {
         int height,
         int oldWidth,
         int oldHeight ) {
-        super.onSizeChanged( width, height, oldWidth, oldHeight );
+        super.onSizeChanged( width, height / 5, oldWidth, oldHeight );
 
         connector.adjust( getContext(), width, height );
     }

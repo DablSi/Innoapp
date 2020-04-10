@@ -96,6 +96,7 @@ public abstract class VerticalStepperAdapter extends BaseAdapter {
         int id = (int) getItemId( position );
         contentViews.remove( id );
         notifyDataSetChanged();
+
     }
 
     private void applyData(
