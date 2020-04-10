@@ -214,9 +214,9 @@ public class VerticalStepperItemView extends FrameLayout {
         if ( !getShowConnectorLine() )
             params.bottomMargin = 0;
         else if ( active )
-            params.bottomMargin = (int) Util.dpToPx( getContext(), 48 );
+            params.bottomMargin = (int) Util.dpToPx( getContext(), 10 );
         else
-            params.bottomMargin = (int) Util.dpToPx( getContext(), 40 );
+            params.bottomMargin = (int) Util.dpToPx( getContext(), 10 );
     }
 
     @Override
@@ -235,6 +235,6 @@ public class VerticalStepperItemView extends FrameLayout {
         int oldHeight ) {
         super.onSizeChanged( width, height, oldWidth, oldHeight );
 
-        connector.adjust( getContext(), width, height );
+        connector.adjust( getContext(), width, height  );
     }
 }
