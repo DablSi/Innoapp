@@ -233,7 +233,7 @@ public class VerticalStepperItemView extends FrameLayout {
         int height,
         int oldWidth,
         int oldHeight ) {
-        super.onSizeChanged( width, height / 5, oldWidth, oldHeight );
+        super.onSizeChanged( width, height, oldWidth, oldHeight );
 
         connector.adjust( getContext(), width, height );
     }
