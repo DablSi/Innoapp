@@ -5,20 +5,17 @@ import com.example.innoapp.fragments.Event;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.os.Parcelable;
-import android.view.View;
 import android.widget.TextView;
 
 import com.example.innoapp.R;
-import com.example.innoapp.fragments.FragmentTabEvents;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.Serializable;
 import java.security.acl.Group;
 import java.util.Date;
 import java.util.LinkedList;
@@ -30,35 +27,6 @@ public class Events extends AppCompatActivity {
     public static Event[][] classEventsInList1;
     private String[] dates;
     public static LinkedList<Events.EventList1> eList;
-    // Send request for participation in event to server
-    public void RequestForParticipation(String UserId) {
-        //
-        // code there if you have access to server
-        //
-        // ask if user not taking part in event and have access to event
-        //   True: countVisitors on server+=1; add UserId to list of participators on server
-        //   False: nothing
-    }
-
-    // Send request for leave participation in event to server
-    public void RequestForLeaveParticipation(String UserId) {
-        //
-        // code there if you have access to server
-        //
-        // ask if user taking part in event
-        //   True: countVisitors on server-=1; remove UserId from list of participators
-        //   False: nothing
-    }
-    // Open card
-     /* public void onMyButtonClick(@NonNull View view)
-    {
-       TextView tVEventId = (TextView)view.findViewById(R.id.eventId);
-        int eventId = Integer.parseInt(tVEventId.getText().toString());
-        TextView tVNumTab =(TextView) view.findViewById(R.id.eventTabId);
-        int numTab = Integer.parseInt(tVNumTab.getText().toString());
-        Event event = classEventsInList1[numTab][eventId];
-        startActivity(intent);
-    }*/
 
     // Open card
     public void onMyButtonClick(@NonNull  View view)
@@ -69,6 +37,9 @@ public class Events extends AppCompatActivity {
         TextView tVNumTab =(TextView) view.findViewById(R.id.eventTabId);
         int numTab = Integer.parseInt(tVNumTab.getText().toString());
         Event event = classEventsInList1[numTab][eventId];
+        intent.putExtra("event", (Serializable) event);
+        intent.putExtra("eventId", eventId);
+        intent.putExtra("tabId",numTab);
         startActivity(intent);
     }
 
@@ -83,16 +54,28 @@ public class Events extends AppCompatActivity {
 
 
         eList.add(new EventList1(
-                new Event[]{new Event("Какое то событие",new Date(2020,1,1,10,0),
-                        new Date(2020,1,1,11,0),
-                        new LinkedList<Group>(),false,"Место","Описание", 0)}));//1
-        eList.add(new EventList1(new Event[]{new Event("Breakfast",new Date(2020,1,2,10,0),
-                            new Date(2020,1,2,11,0),
-                            new LinkedList<Group>(),false,"Место","Описание", 0),
-                            new Event("Lunch",new Date(2020,1,2,14,0),
-                            new Date(2020,1,2,15,0),
-                            new LinkedList<Group>(),false,"Место","Описание", 0)}));//2
-
+                new Event[]{new Event("Презентация приложения",new Date(2020,3,12,12,00),
+                        new Date(2020,3,12,13,0),
+                        new LinkedList<Group>(),false,"Просторы интернета","Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false)}));//1
+        eList.add(new EventList1(new Event[]{new Event("Breakfast",new Date(2020,3,13,8,30),
+                            new Date(2020,3,13,13,0),
+                            new LinkedList<Group>(),false,"Столовая","Вкусный завтрак", 0, false),
+                            new Event("Lunch",new Date(2020,3,13,14,0),
+                            new Date(2020,3,13,15,0),
+                            new LinkedList<Group>(),false,"Столовая","Сытный обед", 0, false),
+                new Event("Snack",new Date(2020,3,13,15,30),
+                        new Date(2020,3,13,16,0),
+                        new LinkedList<Group>(),false,"Кофейня","Лёгкий перекус. Выпейте чашечку чая", 0, false),
+                new Event("Dinner",new Date(2020,3,13,18,0),
+                        new Date(2020,3,13,20,00),
+                        new LinkedList<Group>(),false,"Столовая","Ароматный ужин", 0, false),
+                new Event("Lunch",new Date(2020,3,13,14,0),
+                        new Date(2020,3,13,15,0),
+                        new LinkedList<Group>(),false,"Столовая","Сытный обед", 0, false)}));//2
+        eList.add(new EventList1(
+                new Event[]{new Event("Событие",new Date(2020,5,1,10,0),
+                        new Date(2020,5,1,11,0),
+                        new LinkedList<Group>(),false,"Место","Описание", 0, false),}));//1
         // get information about events from eList
         String[][] datesInList = new String[eList.size()][];
         String[][] eventsInList = new String[eList.size()][];

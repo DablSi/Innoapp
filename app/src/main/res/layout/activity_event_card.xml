@@ -12,12 +12,15 @@
         android:layout_height="64dp"
         android:layout_gravity="bottom|fill_horizontal"
         android:background="@color/inno_green"
+        android:onClick="onMyButtonClick"
         android:textColor="@color/background1"
         android:textColorHint="@color/amount"
         android:textOff="@string/event_card_participation_off"
         android:textOn="@string/event_card_participation_on"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/fl" />
+        app:layout_constraintBottom_toBottomOf="@+id/fl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <FrameLayout
         android:id="@+id/fl"
@@ -32,8 +35,8 @@
 
         <TextView
             android:id="@+id/cardDuration"
-            android:layout_width="123dp"
-            android:layout_height="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|start"
             android:layout_marginBottom="114dp"
             android:text="2 часа"
@@ -41,7 +44,7 @@
 
         <TextView
             android:id="@+id/cardDate"
-            android:layout_width="160dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_gravity="bottom|start"
             android:layout_marginBottom="148dp"
@@ -50,22 +53,12 @@
 
         <TextView
             android:id="@+id/cardCountVisitors"
-            android:layout_width="128dp"
+            android:layout_width="wrap_content"
             android:layout_height="18dp"
             android:layout_gravity="bottom|start"
             android:layout_marginStart="48dp"
             android:layout_marginBottom="80dp"
             android:text="1000 человек"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/cardTime"
-            android:layout_width="52dp"
-            android:layout_height="18dp"
-            android:layout_gravity="bottom|start"
-            android:layout_marginStart="168dp"
-            android:layout_marginBottom="148dp"
-            android:text="00:00"
             android:textSize="18sp" />
 
         <TextView
@@ -82,11 +75,11 @@
             android:id="@+id/cardDescription"
             style="@style/AppTheme"
             android:layout_width="match_parent"
-            android:layout_height="33dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start|top"
             android:layout_marginTop="80dp"
             android:clickable="true"
-            android:text="012345678901234567890123456789012345678901234567890123456789012345"
+            android:text="Описание"
             android:textSize="18sp" />
 
         <TextView
