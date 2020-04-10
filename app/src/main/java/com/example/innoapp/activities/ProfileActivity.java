@@ -17,8 +17,8 @@ import com.example.innoapp.utils.LocaleHelper;
 
 public class ProfileActivity extends AppCompatActivity {
     private String eMail;
-//    private TextView txt_language;
-//    private String mLanguageCode = "en";
+    private TextView txt_language;
+    private String mLanguageCode = "en";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,19 +29,19 @@ public class ProfileActivity extends AppCompatActivity {
         eMail = sp.getString(LoginActivity.EMAIL, "Cene655@mail.ru");
         //TODO: ADD CHECKING VALID EMAIL (IF THERE IS NO EMAIL)
         SetMail();
-//        txt_language = findViewById(R.id.txt_lang);
-//        //Change Russian to English via button
-//        txt_language.setOnClickListener(new View.OnClickListener() {
-//            @SuppressLint("SetTextI18n")
-//            @Override
-//            public void onClick(View view) {
-//                //Change Application level locale
-//                LocaleHelper.setLocale(ProfileActivity.this, mLanguageCode);
-//                txt_language.setText("RUS");
-//                //It is required to recreate the activity to reflect the change in UI.
-//                recreate();
-//            }
-//        });
+        txt_language = findViewById(R.id.txt_lang);
+        //Change Russian to English via button
+        txt_language.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                //Change Application level locale
+                LocaleHelper.setLocale(ProfileActivity.this, mLanguageCode);
+                txt_language.setText("RUS");
+                //It is required to recreate the activity to reflect the change in UI.
+                recreate();
+            }
+        });
 
     }
 
