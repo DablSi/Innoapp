@@ -60,7 +60,8 @@
         <ScrollView
             android:paddingTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            tools:ignore="ScrollViewCount">
 
             <LinearLayout
 
@@ -77,6 +78,13 @@
 
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/voteLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                tools:ignore="ScrollViewSize" />
         </ScrollView>
     </LinearLayout>
 </LinearLayout>
