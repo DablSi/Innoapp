@@ -31,6 +31,7 @@ public class FragmentTabEvents extends Fragment {
     private int mPage;
     private static String[] datesList;
     private static String[] eventList;
+    private static Event[] classEventList;
     private Context context = null;
     private DataAdapterEvents adapter;
 
@@ -52,8 +53,6 @@ public class FragmentTabEvents extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        switch (mPage) {
-            case 1:
             View view1 = inflater.inflate(R.layout.fragment_tab_events, container, false);
             VerticalStepperView eventsList1 = (VerticalStepperView) view1;
             eventsList1.setStepperAdapter( new MainStepperAdapter( context, datesInList1[0], eventsInList1[0]));
@@ -216,6 +215,12 @@ public class FragmentTabEvents extends Fragment {
 
         }
 
+            RecyclerView eventsList1 = (RecyclerView) view1;
+            LinearLayoutManager layoutManager1 = new LinearLayoutManager(context);
+            eventsList1.setLayoutManager(layoutManager1);
+            adapter = new DataAdapterEvents(datesInList1[mPage-1], eventsInList1[mPage-1], mPage, context);
+            eventsList1.setAdapter(adapter);
+            return view1;
     }
 
 
