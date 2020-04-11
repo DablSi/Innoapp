@@ -36,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
@@ -50,10 +51,11 @@ public class MainActivity extends AppCompatActivity {
     int id = 1;
 
     private TextView tvBarcode, txtDescriptionBarcode, txtDate;
-    public static String code = "124958761310", date ="04/05/2010";
+    public static String code = "124958761310";
     HashSet<String> groups;
     private boolean barcodeScale = false;
     DatabaseReference mDatabase;
+    Date d = new Date();
     private NotificationManager mNotificationManager;
 
     @Override
@@ -91,17 +93,13 @@ public class MainActivity extends AppCompatActivity {
         planningPush();
 
         //get current date
-        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateObj = null;
-        try {
-            dateObj = curFormater.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat postFormater = new SimpleDateFormat("MMMM dd, yyyy");
-        String newDateStr = postFormater.format(dateObj);
-        //set date in the main screen
-        txtDate.setText(newDateStr);
+        Date c = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + c);
+
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("MMMM dd, yyyy");
+        String formattedDate = df.format(c);
+
+        txtDate.setText(formattedDate);
         txtDate.setAllCaps(true);
     }
     // zooms barcode
