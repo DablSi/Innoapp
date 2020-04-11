@@ -20,11 +20,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.Events" />></activity>
         <activity android:name=".activities.Events">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service
