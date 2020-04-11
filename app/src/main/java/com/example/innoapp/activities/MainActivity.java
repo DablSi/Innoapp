@@ -34,7 +34,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Timer;
@@ -47,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     int id = 1;
 
-    private TextView tvBarcode, txtDescriptionBarcode;
-    public static String code = "124958761310";
+    private TextView tvBarcode, txtDescriptionBarcode, txtDate;
+    public static String code = "124958761310", date ="04/05/2010";
     HashSet<String> groups;
     private boolean barcodeScale = false;
     DatabaseReference mDatabase;
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         groups = (HashSet<String>) sp.getStringSet("GROUPS",new HashSet<String>());
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);
+        txtDate = findViewById(R.id.txt_date);
         txtDescriptionBarcode = findViewById(R.id.txt_description_barcode);
         FloatingActionButton fabSettings = findViewById(R.id.fab_setting);
         CardView btnMaps = findViewById(R.id.btn_maps);
@@ -86,6 +89,20 @@ public class MainActivity extends AppCompatActivity {
         btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
         planningPush();
+
+        //get current date
+        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateObj = null;
+        try {
+            dateObj = curFormater.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat postFormater = new SimpleDateFormat("MMMM dd, yyyy");
+        String newDateStr = postFormater.format(dateObj);
+        //set date in the main screen
+        txtDate.setText(newDateStr);
+        txtDate.setAllCaps(true);
     }
     // zooms barcode
     public void onButtonClickBarcode(View v) {
