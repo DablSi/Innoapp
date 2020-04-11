@@ -1,14 +1,14 @@
 package com.example.innoapp.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.innoapp.R;
 import com.example.innoapp.fragments.Event;
@@ -33,7 +33,7 @@ public class EventCardActivity extends AppCompatActivity {
         TextView TVCountVisitors = (TextView) findViewById(R.id.cardCountVisitors);
         countVisitors = countVisitors - 1 + 2 * intParticipation;
         EventsActivity.classEventsInList1[tabId][eventId].setCountVisitors(countVisitors);
-        TVCountVisitors.setText(Integer.toString(countVisitors));
+        TVCountVisitors.setText(" " + countVisitors);
         // Here should be code that send information to server about join or leave event
     }
 

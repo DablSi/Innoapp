@@ -56,20 +56,15 @@ public class VotesActivity extends Activity {
                 vоtes.removeAll(vоtes);
                 String item = (String) parent.getItemAtPosition(position);
                 switch (item) {
-                    case ("Group 1"):
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, false));
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
+                    case ("NTI"):
+                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, false));
+                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, true));
+                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, true));
                         CreateVotes(vоtes);
                         break;
-                    case ("Group 2"):
-                        vоtes.add(new Vote("Favourite season124?", new String[]{"Win314ter", "Spr134ing", "Sum4mer", "Autumn"}, false));
-                        vоtes.add(new Vote("Favourite season1241?", new String[]{"Win134ter", "Spri134ng", "Sum134mer", "Aut4umn"}, true));
-                        CreateVotes(vоtes);
-                        break;
-                    case ("Group 3"):
-                        vоtes.add(new Vote("favourite season?125125126236", new String[]{"Winter", "Spring", "Summer", "Autumn"}, false));
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
+                    case ("Школа по информатике"):
+                        vоtes.add(new Vote("Любимый палец?", new String[]{"Мизинец", "Безымянный", "Средний", "Указательный", "Большой"}, false));
+                        vоtes.add(new Vote("Любимый палец?", new String[]{"Мизинец", "Безымянный", "Средний", "Указательный", "Большой"}, true));
                         CreateVotes(vоtes);
                         break;
                 }

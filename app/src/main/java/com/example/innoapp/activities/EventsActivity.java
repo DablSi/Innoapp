@@ -3,6 +3,7 @@ package com.example.innoapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,29 +46,33 @@ public class EventsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
+        ImageButton back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // Array below should be taken from server
         eList = new LinkedList<EventList1>();
 
 
         eList.add(new EventList1(
-                new Event[]{new Event("Презентация приложения", new Date(2020, 3, 12, 12, 00),
-                        new Date(2020, 3, 12, 13, 0),
+                new Event[]{new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
+                        new Date(2020, 3, 12, 14, 50),
                         new LinkedList<Group>(), false, "Просторы интернета", "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false)}));//1
-        eList.add(new EventList1(new Event[]{new Event("Breakfast", new Date(2020, 3, 13, 8, 30),
+        eList.add(new EventList1(new Event[]{new Event("Завтрак", new Date(2020, 3, 13, 8, 30),
                 new Date(2020, 3, 13, 13, 0),
                 new LinkedList<Group>(), false, "Столовая", "Вкусный завтрак", 0, false),
-                new Event("Lunch", new Date(2020, 3, 13, 14, 0),
+                new Event("Обед", new Date(2020, 3, 13, 14, 0),
                         new Date(2020, 3, 13, 15, 0),
                         new LinkedList<Group>(), false, "Столовая", "Сытный обед", 0, false),
-                new Event("Snack", new Date(2020, 3, 13, 15, 30),
+                new Event("Перекус", new Date(2020, 3, 13, 15, 30),
                         new Date(2020, 3, 13, 16, 0),
                         new LinkedList<Group>(), false, "Кофейня", "Лёгкий перекус. Выпейте чашечку чая", 0, false),
-                new Event("Dinner", new Date(2020, 3, 13, 18, 0),
+                new Event("Ужин", new Date(2020, 3, 13, 18, 0),
                         new Date(2020, 3, 13, 20, 00),
-                        new LinkedList<Group>(), false, "Столовая", "Ароматный ужин", 0, false),
-                new Event("Lunch", new Date(2020, 3, 13, 14, 0),
-                        new Date(2020, 3, 13, 15, 0),
-                        new LinkedList<Group>(), false, "Столовая", "Сытный обед", 0, false)}));//2
+                        new LinkedList<Group>(), false, "Столовая", "Ароматный ужин", 0, false),}));//2
         eList.add(new EventList1(
                 new Event[]{new Event("Событие", new Date(2020, 5, 1, 10, 0),
                         new Date(2020, 5, 1, 11, 0),
