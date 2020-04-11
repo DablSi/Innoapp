@@ -240,5 +240,3 @@ public class MainActivity extends AppCompatActivity {
         mNotificationManager.notify(id, mBuilder.build());
     }
 }
-
-

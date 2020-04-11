@@ -5,6 +5,7 @@
     <string name="event_card_image_description">Изображение события</string>
     <string name="event_card_participation_off">Принять участие</string>
     <string name="event_card_participation_on">Вы участвуете</string>
+    <string name="event_card_count_visitors_text">Идёт</string>
     <string name="txt_date_main_menu">Апрель 2</string>
     <string name="txt_greeting_main_menu">Привет, студент!</string>
     <string name="btn_maps_main_menu">Карты</string>

@@ -19,6 +19,7 @@ public class FragmentTab1 extends Fragment {
         Bundle args = new Bundle();
         FragmentTab1 fragment = new FragmentTab1();
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -27,6 +28,7 @@ public class FragmentTab1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(LAYOUT, container, false);
+
     }
 
 
