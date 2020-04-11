@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         // barcode settings
         tvBarcode.setPadding(0, 20, 20, 20);
         fabSettings.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ProfileActivity.class)));
-        btnSchedule.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, Events.class)));
+        btnSchedule.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, EventsActivity.class)));
         btnVoting.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, VotesActivity.class)));
         btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));

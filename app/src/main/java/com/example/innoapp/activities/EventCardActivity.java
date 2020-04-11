@@ -15,25 +15,24 @@ import com.example.innoapp.fragments.Event;
 
 import java.util.concurrent.TimeUnit;
 
-public class event_card extends AppCompatActivity {
+public class EventCardActivity extends AppCompatActivity {
 
     public int eventId;
     public int tabId;
     public int countVisitors;
 
-    public void onMyButtonClick(@NonNull View view)
-    {
+    public void onMyButtonClick(@NonNull View view) {
         ToggleButton TBParticipation = (ToggleButton) findViewById(R.id.cardParticipation);
         boolean participation = TBParticipation.isChecked();
         int intParticipation;
-        if(participation== true)
-            intParticipation=1;
+        if (participation == true)
+            intParticipation = 1;
         else
-            intParticipation=0;
-        Events.classEventsInList1[tabId][eventId].setParticipation(participation);
+            intParticipation = 0;
+        EventsActivity.classEventsInList1[tabId][eventId].setParticipation(participation);
         TextView TVCountVisitors = (TextView) findViewById(R.id.cardCountVisitors);
-        countVisitors = countVisitors-1+2*intParticipation;
-        Events.classEventsInList1[tabId][eventId].setCountVisitors(countVisitors);
+        countVisitors = countVisitors - 1 + 2 * intParticipation;
+        EventsActivity.classEventsInList1[tabId][eventId].setCountVisitors(countVisitors);
         TVCountVisitors.setText(Integer.toString(countVisitors));
         // Here should be code that send information to server about join or leave event
     }
@@ -61,7 +60,7 @@ public class event_card extends AppCompatActivity {
         long diffInMillies = Math.abs(event.getDateEnd().getTime() - event.getDate().getTime());
         long diffDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         long diffHours = TimeUnit.HOURS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-        long diffMinutes = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS)%60;
+        long diffMinutes = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS) % 60;
         // if diff between start and end more than 24 hours, set days
         if (diffDays != 0) {
             String textDiffDays = Long.toString(diffDays);
@@ -88,7 +87,7 @@ public class event_card extends AppCompatActivity {
             } else {
                 textDiffHours += " часов";
             }
-            if (diffMinutes!=0) {
+            if (diffMinutes != 0) {
                 textDiffHours += " " + Long.toString(diffMinutes);
                 if (diffMinutes >= 10 && diffMinutes <= 20) {
                     textDiffHours += " минут";
@@ -118,9 +117,9 @@ public class event_card extends AppCompatActivity {
         }
 
         // date  %tB %tY
-        TVDate.setText(String.format("%td ",event.getDate())+
-                String.format("%tB ",event.getDate())+Integer.toString(event.getDate().getYear())+
-                String.format(" %tR",event.getDate()));
+        TVDate.setText(String.format("%td ", event.getDate()) +
+                String.format("%tB ", event.getDate()) + Integer.toString(event.getDate().getYear()) +
+                String.format(" %tR", event.getDate()));
 
         // countVisitors
         TVCountVisitors.setText(Integer.toString(event.getCountVisitors()));

@@ -7,15 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.innoapp.R;
-import com.example.innoapp.activities.Events;
-import com.example.innoapp.activities.Events.EventList1;
-import com.example.innoapp.fragments.FragmentTab1;
-import com.example.innoapp.fragments.FragmentTab2;
-import com.example.innoapp.fragments.FragmentTab3;
 import com.example.innoapp.fragments.FragmentTabEvents;
-import com.google.android.material.tabs.TabItem;
-
-import java.util.LinkedList;
 
 public class TabsAdapterForEvents extends FragmentPagerAdapter {
     public String[] tabs;
