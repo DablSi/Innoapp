@@ -90,11 +90,10 @@ public class MainActivity extends AppCompatActivity {
 
         //get current date
         Date c = Calendar.getInstance().getTime();
-        System.out.println("Current time => " + c);
-
+        //format current date
         @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("MMMM dd, yyyy");
         String formattedDate = df.format(c);
-
+        //set current date
         txtDate.setText(formattedDate);
         txtDate.setAllCaps(true);
     }
