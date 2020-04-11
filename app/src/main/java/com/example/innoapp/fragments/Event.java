@@ -1,5 +1,6 @@
 package com.example.innoapp.fragments;
 // author Makar Shevchenko
+import java.io.Serializable;
 import java.security.acl.Group;
 import java.util.Date;
 import java.util.HashMap;
@@ -8,7 +9,8 @@ import java.util.LinkedList;
 /*
  *  Класс событий для генерации карточек событий
  */
-public class Event {
+@SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
+public class Event implements Serializable {
     private String name;
     private Date date;
     private Date dateEnd;
@@ -17,6 +19,7 @@ public class Event {
     private String place;
     private String description;
     private int countVisitors;
+    private boolean participation;
 
     public Event()
     {
@@ -27,10 +30,14 @@ public class Event {
         place = "Innopolis";
         description = "";
         countVisitors = 0;
+        participation = false;
     }
 
-    // Название, дата, дата конца, группы, кастомное, место, описание, количество посетителей
-    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<Group> newGroups, boolean newIs_optional, String newPlace, String newDescription, int newCountVisitors) {
+    // Название, дата(месяцы: 0-11, остальное - нормально), дата конца, группы, кастомное,
+    // место, описание, количество посетителей, идет ли
+    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<Group> newGroups,
+                 boolean newIs_optional, String newPlace, String newDescription,
+                 int newCountVisitors, boolean newParticipation) {
         setName(newName);
         setDate(newDate);
         setDateEnd(newDateEnd);
@@ -39,6 +46,7 @@ public class Event {
         setPlace(newPlace);
         setDescription(newDescription);
         setCountVisitors(newCountVisitors);
+        setParticipation(newParticipation);
     }
 
     // setters
@@ -74,6 +82,10 @@ public class Event {
         countVisitors = newCountVisitors;
     }
 
+    public void setParticipation(boolean newParticipation) {
+        participation = newParticipation;
+    }
+
     // getters
     public String getName() {
         return name;
@@ -91,7 +103,7 @@ public class Event {
         return groups;
     }
 
-    public boolean isIs_optional() {
+    public boolean getIs_optional() {
         return is_optional;
     }
 
@@ -105,5 +117,9 @@ public class Event {
 
     public int getCountVisitors() {
         return countVisitors;
+    }
+
+    public boolean getParticipation() {
+        return participation;
     }
 }

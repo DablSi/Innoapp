@@ -1,6 +1,10 @@
 package com.example.innoapp.utils;
 
 
+/**
+ * Генерирует изображение штрих-код на основе данного числа
+ * Автор: Вячеслав Арчибасов
+ */
 public class EAN13CodeBuilder {
     private String codeStringValue;
     private String generatedCode;
@@ -43,7 +47,6 @@ public class EAN13CodeBuilder {
         int position = Integer.parseInt(digit);
 
         return letters.substring(position, position + 1);
-
     }
 
     private String DigitToLowerCase(String digit) {
@@ -58,12 +61,10 @@ public class EAN13CodeBuilder {
         int firstFlag = Integer.parseInt(
 
                 rawCode.substring(0, 1)
-
         );
 
         String leftString = rawCode.substring(1, 7);
         String rightString = rawCode.substring(7);
-
         StringBuilder rightCode = new StringBuilder();
         String leftCode = "";
 

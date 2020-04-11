@@ -1,4 +1,6 @@
-package com.example.innoapp.fragments;
+package com.example.innoapp.adapter;
+
+import com.example.innoapp.fragments.Event;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

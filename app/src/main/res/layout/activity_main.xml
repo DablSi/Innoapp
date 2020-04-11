@@ -103,7 +103,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -135,7 +136,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -158,7 +160,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
 
@@ -191,7 +194,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -215,7 +219,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -249,7 +254,8 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView2"
                             app:layout_constraintVertical_bias="0.2"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -273,7 +279,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
 
@@ -306,7 +313,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>

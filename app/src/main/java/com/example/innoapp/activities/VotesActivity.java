@@ -14,7 +14,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.innoapp.R;
 
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class VotesActivity extends Activity {
     private int countID = 0;
     private boolean b1 = false;
     String[] groupsS = {"Group 1", "Group 2", "Group 3", "Group 4", "Group 5", "Group 6"};
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);

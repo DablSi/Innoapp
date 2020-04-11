@@ -26,7 +26,7 @@ public class ProfileActivity extends AppCompatActivity {
         back.setOnClickListener(v -> finish());
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         eMail = sp.getString(LoginActivity.EMAIL, "Cene655@mail.ru");
-        //TODO: ADD CHECKING VALID EMAIL (IF THERE IS NO EMAIL)
+        // TODO: ADD CHECKING VALID EMAIL (IF THERE IS NO EMAIL)
         SetMail();
         txt_language = findViewById(R.id.txt_lang);
         //Change Russian to English via button
