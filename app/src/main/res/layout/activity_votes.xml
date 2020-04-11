@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    style="@style/AppTheme"
     android:orientation="vertical">
 
     <LinearLayout
@@ -33,7 +34,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
                 android:background="#FFFFFF"
-                android:paddingTop="10dp"
+                android:paddingTop="15dp"
                 android:paddingRight="15dp"
                 android:text="Голосования"
                 android:textColor="@android:color/background_dark"

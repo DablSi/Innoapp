@@ -1,6 +1,7 @@
 package com.example.innoapp.activities;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,6 @@ import com.example.innoapp.R;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class VotesActivity extends Activity {
     public static LinkedList<Vote> vоtes;
@@ -31,6 +31,8 @@ public class VotesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
         ImageView back = findViewById(R.id.back);
+        TextView title = findViewById(R.id.text1);
+        title.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/elektra_text_pro.otf"));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +87,7 @@ public class VotesActivity extends Activity {
     }
 
     private void CreateVotes(LinkedList<Vote> list) {
+        Typeface elektra = Typeface.createFromAsset(this.getAssets(), "fonts/elektra_text_pro.otf");
         for (Vote i : list) {
             ArrayList<RadioButton> radioButtonsArrayList = new ArrayList<RadioButton>(); // array for RadioButtons
             ArrayList<CheckBox> checkBoxArrayList = new ArrayList<CheckBox>();
@@ -111,6 +114,7 @@ public class VotesActivity extends Activity {
             voteTextView.setText(i.name);
             voteTextView.setTextSize(22);
             voteTextView.setPadding(0, 0, 0, 10);
+            voteTextView.setTypeface(elektra);
             relativeLayout2.addView(voteTextView);
             voteTextView.setTextColor(getResources().getColor(R.color.white));
             voteTextView.setId(TextView.generateViewId());
@@ -165,6 +169,7 @@ public class VotesActivity extends Activity {
                     voteCheckBox.setText(i.variants[j]);
                     voteCheckBox.setTextColor(getResources().getColor(R.color.white));
                     voteCheckBox.setTextSize(17);
+                    voteCheckBox.setTypeface(elektra);
                     relativeLayout2.addView(voteCheckBox);
                     voteCheckBox.setId(CheckBox.generateViewId());
                     checkBoxArrayList.add(voteCheckBox);

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    style="@style/AppTheme"
     tools:context=".activities.MainActivity">
 
     <ImageButton
@@ -27,10 +28,11 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="3dp"
         android:paddingTop="10dp"
-        android:text="@string/txt_maps_title"
+        android:text="@string/btn_maps_main_menu"
         android:textColor="@android:color/background_dark"
         android:textSize="35dp"
         android:textStyle="bold"
+        style="@style/AppTheme"
         tools:ignore="RtlHardcoded,SpUsage" />
 
     <com.google.android.material.tabs.TabLayout

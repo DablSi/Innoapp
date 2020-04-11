@@ -6,4 +6,5 @@
     android:paddingStart="200px"
     android:textColor="@color/colorPrimary"
     android:textSize="30dp"
+    style="@style/AppTheme"
     tools:ignore="PxUsage,RtlSymmetry,SpUsage" />

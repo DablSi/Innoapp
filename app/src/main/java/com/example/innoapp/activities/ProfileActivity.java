@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.innoapp.R;
 import com.example.innoapp.utils.LocaleHelper;
 
-
 public class ProfileActivity extends AppCompatActivity {
     private String eMail;
     private TextView txt_language;
