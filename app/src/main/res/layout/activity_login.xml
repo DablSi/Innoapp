@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/colorPrimary"
@@ -19,7 +20,8 @@
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="50dp"
-            app:srcCompat="@drawable/logo3" />
+            app:srcCompat="@drawable/logo3"
+            tools:ignore="ContentDescription" />
 
         <!-- Email Label -->
 
@@ -31,10 +33,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:backgroundTint="@android:color/white"
-            android:hint="Email"
+            android:hint="@string/txt_login_email"
             android:inputType="textEmailAddress"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:textColorHint="@android:color/white"
+            android:autofillHints="" />
 
         <RelativeLayout
             android:paddingTop="10dp"
@@ -50,7 +53,7 @@
                 android:layout_marginBottom="5dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="5dp"
-                android:text="Войти"
+                android:text="@string/btn_login"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 app:backgroundTint="@android:color/transparent"

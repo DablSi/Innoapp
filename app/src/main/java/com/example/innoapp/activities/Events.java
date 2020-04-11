@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.LinkedList;
 
 public class Events extends AppCompatActivity {
-
     public static String[][] datesInList1;
     public static String[][] eventsInList1;
     public static Event[][] classEventsInList1;
@@ -48,7 +47,6 @@ public class Events extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
-
         // Array below should be taken from server
         eList = new LinkedList<EventList1>();
 
@@ -132,5 +130,4 @@ public class Events extends AppCompatActivity {
             this.classEventsInList = classEventsInList;
         }
     }
-
 }

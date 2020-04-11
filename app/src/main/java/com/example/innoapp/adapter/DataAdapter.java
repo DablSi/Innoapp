@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHolder> {
-    private static int viewHolderCount = 0;
+    private int viewHolderCount = 0;
     private String[] questions;
     private String[] answers;
     private Context parent;
@@ -90,8 +90,5 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
             });
         }
 
-        void bind(String textQuestion) {
-            questionView.setText(textQuestion);
-        }
     }
 }

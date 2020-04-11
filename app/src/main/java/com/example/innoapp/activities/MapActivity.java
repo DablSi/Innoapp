@@ -1,10 +1,11 @@
 package com.example.innoapp.activities;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,8 @@ public class MapActivity extends AppCompatActivity {
         MapKitFactory.initialize(this);
         setContentView(R.layout.map_activity);
         super.onCreate(savedInstanceState);
+        TextView title = findViewById(R.id.mapTextView);
+        title.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/elektra_text_pro.otf"));
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
