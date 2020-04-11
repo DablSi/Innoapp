@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHolder> {
-    private static int viewHolderCount = 0;
+    private int viewHolderCount = 0;
     private String[] questions;
     private String[] answers;
     private Context parent;
@@ -33,12 +33,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(layoutIdQuestions, parent, false);
         DataAdapterHolder viewHolder = new DataAdapterHolder(view);
-        try {
-            viewHolder.questionView.setText(questions[viewHolderCount]);
-            viewHolderCount++;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
-        }
+        viewHolder.questionView.setText(questions[viewHolderCount]);
+        viewHolderCount++;
         return viewHolder;
 
     }
@@ -91,8 +87,5 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataAdapterHol
             });
         }
 
-        void bind(String textQuestion) {
-            questionView.setText(textQuestion);
-        }
     }
 }
