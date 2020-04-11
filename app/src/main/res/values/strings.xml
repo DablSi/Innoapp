@@ -16,7 +16,6 @@
     <string name="txt_barcode_main_menu">000</string>
     <string name="txt_login_email">Email</string>
     <string name="btn_login">Войти</string>
-    <string name="event_card_count_visitors_text">Идёт</string>
     <string name="txt_votes">Голосования</string>
     <string name="txt_time">2 часа</string>
     <string name="txt_cv_date">31 сентября 1970</string>
