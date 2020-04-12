@@ -43,7 +43,10 @@
         android:paddingTop="15dp"
         app:tabIndicatorColor="@android:color/holo_green_light"
         app:tabIndicatorHeight="6dp"
-        app:tabTextAppearance="@style/TabLayoutTextStyle" />
+        app:tabTextColor="#000"
+        app:tabSelectedTextColor="@color/inno_green"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        android:background="#FFF"/>
 
 
     <androidx.viewpager.widget.ViewPager

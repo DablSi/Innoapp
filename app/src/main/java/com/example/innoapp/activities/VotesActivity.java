@@ -36,7 +36,7 @@ public class VotesActivity extends Activity {
     private LinearLayout voteLinearLayout;
     private int countID = 0;
     private boolean b1 = false;
-    String[] groupsS = {"Group 1", "Group 2", "Group 3", "Group 4", "Group 5", "Group 6"};
+    String[] groupsS = {"NTI", "Школа по информатике"};
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
@@ -95,8 +95,8 @@ public class VotesActivity extends Activity {
         else{
              adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS);
         }
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+      
+        adapter.setDropDownViewResource(R.layout.spinner_text);
         groups.setAdapter(adapter);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
@@ -107,20 +107,15 @@ public class VotesActivity extends Activity {
                 vоtes.removeAll(vоtes);
                 String item = (String) parent.getItemAtPosition(position);
                 switch (item) {
-                    case ("Group 1"):
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, false));
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
+                    case ("NTI"):
+                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, false));
+                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, true));
+                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, true));
                         CreateVotes(vоtes);
                         break;
-                    case ("Group 2"):
-                        vоtes.add(new Vote("Favourite season124?", new String[]{"Win314ter", "Spr134ing", "Sum4mer", "Autumn"}, false));
-                        vоtes.add(new Vote("Favourite season1241?", new String[]{"Win134ter", "Spri134ng", "Sum134mer", "Aut4umn"}, true));
-                        CreateVotes(vоtes);
-                        break;
-                    case ("Group 3"):
-                        vоtes.add(new Vote("favourite season?125125126236", new String[]{"Winter", "Spring", "Summer", "Autumn"}, false));
-                        vоtes.add(new Vote("Favourite season?", new String[]{"Winter", "Spring", "Summer", "Autumn"}, true));
+                    case ("Школа по информатике"):
+                        vоtes.add(new Vote("Любимый палец?", new String[]{"Мизинец", "Безымянный", "Средний", "Указательный", "Большой"}, false));
+                        vоtes.add(new Vote("Любимый палец?", new String[]{"Мизинец", "Безымянный", "Средний", "Указательный", "Большой"}, true));
                         CreateVotes(vоtes);
                         break;
                 }

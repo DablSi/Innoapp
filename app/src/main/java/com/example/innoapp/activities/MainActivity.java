@@ -12,31 +12,25 @@ import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-<<<<<<< Updated upstream
-=======
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
->>>>>>> Stashed changes
+
 
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +38,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Timer;
@@ -57,11 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
     int id = 1;
 
-    private TextView tvBarcode, txtDescriptionBarcode;
+    private TextView tvBarcode, txtDescriptionBarcode, txtDate;
     public static String code = "124958761310";
     HashSet<String> groups;
     private boolean barcodeScale = false;
     DatabaseReference mDatabase;
+    Date d = new Date();
     private NotificationManager mNotificationManager;
 
     @Override
@@ -72,9 +69,10 @@ public class MainActivity extends AppCompatActivity {
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         code = sp.getString(CODE, "124958761310");
-        groups = (HashSet<String>) sp.getStringSet("GROUPS",new HashSet<String>());
+        groups = (HashSet<String>) sp.getStringSet("GROUPS", new HashSet<String>());
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);
+        txtDate = findViewById(R.id.txt_date);
         txtDescriptionBarcode = findViewById(R.id.txt_description_barcode);
         FloatingActionButton fabSettings = findViewById(R.id.fab_setting);
         CardView btnMaps = findViewById(R.id.btn_maps);
@@ -91,41 +89,29 @@ public class MainActivity extends AppCompatActivity {
         // barcode settings
         tvBarcode.setPadding(0, 20, 20, 20);
         fabSettings.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, ProfileActivity.class)));
-<<<<<<< Updated upstream
-        btnSchedule.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, Events.class)));
-        btnVoting.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, VotesActivity.class)));
-        btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
-        btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
-        planningPush();
-=======
         btnSchedule.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, EventsActivity.class)));
-        btnVoting.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, VotesActivity.class){}));
+        btnVoting.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, VotesActivity.class)));
         btnFAQ.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, FAQActivity.class)));
         btnMaps.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, MapActivity.class)));
         planningPush();
 
         //get current date
-        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
-        Date dateObj = null;
-        try {
-            dateObj = curFormater.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        SimpleDateFormat postFormater = new SimpleDateFormat("MMMM dd, yyyy");
-        String newDateStr = postFormater.format(dateObj);
-        //set date in the main screen
-        txtDate.setText(newDateStr);
+        Date c = Calendar.getInstance().getTime();
+        //format current date
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat df = new SimpleDateFormat("MMMM dd, yyyy");
+        String formattedDate = df.format(c);
+        //set current date
+        txtDate.setText(formattedDate);
         txtDate.setAllCaps(true);
-
     }
+  
     @Override
     public void onResume()
     {
         super.onResume();
         SetDarkT();
->>>>>>> Stashed changes
     }
+
     // zooms barcode
     public void onButtonClickBarcode(View v) {
         if (barcodeScale) {
@@ -154,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         DatabaseReference userRef = mDatabase.child("events");
-
         ValueEventListener valueEventListener = new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot i : dataSnapshot.getChildren()) {
@@ -168,51 +154,54 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    if (dependence) {
+                    try {
+                        if (dependence) {
 
-                        // забираю все данные из event из БД
+                            // забираю все данные из event из БД
+                            id = Math.toIntExact((Long) i.child("id").getValue());
+                            String name = (String) i.child("name").getValue();
+                            boolean is_optional = (boolean) i.child("is_optional").getValue();
+                            String place = (String) i.child("place").getValue();
+                            String startDate = (String) i.child("dateStart").getValue();
 
-                        id = (int) i.child("id").getValue();
-                        String name = (String) i.child("name").getValue();
-                        boolean is_optional = (boolean) i.child("is_optional").getValue();
-                        String place = (String) i.child("place").getValue();
-                        String startDate = (String) i.child("dateStart").getValue();
-
-                        // высчитываю время
-                        try {
-                            timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        // нахожу разницу
-                        long diff = timeUp - System.currentTimeMillis();
-
-                        try {
-                            if (is_optional) {
-                                contentText = "Просим по желанию пройти в " + place + " через 10 минут там начнется мероприятие " + name;
-                            } else {
-                                contentText = "Просим пройти в " + place + " через 10 минут там начнется обязательное мероприятие " + name;
-
+                            // высчитываю время
+                            try {
+                                timeUp = Objects.requireNonNull(format.parse(Objects.requireNonNull(startDate))).getTime();
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                            // создаю пуш
-                            timer.schedule(new TimerTask() {
-                                @Override
-                                public void run() {
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            createPush("Опопвещение о мероприятии");
+                            // нахожу разницу
+                            long diff = timeUp - System.currentTimeMillis();
 
+                            try {
+                                if (is_optional) {
+                                    contentText = "Просим по желанию пройти в " + place + " через 10 минут там начнется мероприятие " + name;
+                                } else {
+                                    contentText = "Просим пройти в " + place + " через 10 минут там начнется обязательное мероприятие " + name;
 
-                                            Log.d("WTF", "I AM TIRED");
-                                        }
-                                    });
                                 }
-                            }, diff - 600000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+                                // создаю пуш
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                createPush("Опопвещение о мероприятии");
 
+
+                                                Log.d("WTF", "I AM TIRED");
+                                            }
+                                        });
+                                    }
+                                }, diff - 600000);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    } catch (NullPointerException e) {
+                        e.printStackTrace();
                     }
                 }
             }
@@ -227,7 +216,6 @@ public class MainActivity extends AppCompatActivity {
         userRef.addListenerForSingleValueEvent(valueEventListener);
 
     }
-
 
 
     private void createPush(String title) {

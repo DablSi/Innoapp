@@ -61,8 +61,7 @@ public class EAN13CodeBuilder {
         int firstFlag = Integer.parseInt(
 
                 rawCode.substring(0, 1)
-
-        );'
+        );
 
         String leftString = rawCode.substring(1, 7);
         String rightString = rawCode.substring(7);

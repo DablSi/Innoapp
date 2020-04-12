@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< Updated upstream
-    tools:context=".activities.event_card">
-=======
     tools:context=".activities.EventCardActivity"
     android:background="#fff">
->>>>>>> Stashed changes
 
     <ToggleButton
         android:id="@+id/cardParticipation"
