@@ -1,9 +1,7 @@
 package com.example.innoapp.activities;
 
-<<<<<<< Updated upstream:app/src/main/java/com/example/innoapp/activities/Events.java
 import com.example.innoapp.adapter.TabsAdapterForEvents;
 import com.example.innoapp.fragments.Event;
-=======
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
->>>>>>> Stashed changes:app/src/main/java/com/example/innoapp/activities/EventsActivity.java
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,13 +31,9 @@ import java.security.acl.Group;
 import java.util.Date;
 import java.util.LinkedList;
 
-<<<<<<< Updated upstream:app/src/main/java/com/example/innoapp/activities/Events.java
-public class Events extends AppCompatActivity {
-=======
 import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class EventsActivity extends AppCompatActivity {
->>>>>>> Stashed changes:app/src/main/java/com/example/innoapp/activities/EventsActivity.java
     public static String[][] datesInList1;
     public static String[][] eventsInList1;
     public static Event[][] classEventsInList1;
