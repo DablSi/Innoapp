@@ -1,10 +1,24 @@
 package com.example.innoapp.activities;
 
+<<<<<<< Updated upstream:app/src/main/java/com/example/innoapp/activities/Events.java
 import com.example.innoapp.adapter.TabsAdapterForEvents;
 import com.example.innoapp.fragments.Event;
+=======
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.Spinner;
+import android.widget.TextView;
+>>>>>>> Stashed changes:app/src/main/java/com/example/innoapp/activities/EventsActivity.java
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -20,7 +34,13 @@ import java.security.acl.Group;
 import java.util.Date;
 import java.util.LinkedList;
 
+<<<<<<< Updated upstream:app/src/main/java/com/example/innoapp/activities/Events.java
 public class Events extends AppCompatActivity {
+=======
+import static com.example.innoapp.activities.ProfileActivity.darkT;
+
+public class EventsActivity extends AppCompatActivity {
+>>>>>>> Stashed changes:app/src/main/java/com/example/innoapp/activities/EventsActivity.java
     public static String[][] datesInList1;
     public static String[][] eventsInList1;
     public static Event[][] classEventsInList1;
@@ -106,7 +126,40 @@ public class Events extends AppCompatActivity {
         eventsViewPager.setAdapter(adapters);
         eventsTabLayout.setupWithViewPager(eventsViewPager);
     }
+    public void onResume()
+    {
+        super.onResume();
+        SetDarkT();
+    }
 
+    private void SetDarkT() {
+
+        RelativeLayout eventsRelativeLayout = (RelativeLayout) findViewById(R.id.eventsRelativeLayout);
+        TextView textViewSchedule = (TextView) findViewById(R.id.textViewSchedule);
+        HorizontalScrollView eventsHorizontalScrollView = (HorizontalScrollView) findViewById(R.id.eventsHorizontalScrollView);
+        TabLayout eventsTabLayout = (TabLayout) findViewById(R.id.eventsTabLayout);
+        ViewPager eventsViewPager = (ViewPager) findViewById(R.id.eventsViewPager);
+
+        if(darkT)
+        {
+            eventsRelativeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
+            eventsHorizontalScrollView.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
+            eventsTabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
+            eventsViewPager.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
+            textViewSchedule.setTextColor(ContextCompat.getColor(this, R.color.white));
+            eventsTabLayout.setTabTextColors(ContextCompat.getColor(this, R.color.white), ContextCompat.getColor(this, R.color.white));
+            eventsTabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.inno_blue));
+        }
+        else{
+            textViewSchedule.setTextColor(ContextCompat.getColor(this, R.color.black));
+            eventsTabLayout.setTabTextColors(ContextCompat.getColor(this, R.color.black), ContextCompat.getColor(this, R.color.black));
+            eventsRelativeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+            eventsViewPager.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+            eventsHorizontalScrollView.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+            eventsTabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+            eventsTabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorPrimary));
+        }
+    }
     public class EventList1 {
         String[] datesInList;
         String[] eventsInList;

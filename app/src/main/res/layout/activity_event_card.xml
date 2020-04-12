@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< Updated upstream
     tools:context=".activities.event_card">
+=======
+    tools:context=".activities.EventCardActivity"
+    android:background="#fff">
+>>>>>>> Stashed changes
 
     <ToggleButton
         android:id="@+id/cardParticipation"
@@ -31,7 +36,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <TextView
             android:id="@+id/cardDuration"
@@ -40,7 +46,8 @@
             android:layout_gravity="bottom|start"
             android:layout_marginBottom="114dp"
             android:text="2 часа"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/cardDate"
@@ -49,7 +56,8 @@
             android:layout_gravity="bottom|start"
             android:layout_marginBottom="148dp"
             android:text="31 сентября 1970"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/cardCountVisitors"
@@ -59,7 +67,8 @@
             android:layout_marginStart="48dp"
             android:layout_marginBottom="80dp"
             android:text="1000 человек"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/cardName"
@@ -69,7 +78,8 @@
             android:layout_gravity="start|top"
             android:layout_marginTop="16dp"
             android:text="Название события"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/cardDescription"
@@ -80,7 +90,8 @@
             android:layout_marginTop="80dp"
             android:clickable="true"
             android:text="Описание"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/cardPlace"
@@ -90,7 +101,8 @@
             android:layout_marginBottom="182dp"
             android:text="Место"
             android:textAlignment="textStart"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
 
         <TextView
             android:id="@+id/cardCountVisitorsText"
@@ -99,7 +111,8 @@
             android:layout_gravity="bottom|start"
             android:layout_marginBottom="80dp"
             android:text="@string/event_card_count_visitors_text"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="#000"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

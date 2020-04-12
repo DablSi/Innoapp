@@ -14,9 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.innoapp.R;
+<<<<<<< Updated upstream
 import com.example.innoapp.activities.Events;
 import com.example.innoapp.adapter.DataAdapter;
 import com.example.innoapp.adapter.DataAdapterEvents;
+=======
+import com.example.innoapp.activities.EventsActivity;
+>>>>>>> Stashed changes
 import com.example.innoapp.adapter.MainStepperAdapter;
 import com.liefery.android.vertical_stepper_view.VerticalStepperView;
 
@@ -29,11 +33,8 @@ public class FragmentTabEvents extends Fragment {
     public static LinkedList<Events.EventList1> eList2;
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
-    private static String[] datesList;
-    private static String[] eventList;
-    private static Event[] classEventList;
     private Context context = null;
-    private DataAdapterEvents adapter;
+
 
     public static FragmentTabEvents newInstance(int page) {
         Bundle args = new Bundle();
