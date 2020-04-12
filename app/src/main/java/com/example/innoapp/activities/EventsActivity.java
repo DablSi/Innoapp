@@ -60,7 +60,10 @@ public class EventsActivity extends AppCompatActivity {
         eList.add(new EventList1(
                 new Event[]{new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
                         new Date(2020, 3, 12, 14, 50),
-                        new LinkedList<Group>(), false, "Просторы интернета", "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false)}));//1
+                        new LinkedList<Group>(), false, "Просторы интернета", "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false),
+                        new Event("Отдых", new Date(2020, 3, 12, 14, 54),
+                                new Date(2020, 3, 12, 15, 00),
+                                new LinkedList<Group>(), true, "Дом", "Ты можешь поспать!", 0, false)}));//1
         eList.add(new EventList1(new Event[]{new Event("Завтрак", new Date(2020, 3, 13, 8, 30),
                 new Date(2020, 3, 13, 13, 0),
                 new LinkedList<Group>(), false, "Столовая", "Вкусный завтрак", 0, false),

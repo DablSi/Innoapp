@@ -12,7 +12,7 @@
     <string name="btn_faq_main_menu">FAQ</string>
     <string name="btn_voting_main_menu">Голосования</string>
     <string name="btn_schedule_main_menu">Расписание</string>
-    <string name="txt_description_main_menu">Это твой персональный баркод. Пожалуйста, отсканируйте его в столовой</string>
+    <string name="txt_description_main_menu">Это твой персональный штрих-код. Пожалуйста, отсканируй его в столовой</string>
     <string name="txt_barcode_main_menu">000</string>
     <string name="txt_login_email">Email</string>
     <string name="btn_login">Войти</string>
@@ -25,8 +25,8 @@
     <string name="txt_cv_desc">012345678901234567890123456789012345678901234567890123456789012345</string>
     <string name="txt_cv_location">Место</string>
     <string name="txt_faq_title">FAQ</string>
-    <string name="txt_maps_title">Maps</string>
-    <string name="txt_profile_title">Profile</string>
+    <string name="txt_maps_title">Карты</string>
+    <string name="txt_profile_title">Профиль</string>
     <string name="txt_maps_email">eMail</string>
     <string name="txt_icon_a_profile">A</string>
     <string name="txt_profile_language_value">RU</string>

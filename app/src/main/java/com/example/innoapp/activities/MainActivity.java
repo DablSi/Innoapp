@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.NotificationCompat;
@@ -30,7 +31,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference userRef = mDatabase.child("events");
         ValueEventListener valueEventListener = new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot i : dataSnapshot.getChildren()) {
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                         if (dependence) {
 
                             // забираю все данные из event из БД
-                            id = (int) i.child("id").getValue();
+                            id = Math.toIntExact((Long) i.child("id").getValue());
                             String name = (String) i.child("name").getValue();
                             boolean is_optional = (boolean) i.child("is_optional").getValue();
                             String place = (String) i.child("place").getValue();

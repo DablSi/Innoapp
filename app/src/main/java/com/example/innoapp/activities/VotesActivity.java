@@ -24,7 +24,7 @@ public class VotesActivity extends Activity {
     private LinearLayout voteLinearLayout;
     private int countID = 0;
     private boolean b1 = false;
-    String[] groupsS = {"Group 1", "Group 2", "Group 3", "Group 4", "Group 5", "Group 6"};
+    String[] groupsS = {"NTI", "Школа по информатике"};
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
@@ -45,7 +45,7 @@ public class VotesActivity extends Activity {
     private void CreateSpinner(String[] sGroups) {
         Spinner groups = (Spinner) findViewById(R.id.groups);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_text);
         groups.setAdapter(adapter);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
