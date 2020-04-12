@@ -2,7 +2,6 @@
 
 
 <com.liefery.android.vertical_stepper_view.VerticalStepperView
-    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/stepper_list"
     android:layout_width="match_parent"

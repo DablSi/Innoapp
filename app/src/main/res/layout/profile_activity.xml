@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:id="@+id/profileLinearLayout1"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -145,6 +146,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/languageImage"
                 android:text="@string/txt_profile_language"
+                android:id="@+id/textViewProfile1"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16dp"
                 tools:ignore="SpUsage" />
@@ -167,7 +169,8 @@
                 android:text="@string/txt_theme"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16dp"
-                tools:ignore="SpUsage" />
+                tools:ignore="SpUsage"
+                android:id="@+id/textViewProfile2"/>
 
             <ImageView
                 android:id="@+id/darkThemeImage"
@@ -183,10 +186,10 @@
                 android:id="@+id/switch1"
                 android:layout_width="55dp"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="220dp"
+                android:layout_alignParentRight="true"
                 android:layout_toEndOf="@+id/darkThemeImage"
-                android:checked="false"
                 android:textOff="@string/txt_theme_value"
                 android:textOn="@string/txt_theme_value_on"
                 android:theme="@style/SwitchTheme" />
@@ -209,7 +212,8 @@
                 android:text="@string/txt_profile_notify"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16dp"
-                tools:ignore="SpUsage" />
+                tools:ignore="SpUsage"
+                android:id="@+id/textViewProfile3"/>
 
             <ImageView
                 android:id="@+id/notificationsImage"
@@ -225,11 +229,12 @@
                 android:layout_width="55dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="220dp"
                 android:layout_toEndOf="@+id/notificationsImage"
                 android:checked="false"
                 android:textOff="@string/txt_notif_off"
                 android:textOn="@string/txt_notif_on"
+                android:layout_marginRight="3dp"
+                android:layout_alignParentRight="true"
                 android:theme="@style/SwitchTheme" />
         </RelativeLayout>
 
@@ -250,7 +255,8 @@
                 android:text="@string/txt_logout"
                 android:textColor="@android:color/background_dark"
                 android:textSize="16dp"
-                tools:ignore="RtlHardcoded,SpUsage" />
+                tools:ignore="RtlHardcoded,SpUsage"
+                android:id="@+id/textViewProfile4"/>
 
             <ImageView
                 android:id="@+id/logOutImage"
@@ -261,6 +267,7 @@
                 app:srcCompat="@drawable/profile_image9"
                 tools:ignore="ContentDescription,RtlHardcoded" />
         </RelativeLayout>
+
     </RelativeLayout>
 
     <ImageView
@@ -273,6 +280,5 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/lower_image"
         tools:ignore="ContentDescription,ObsoleteLayoutParam" />
-
-
+  
 </LinearLayout>
