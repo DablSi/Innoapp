@@ -26,7 +26,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
-
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder;
 import com.google.android.material.card.MaterialCardView;
@@ -46,7 +45,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import static com.example.innoapp.activities.LoginActivity.CODE;
-import static com.example.innoapp.activities.LoginActivity.LOGIN;
 import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        if (sp.getString(LOGIN, "").equals(""))
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        //if (sp.getString(LOGIN, "").equals(""))
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
         code = sp.getString(CODE, "124958761310");
         groups = (HashSet<String>) sp.getStringSet("GROUPS", new HashSet<String>());
         // barcode
@@ -104,12 +102,12 @@ public class MainActivity extends AppCompatActivity {
         txtDate.setText(formattedDate);
         txtDate.setAllCaps(true);
     }
-  
+
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
-        SetDarkT();
+        if (darkT)
+            SetDarkT();
     }
 
     // zooms barcode
@@ -250,9 +248,8 @@ public class MainActivity extends AppCompatActivity {
 
         mNotificationManager.notify(id, mBuilder.build());
     }
-    private void SetDarkT()
-    {
 
+    private void SetDarkT() {
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         ConstraintLayout sConstraintLayout = (ConstraintLayout) findViewById(R.id.sConstraintLayout);
         ConstraintLayout vConstraintLayout = (ConstraintLayout) findViewById(R.id.vConstraintLayout);
@@ -268,9 +265,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
 
 
-
-        if(darkT)
-        {
+        if (darkT) {
             constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             mainLinearLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             sConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
@@ -284,8 +279,7 @@ public class MainActivity extends AppCompatActivity {
             vTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
             fTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
             imageView1.setImageResource(R.color.inno_blue);
-        }
-        else{
+        } else {
             constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
             mainLinearLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
             sConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));

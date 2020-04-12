@@ -16,7 +16,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,6 +36,7 @@ public class VotesActivity extends Activity {
     private int countID = 0;
     private boolean b1 = false;
     String[] groupsS = {"NTI", "Школа по информатике"};
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
@@ -53,10 +53,11 @@ public class VotesActivity extends Activity {
         vоtes = new LinkedList<Vote>();
         CreateSpinner(groupsS);
     }
-    public void onResume()
-    {
+
+    public void onResume() {
         super.onResume();
-        SetDarkT();
+        if (darkT)
+            SetDarkT();
     }
 
     private void SetDarkT() {
@@ -67,16 +68,14 @@ public class VotesActivity extends Activity {
         Spinner groups = (Spinner) findViewById(R.id.groups);
         ImageButton back = (ImageButton) findViewById(R.id.back);
 
-        if(darkT)
-        {
+        if (darkT) {
             text1.setTextColor(ContextCompat.getColor(this, R.color.white));
             relativeLayoutVotes.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             linearLayout1.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             scrollView1.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             groups.setBackgroundResource(R.drawable.spinner2);
             back.setImageResource(R.drawable.back2);
-        }
-        else{
+        } else {
             back.setImageResource(R.drawable.back);
             text1.setTextColor(ContextCompat.getColor(this, R.color.black));
             relativeLayoutVotes.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
@@ -89,13 +88,12 @@ public class VotesActivity extends Activity {
     private void CreateSpinner(String[] sGroups) {
         Spinner groups = (Spinner) findViewById(R.id.groups);
         ArrayAdapter<String> adapter;
-        if (darkT){
+        if (darkT) {
             adapter = new ArrayAdapter<String>(this, R.layout.spinner_text2, groupsS);
+        } else {
+            adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS);
         }
-        else{
-             adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS);
-        }
-      
+
         adapter.setDropDownViewResource(R.layout.spinner_text);
         groups.setAdapter(adapter);
 
@@ -141,10 +139,9 @@ public class VotesActivity extends Activity {
             RelativeLayout.LayoutParams relativeLayout1Params = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             relativeLayout1Params.setMargins(0, 50, 0, 0);
             relativeLayout1.setLayoutParams(relativeLayout1Params);
-            if(darkT) {
+            if (darkT) {
                 relativeLayout1.setBackgroundColor(getResources().getColor(R.color.inno_dark_blue));
-            }
-            else {
+            } else {
                 relativeLayout1.setBackgroundColor(getResources().getColor(R.color.white));
             }
 
@@ -155,10 +152,9 @@ public class VotesActivity extends Activity {
             relativeLayout2Params.addRule(RelativeLayout.CENTER_IN_PARENT);
             relativeLayout2.setLayoutParams(relativeLayout2Params);
 
-            if(darkT) {
+            if (darkT) {
                 relativeLayout2.setBackgroundResource(R.drawable.rectangle3);
-            }
-            else {
+            } else {
                 relativeLayout2.setBackgroundResource(R.drawable.rectangle);
             }
             relativeLayout2.setPadding(25, 10, 0, 25);
@@ -194,7 +190,7 @@ public class VotesActivity extends Activity {
                             new int[][]{
                                     new int[]{android.R.attr.state_enabled} //enabled
                             },
-                            new int[] {getResources().getColor(R.color.white) }
+                            new int[]{getResources().getColor(R.color.white)}
                     );
                     voteRadioButton.setSupportButtonTintList(colorStateList);
                     voteRadioGroup.addView(voteRadioButton);
@@ -236,7 +232,7 @@ public class VotesActivity extends Activity {
                             new int[][]{
                                     new int[]{android.R.attr.state_enabled} //enabled
                             },
-                            new int[] {getResources().getColor(R.color.white) }
+                            new int[]{getResources().getColor(R.color.white)}
                     );
                     voteCheckBox.setSupportButtonTintList(colorStateList);
                     voteCheckBox.setTypeface(elektra);

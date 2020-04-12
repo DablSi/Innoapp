@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:orientation="vertical"
-    android:id="@+id/mainLinearLayout">
+    android:orientation="vertical">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,8 +84,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btn_maps"
@@ -127,8 +126,8 @@
                             tools:ignore="ContentDescription" />
 
                         <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
                             android:id="@+id/mTextView"
+                            style="@style/TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="102dp"
@@ -136,14 +135,14 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="24dp"
                             android:text="@string/btn_maps_main_menu"
+                            android:textColor="#000"
                             android:textSize="16dp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                            tools:ignore="SpUsage"
-                            android:textColor="#000"/>
+                            tools:ignore="SpUsage" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -187,8 +186,8 @@
                             tools:ignore="ContentDescription" />
 
                         <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
                             android:id="@+id/fTextView"
+                            style="@style/TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="110dp"
@@ -196,14 +195,14 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="24dp"
                             android:text="@string/btn_faq_main_menu"
+                            android:textColor="#000"
                             android:textSize="16dp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                            tools:ignore="SpUsage"
-                            android:textColor="#000"/>
+                            tools:ignore="SpUsage" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -247,8 +246,8 @@
                             tools:ignore="ContentDescription" />
 
                         <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
                             android:id="@+id/vTextView"
+                            style="@style/TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="93dp"
@@ -256,6 +255,7 @@
                             android:layout_marginEnd="24dp"
                             android:layout_marginBottom="24dp"
                             android:text="@string/btn_voting_main_menu"
+                            android:textColor="#000"
                             android:textSize="16dp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -264,8 +264,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView2"
                             app:layout_constraintVertical_bias="0.2"
-                            tools:ignore="SpUsage"
-                            android:textColor="#000"/>
+                            tools:ignore="SpUsage" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -310,8 +309,8 @@
                             tools:ignore="ContentDescription" />
 
                         <TextView
-                            style="@style/TextAppearance.AppCompat.Body1"
                             android:id="@+id/sTextView"
+                            style="@style/TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="66dp"
@@ -319,14 +318,14 @@
                             android:layout_marginEnd="16dp"
                             android:layout_marginBottom="24dp"
                             android:text="@string/btn_schedule_main_menu"
+                            android:textColor="#000"
                             android:textSize="16dp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                            tools:ignore="SpUsage"
-                            android:textColor="#000"/>
+                            tools:ignore="SpUsage" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -337,8 +336,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/materialCardView"
@@ -355,8 +353,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="16dp"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/txt_description_barcode"
@@ -391,9 +388,9 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/imageView1"
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:id="@+id/imageView1"
             android:layout_gravity="bottom"
             android:src="@color/colorPrimary"
             tools:ignore="ContentDescription" />
