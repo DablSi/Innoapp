@@ -126,6 +126,7 @@ public class MapActivity extends AppCompatActivity {
             back.setImageResource(R.drawable.back);
             mapTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
         }
+        ///
     }
 }
 
