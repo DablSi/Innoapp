@@ -18,13 +18,8 @@
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-<<<<<<< Updated upstream
-                android:value=".activities.Events" />></activity>
-        <activity android:name=".activities.Events">
-=======
                 android:value=".activities.EventsActivity" /></activity>
         <activity android:name=".activities.EventsActivity">
->>>>>>> Stashed changes
         </activity>
         <service
             android:name=".services.FetchService"
