@@ -22,8 +22,11 @@ public class FragmentTabEvents extends Fragment {
     public static LinkedList<EventsActivity.EventList1> eList2;
     public static final String ARG_PAGE = "ARG_PAGE";
     private int mPage;
+    private static String[] datesList;
+    private static String[] eventList;
+    private static Event[] classEventList;
     private Context context = null;
-
+    private DataAdapterEvents adapter;
 
     public static FragmentTabEvents newInstance(int page) {
         Bundle args = new Bundle();

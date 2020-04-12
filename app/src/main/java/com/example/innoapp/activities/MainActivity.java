@@ -14,22 +14,16 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-
 
 import com.example.innoapp.R;
 import com.example.innoapp.utils.EAN13CodeBuilder;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,7 +41,6 @@ import java.util.TimerTask;
 
 import static com.example.innoapp.activities.LoginActivity.CODE;
 import static com.example.innoapp.activities.LoginActivity.LOGIN;
-import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,13 +97,6 @@ public class MainActivity extends AppCompatActivity {
         txtDate.setText(formattedDate);
         txtDate.setAllCaps(true);
     }
-  
-    @Override
-    public void onResume()
-    {
-        super.onResume();
-        SetDarkT();
-    }
 
     // zooms barcode
     public void onButtonClickBarcode(View v) {
@@ -125,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             tvBarcode.setPadding(0, 20, 20, 20);
             barcodeScale = true;
         }
-
     }
 
     long timeUp;
@@ -249,56 +234,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mNotificationManager.notify(id, mBuilder.build());
-    }
-    private void SetDarkT()
-    {
-
-        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
-        ConstraintLayout sConstraintLayout = (ConstraintLayout) findViewById(R.id.sConstraintLayout);
-        ConstraintLayout vConstraintLayout = (ConstraintLayout) findViewById(R.id.vConstraintLayout);
-        ConstraintLayout mConstraintLayout = (ConstraintLayout) findViewById(R.id.mConstraintLayout);
-        ConstraintLayout fConstraintLayout = (ConstraintLayout) findViewById(R.id.fConstraintLayout);
-        MaterialCardView materialCardView = (MaterialCardView) findViewById(R.id.materialCardView);
-        LinearLayout mainLinearLayout = (LinearLayout) findViewById(R.id.mainLinearLayout);
-        TextView txt_greeting = (TextView) findViewById(R.id.txt_greeting);
-        TextView sTextView = (TextView) findViewById(R.id.sTextView);
-        TextView mTextView = (TextView) findViewById(R.id.mTextView);
-        TextView vTextView = (TextView) findViewById(R.id.vTextView);
-        TextView fTextView = (TextView) findViewById(R.id.fTextView);
-        ImageView imageView1 = (ImageView) findViewById(R.id.imageView1);
-
-
-
-        if(darkT)
-        {
-            constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
-            mainLinearLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
-            sConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
-            vConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
-            mConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
-            fConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
-            materialCardView.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
-            txt_greeting.setTextColor(ContextCompat.getColor(this, R.color.white));
-            sTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
-            mTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
-            vTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
-            fTextView.setTextColor(ContextCompat.getColor(this, R.color.white));
-            imageView1.setImageResource(R.color.inno_blue);
-        }
-        else{
-            constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            mainLinearLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            sConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            vConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            mConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            fConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            materialCardView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
-            txt_greeting.setTextColor(ContextCompat.getColor(this, R.color.black));
-            sTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-            mTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-            vTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-            fTextView.setTextColor(ContextCompat.getColor(this, R.color.black));
-            imageView1.setImageResource(R.color.colorPrimary);
-        }
     }
 }

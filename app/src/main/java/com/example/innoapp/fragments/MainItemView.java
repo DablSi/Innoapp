@@ -1,21 +1,13 @@
 package com.example.innoapp.fragments;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.core.content.ContextCompat;
-
 import com.example.innoapp.adapter.MainStepperAdapter;
 import com.example.innoapp.R;
-
-import static com.example.innoapp.activities.ProfileActivity.darkT;
-
 public class MainItemView extends LinearLayout {
     String [] itemsList;
     String [] dateList;
@@ -54,21 +46,7 @@ public class MainItemView extends LinearLayout {
         TextView itemId = (TextView) findViewById(R.id.eventId);
         itemId.setText(Integer.toString(itemPosition));
         TextView itemTabId = (TextView) findViewById(R.id.eventTabId);
-        RelativeLayout itemRelativeLayout = (RelativeLayout) findViewById(R.id.itemRelativeLayout);
         itemTabId.setText(Integer.toString(tabId));
-        if(darkT)
-        {
-            itemRelativeLayout.setBackgroundResource(R.drawable.scheldue2);;
-            itemDates.setTextColor(Color.parseColor("#FFFFFF"));
-            itemEvents.setTextColor(Color.parseColor("#FFFFFF"));
-            itemId.setTextColor(Color.parseColor("#FFFFFF"));
-        }
-        else {
-            itemRelativeLayout.setBackgroundResource(R.drawable.schedule);;
-            itemDates.setTextColor(Color.parseColor("#000000"));
-            itemEvents.setTextColor(Color.parseColor("#000000"));
-            itemId.setTextColor(Color.parseColor("#000000"));
-        }
 
 
     }

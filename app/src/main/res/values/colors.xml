@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="colorPrimary">#80BC00</color>
-    <color name="black">#000000</color>
     <color name="colorPrimaryDark">#348f41</color>
     <color name="colorSecondary">#1a428a</color>
     <color name="colorSecondaryLight">#0071ce</color>
@@ -47,13 +45,12 @@
 
     <!-- Innopolis colors -->
     <color name="inno_green">#80bc00</color>
-    <color name="inno_dark_blue">#25378B</color>
-    <color name="inno_blue">#0071CE</color>
+    <color name="inno_dark_blue">#1a428a</color>
+    <color name="inno_blue">#0071ce</color>
     <color name="inno_light_blue">#97caeb</color>
-    <color name="inno_light_grey2">#F1F2F7</color>
     <color name="inno_light_grey">#c5d9e7</color>
     <color name="inno_grey">#b0b3b2</color>
-    <color name="inno_dark_grey">#7b868c</color>profileLinearLayout1z
+    <color name="inno_dark_grey">#7b868c</color>
     <color name="inno_dark_green">#348f41</color>
     <color name="inno_purple">#60269e</color>
     <color name="inno_sea">#009383</color>
