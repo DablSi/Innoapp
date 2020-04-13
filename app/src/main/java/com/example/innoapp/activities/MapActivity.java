@@ -85,11 +85,23 @@ public class MapActivity extends AppCompatActivity {
         View mView = getLayoutInflater().inflate(R.layout.dialog_custom_layout, null);
         PhotoView photoView = mView.findViewById(R.id.imageView);
         int id = v.getId();
-        int res = R.drawable.firstf;
-        if (id == R.id.map2ImageView) {
-            res = R.drawable.secondf;
-        } else if (id == R.id.map3ImageView) {
-            res = R.drawable.thirdf;
+        int res;
+        if(darkT) {
+            res = R.drawable.firstf2;
+            if (id == R.id.map5ImageView) {
+                res = R.drawable.secondf2;
+            } else if (id == R.id.map6ImageView) {
+                res = R.drawable.thirdf2;
+            }
+        }
+        else
+        {
+            res = R.drawable.firstf;
+            if (id == R.id.map2ImageView) {
+                res = R.drawable.secondf;
+            } else if (id == R.id.map3ImageView) {
+                res = R.drawable.thirdf;
+            }
         }
         photoView.setImageResource(res);
         mBuilder.setView(mView);

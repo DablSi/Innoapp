@@ -9,6 +9,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.example.innoapp.fragments.FragmentTab1;
 import com.example.innoapp.fragments.FragmentTab2;
 import com.example.innoapp.fragments.FragmentTab3;
+import com.example.innoapp.fragments.FragmentTab4;
+import com.example.innoapp.fragments.FragmentTab5;
+import com.example.innoapp.fragments.FragmentTab6;
+
+import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class TabsPagerFragmentAdapters extends FragmentPagerAdapter {
     private String[] tabs;
@@ -33,13 +38,25 @@ public class TabsPagerFragmentAdapters extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return FragmentTab1.getInstance();
-            case 1:
-                return FragmentTab2.getInstance();
-            case 2:
-                return FragmentTab3.getInstance();
+        if(darkT) {
+            switch (position) {
+                case 0:
+                    return FragmentTab4.getInstance();
+                case 1:
+                    return FragmentTab5.getInstance();
+                case 2:
+                    return FragmentTab6.getInstance();
+            }
+        }
+        else {
+            switch (position) {
+                case 0:
+                    return FragmentTab1.getInstance();
+                case 1:
+                    return FragmentTab2.getInstance();
+                case 2:
+                    return FragmentTab3.getInstance();
+            }
         }
         return null;
     }

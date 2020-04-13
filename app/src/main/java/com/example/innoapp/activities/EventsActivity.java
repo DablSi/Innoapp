@@ -30,12 +30,22 @@ public class EventsActivity extends AppCompatActivity {
     public static String[][] eventsInList1;
     public static Event[][] classEventsInList1;
     private String[] dates;
+<<<<<<< Updated upstream
     public static LinkedList<EventsActivity.EventList1> eList;
 
     // Open card
     public void onMyButtonClick(@NonNull View view) {
         Intent intent = new Intent(this, EventCardActivity.class);
         TextView tVEventId = (TextView) view.findViewById(R.id.eventId);
+=======
+    public static LinkedList<EventList1> eList;
+
+    // Open card
+    public void onMyButtonClick(@NonNull  View view)
+    {
+        Intent intent = new Intent(this, EventCardActivity.class);
+        TextView tVEventId = (TextView)view.findViewById(R.id.eventId);
+>>>>>>> Stashed changes
         int eventId = Integer.parseInt(tVEventId.getText().toString());
         TextView tVNumTab = (TextView) view.findViewById(R.id.eventTabId);
         int numTab = Integer.parseInt(tVNumTab.getText().toString());

@@ -9,11 +9,15 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.example.innoapp.R;
 import com.example.innoapp.fragments.Event;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class EventCardActivity extends AppCompatActivity {
 
@@ -137,4 +141,52 @@ public class EventCardActivity extends AppCompatActivity {
         // participation
         TBParticipation.setChecked(event.getParticipation());
     }
+<<<<<<< Updated upstream
 }
+=======
+    public void onResume()
+    {
+        super.onResume();
+        SetDarkT();
+    }
+
+    private void SetDarkT() {
+        TextView TVDuration = (TextView) findViewById(R.id.cardDuration);
+        TextView cardCountVisitorsText = (TextView) findViewById(R.id.cardCountVisitorsText);
+        TextView TVDate = (TextView) findViewById(R.id.cardDate);
+        TextView TVCountVisitors = (TextView) findViewById(R.id.cardCountVisitors);
+        TextView TVName = (TextView) findViewById(R.id.cardName);
+        TextView TVDescription = (TextView) findViewById(R.id.cardDescription);
+        TextView TVPlace = (TextView) findViewById(R.id.cardPlace);
+        ToggleButton TBParticipation = (ToggleButton) findViewById(R.id.cardParticipation);
+        ConstraintLayout cardConstraintLayout = (ConstraintLayout) findViewById(R.id.cardConstraintLayout);
+        if(darkT)
+        {
+            TVDuration.setTextColor(ContextCompat.getColor(this, R.color.white));
+            cardCountVisitorsText.setTextColor(ContextCompat.getColor(this, R.color.white));
+            TVDate.setTextColor(ContextCompat.getColor(this, R.color.white));
+            TVCountVisitors.setTextColor(ContextCompat.getColor(this, R.color.white));
+            TVName.setTextColor(ContextCompat.getColor(this, R.color.white));
+            TVPlace.setTextColor(ContextCompat.getColor(this, R.color.white));
+            TVDescription.setTextColor(ContextCompat.getColor(this, R.color.white));
+            TBParticipation.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_blue));
+            cardConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
+
+        }
+        else
+        {
+            TVDuration.setTextColor(ContextCompat.getColor(this, R.color.black));
+            cardCountVisitorsText.setTextColor(ContextCompat.getColor(this, R.color.black));
+            TVDate.setTextColor(ContextCompat.getColor(this, R.color.black));
+            TVCountVisitors.setTextColor(ContextCompat.getColor(this, R.color.black));
+            TVName.setTextColor(ContextCompat.getColor(this, R.color.black));
+            TVPlace.setTextColor(ContextCompat.getColor(this, R.color.black));
+            TVDescription.setTextColor(ContextCompat.getColor(this, R.color.black));
+            TBParticipation.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_green));
+            cardConstraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
+        }
+
+
+    }
+}
+>>>>>>> Stashed changes
