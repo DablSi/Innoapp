@@ -28,6 +28,7 @@ import androidx.core.content.ContextCompat;
 
 
 import com.example.innoapp.R;
+import com.example.innoapp.services.FirebaseBackgroundService;
 import com.example.innoapp.utils.EAN13CodeBuilder;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     Date d = new Date();
     private NotificationManager mNotificationManager;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         if (sp.getString(LOGIN, "").equals(""))
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         code = sp.getString(CODE, "124958761310");
+        startService(new Intent(MainActivity.this, FirebaseBackgroundService.class));
         groups = (HashSet<String>) sp.getStringSet("GROUPS", new HashSet<String>());
         // barcode
         tvBarcode = findViewById(R.id.tvBarcode);
