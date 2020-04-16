@@ -1,12 +1,6 @@
 package com.example.innoapp.fragments;
 
-import com.example.innoapp.activities.Events;
-import com.example.innoapp.fragments.Event;
-
-import android.content.Context;
-import android.system.Int64Ref;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.cardview.widget.CardView;

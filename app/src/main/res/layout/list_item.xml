@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -6,16 +7,18 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
         <ImageView
             android:id="@+id/imageCheck"
             android:layout_width="30px"
             android:layout_height="30px"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:src="@drawable/check_mark1" />
+            android:src="@drawable/check_mark1"
+            tools:ignore="ContentDescription,PxUsage,RtlHardcoded" />
 
 
         <TextView
@@ -26,7 +29,8 @@
             android:layout_toLeftOf="@+id/imageCheck"
             android:textColor="#000000"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="RtlHardcoded,SpUsage" />
 
         <TextView
             android:id="@+id/answerView"
@@ -34,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/questionView"
             android:textColor="#757575"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            tools:ignore="SpUsage" />
 
 
     </RelativeLayout>

@@ -15,8 +15,14 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".activities.Events"
-            android:parentActivityName=".activities.MainActivity" />
+            android:name=".activities.EventCardActivity"
+            android:parentActivityName=".activities.EventsActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.EventsActivity" />
+        </activity>
+        <activity android:name=".activities.EventsActivity"></activity>
 
         <service
             android:name=".services.FirebaseBackgroundService"
@@ -43,6 +49,8 @@
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/FullScreen" />
+
     </application>
+
 
 </manifest>

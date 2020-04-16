@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:orientation="vertical">
+    android:background="#fff"
+    android:orientation="vertical"
+    android:id="@+id/mainLinearLayout">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,14 +19,16 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="193dp"
             android:orientation="vertical"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fab_setting"
+            app:layout_constraintHorizontal_bias="0.105"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/txt_date"
@@ -79,8 +82,10 @@
                 android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                >
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/btn_maps"
@@ -101,8 +106,10 @@
                     app:layout_constraintVertical_bias="0.0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/mConstraintLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
                             android:id="@+id/imageView3"
@@ -121,6 +128,7 @@
 
                         <TextView
                             style="@style/TextAppearance.AppCompat.Body1"
+                            android:id="@+id/mTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="102dp"
@@ -134,7 +142,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView3"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -156,8 +165,10 @@
                     app:layout_constraintVertical_bias="1.0">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fConstraintLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
 
@@ -177,6 +188,7 @@
 
                         <TextView
                             style="@style/TextAppearance.AppCompat.Body1"
+                            android:id="@+id/fTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="110dp"
@@ -190,7 +202,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -213,8 +226,10 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/vConstraintLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
                             android:id="@+id/imageView2"
@@ -233,20 +248,24 @@
 
                         <TextView
                             style="@style/TextAppearance.AppCompat.Body1"
+                            android:id="@+id/vTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="93dp"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
+                            android:layout_marginEnd="24dp"
                             android:layout_marginBottom="24dp"
                             android:text="@string/btn_voting_main_menu"
                             android:textSize="16dp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.769"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                            tools:ignore="SpUsage" />
+                            app:layout_constraintVertical_bias="0.2"
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -269,8 +288,10 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/sConstraintLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:background="#FFF">
 
                         <ImageView
 
@@ -290,6 +311,7 @@
 
                         <TextView
                             style="@style/TextAppearance.AppCompat.Body1"
+                            android:id="@+id/sTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="66dp"
@@ -303,7 +325,8 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                            tools:ignore="SpUsage" />
+                            tools:ignore="SpUsage"
+                            android:textColor="#000"/>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -315,9 +338,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:paddingTop="20dp">
+                >
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:elevation="10dp"
@@ -326,38 +350,39 @@
                     app:cardElevation="10dp"
                     app:cardMaxElevation="10dp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/txt_description_barcode"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_marginTop="16dp"
-                            android:orientation="vertical">
+                            android:layout_margin="16dp"
+                            android:text="@string/txt_description_main_menu"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20dp"
+                            tools:ignore="SpUsage" />
 
-                            <TextView
-                                android:id="@+id/txt_description_barcode"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="16dp"
-                                android:text="@string/txt_description_main_menu"
-                                android:textAlignment="center"
-                                android:textColor="#FFFFFF"
-                                android:textSize="20dp"
-                                tools:ignore="SpUsage" />
-
-                            <TextView
-                                android:id="@+id/tvBarcode"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@color/white"
-                                android:onClick="onButtonClickBarcode"
-                                android:text="@string/txt_barcode_main_menu"
-                                android:textAlignment="center"
-                                android:layout_marginTop="20dp"
-                                android:textColor="@android:color/background_dark"
-                                android:textSize="120dp"
-                                tools:ignore="SpUsage" />
-                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvBarcode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:background="@color/white"
+                            android:onClick="onButtonClickBarcode"
+                            android:text="@string/txt_barcode_main_menu"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/background_dark"
+                            android:textSize="120dp"
+                            tools:ignore="SpUsage" />
+                    </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
@@ -368,6 +393,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="10dp"
+            android:id="@+id/imageView1"
             android:layout_gravity="bottom"
             android:src="@color/colorPrimary"
             tools:ignore="ContentDescription" />

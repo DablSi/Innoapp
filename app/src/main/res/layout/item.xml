@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/schedule"
+            android:id="@+id/itemRelativeLayout"
+            android:onClick="onMyButtonClick">
+
+                <TextView
+                    android:id="@+id/eventTabId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="tabid"
+                    android:textSize="0sp" />
+
+                <TextView
+                    android:id="@+id/eventId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="id"
+                    android:textSize="0sp" />
+
+                <TextView
+                    android:id="@+id/itemDates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/itemEvents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/itemDates"
+                    android:layout_gravity="left"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+        </RelativeLayout>
+</merge>
