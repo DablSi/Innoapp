@@ -1,9 +1,8 @@
 package com.example.innoapp.fragments;
 // author Makar Shevchenko
+
 import java.io.Serializable;
-import java.security.acl.Group;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 /*
@@ -21,8 +20,7 @@ public class Event implements Serializable {
     private int countVisitors;
     private boolean participation;
 
-    public Event()
-    {
+    public Event() {
         name = "Event";
         date = new Date();
         dateEnd = new Date();
@@ -47,6 +45,14 @@ public class Event implements Serializable {
         setDescription(newDescription);
         setCountVisitors(newCountVisitors);
         setParticipation(newParticipation);
+    }
+
+    public boolean compare(Event obj) {
+        if (name.equals(obj.getName()) && date.equals(obj.getDate()) &&
+                dateEnd.equals(obj.getDateEnd()) && is_optional == obj.is_optional &&
+                groups.equals(obj.getGroups()))
+            return true;
+        return false;
     }
 
     // setters

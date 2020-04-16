@@ -16,10 +16,10 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.innoapp.R;
 import com.example.innoapp.adapter.TabsAdapterForEvents;
 import com.example.innoapp.fragments.Event;
+import com.example.innoapp.fragments.Group;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.Serializable;
-import java.security.acl.Group;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -33,12 +33,11 @@ public class EventsActivity extends AppCompatActivity {
     public static LinkedList<EventsActivity.EventList1> eList;
 
     // Open card
-    public void onMyButtonClick(@NonNull  View view)
-    {
+    public void onMyButtonClick(@NonNull View view) {
         Intent intent = new Intent(this, EventCardActivity.class);
-        TextView tVEventId = (TextView)view.findViewById(R.id.eventId);
+        TextView tVEventId = (TextView) view.findViewById(R.id.eventId);
         int eventId = Integer.parseInt(tVEventId.getText().toString());
-        TextView tVNumTab =(TextView) view.findViewById(R.id.eventTabId);
+        TextView tVNumTab = (TextView) view.findViewById(R.id.eventTabId);
         int numTab = Integer.parseInt(tVNumTab.getText().toString());
         Event event = classEventsInList1[numTab][eventId];
         intent.putExtra("event", (Serializable) event);
@@ -59,9 +58,6 @@ public class EventsActivity extends AppCompatActivity {
                 finish();
             }
         });
-        // Array below should be taken from server
-        eList = new LinkedList<EventList1>();
-
 
         eList.add(new EventList1(
                 new Event[]{new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
@@ -117,9 +113,8 @@ public class EventsActivity extends AppCompatActivity {
         eventsViewPager.setAdapter(adapters);
         eventsTabLayout.setupWithViewPager(eventsViewPager);
     }
-    
-    public void onResume()
-    {
+
+    public void onResume() {
         super.onResume();
         SetDarkT();
     }
@@ -132,8 +127,7 @@ public class EventsActivity extends AppCompatActivity {
         TabLayout eventsTabLayout = (TabLayout) findViewById(R.id.eventsTabLayout);
         ViewPager eventsViewPager = (ViewPager) findViewById(R.id.eventsViewPager);
 
-        if(darkT)
-        {
+        if (darkT) {
             eventsRelativeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             eventsHorizontalScrollView.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             eventsTabLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
@@ -141,8 +135,7 @@ public class EventsActivity extends AppCompatActivity {
             textViewSchedule.setTextColor(ContextCompat.getColor(this, R.color.white));
             eventsTabLayout.setTabTextColors(ContextCompat.getColor(this, R.color.white), ContextCompat.getColor(this, R.color.white));
             eventsTabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.inno_blue));
-        }
-        else{
+        } else {
             textViewSchedule.setTextColor(ContextCompat.getColor(this, R.color.black));
             eventsTabLayout.setTabTextColors(ContextCompat.getColor(this, R.color.black), ContextCompat.getColor(this, R.color.black));
             eventsRelativeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
@@ -152,11 +145,11 @@ public class EventsActivity extends AppCompatActivity {
             eventsTabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorPrimary));
         }
     }
-    
-    public class EventList1 {
+
+    public static class EventList1 {
         String[] datesInList;
         String[] eventsInList;
-        Event[] classEventsInList;
+        public Event[] classEventsInList;
 
         public EventList1(Event[] classEventsInList) {
             // Set string time and names from array of events
