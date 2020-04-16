@@ -1,30 +1,21 @@
 package com.example.innoapp.activities;
 
-import com.example.innoapp.adapter.TabsAdapterForEvents;
-import com.example.innoapp.fragments.Event;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-
 import com.example.innoapp.R;
+import com.example.innoapp.adapter.TabsAdapterForEvents;
+import com.example.innoapp.fragments.Event;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.Serializable;
@@ -39,12 +30,12 @@ public class EventsActivity extends AppCompatActivity {
     public static String[][] eventsInList1;
     public static Event[][] classEventsInList1;
     private String[] dates;
-    public static LinkedList<Events.EventList1> eList;
+    public static LinkedList<EventsActivity.EventList1> eList;
 
     // Open card
     public void onMyButtonClick(@NonNull  View view)
     {
-        Intent intent = new Intent(this, event_card.class);
+        Intent intent = new Intent(this, EventCardActivity.class);
         TextView tVEventId = (TextView)view.findViewById(R.id.eventId);
         int eventId = Integer.parseInt(tVEventId.getText().toString());
         TextView tVNumTab =(TextView) view.findViewById(R.id.eventTabId);

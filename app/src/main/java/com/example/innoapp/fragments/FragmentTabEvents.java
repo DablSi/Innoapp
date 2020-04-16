@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.innoapp.R;
 import com.example.innoapp.activities.EventsActivity;
-import com.example.innoapp.adapter.DataAdapterEvents;
 import com.example.innoapp.adapter.MainStepperAdapter;
 import com.liefery.android.vertical_stepper_view.VerticalStepperView;
 
