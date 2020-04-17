@@ -16,11 +16,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.innoapp.R;
 import com.example.innoapp.adapter.TabsAdapterForEvents;
 import com.example.innoapp.fragments.Event;
-import com.example.innoapp.fragments.Group;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.LinkedList;
 
 import static com.example.innoapp.activities.ProfileActivity.darkT;
@@ -58,30 +56,33 @@ public class EventsActivity extends AppCompatActivity {
                 finish();
             }
         });
+        if (eList == null) {
+            eList = new LinkedList<>();
+        }
 
-        eList.add(new EventList1(
-                new Event[]{new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
-                        new Date(2020, 3, 12, 14, 50),
-                        new LinkedList<Group>(), false, "Просторы интернета", "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false),
-                        new Event("Отдых", new Date(2020, 3, 12, 14, 54),
-                                new Date(2020, 3, 12, 15, 00),
-                                new LinkedList<Group>(), true, "Дом", "Ты можешь поспать!", 0, false)}));//1
-        eList.add(new EventList1(new Event[]{new Event("Завтрак", new Date(2020, 3, 13, 8, 30),
-                new Date(2020, 3, 13, 13, 0),
-                new LinkedList<Group>(), false, "Столовая", "Вкусный завтрак", 0, false),
-                new Event("Обед", new Date(2020, 3, 13, 14, 0),
-                        new Date(2020, 3, 13, 15, 0),
-                        new LinkedList<Group>(), false, "Столовая", "Сытный обед", 0, false),
-                new Event("Перекус", new Date(2020, 3, 13, 15, 30),
-                        new Date(2020, 3, 13, 16, 0),
-                        new LinkedList<Group>(), false, "Кофейня", "Лёгкий перекус. Выпейте чашечку чая", 0, false),
-                new Event("Ужин", new Date(2020, 3, 13, 18, 0),
-                        new Date(2020, 3, 13, 20, 00),
-                        new LinkedList<Group>(), false, "Столовая", "Ароматный ужин", 0, false),}));//2
-        eList.add(new EventList1(
-                new Event[]{new Event("Событие", new Date(2020, 5, 1, 10, 0),
-                        new Date(2020, 5, 1, 11, 0),
-                        new LinkedList<Group>(), false, "Место", "Описание", 0, false),}));//1
+//        eList.add(new EventList1(
+//                new Event[]{new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
+//                        new Date(2020, 3, 12, 14, 50),
+//                        new LinkedList<Group>(), false, "Просторы интернета", "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false),
+//                        new Event("Отдых", new Date(2020, 3, 12, 14, 54),
+//                                new Date(2020, 3, 12, 15, 00),
+//                                new LinkedList<Group>(), true, "Дом", "Ты можешь поспать!", 0, false)}));//1
+//        eList.add(new EventList1(new Event[]{new Event("Завтрак", new Date(2020, 3, 13, 8, 30),
+//                new Date(2020, 3, 13, 13, 0),
+//                new LinkedList<Group>(), false, "Столовая", "Вкусный завтрак", 0, false),
+//                new Event("Обед", new Date(2020, 3, 13, 14, 0),
+//                        new Date(2020, 3, 13, 15, 0),
+//                        new LinkedList<Group>(), false, "Столовая", "Сытный обед", 0, false),
+//                new Event("Перекус", new Date(2020, 3, 13, 15, 30),
+//                        new Date(2020, 3, 13, 16, 0),
+//                        new LinkedList<Group>(), false, "Кофейня", "Лёгкий перекус. Выпейте чашечку чая", 0, false),
+//                new Event("Ужин", new Date(2020, 3, 13, 18, 0),
+//                        new Date(2020, 3, 13, 20, 00),
+//                        new LinkedList<Group>(), false, "Столовая", "Ароматный ужин", 0, false),}));//2
+//        eList.add(new EventList1(
+//                new Event[]{new Event("Событие", new Date(2020, 5, 1, 10, 0),
+//                        new Date(2020, 5, 1, 11, 0),
+//                        new LinkedList<Group>(), false, "Место", "Описание", 0, false),}));//1
         // get information about events from eList
         String[][] datesInList = new String[eList.size()][];
         String[][] eventsInList = new String[eList.size()][];
@@ -90,9 +91,9 @@ public class EventsActivity extends AppCompatActivity {
         for (int i = 0; i < eList.size(); i++) {
             datesInList[i] = eList.get(i).datesInList;
             eventsInList[i] = eList.get(i).eventsInList;
-            classEventsInList[i] = eList.get(i).classEventsInList;
-            newDates[i] = String.format("%td", eList.get(i).classEventsInList[0].getDate()) + "." +
-                    String.format("%tm", eList.get(i).classEventsInList[0].getDate());
+            classEventsInList[i] = eList.get(i).classEventsInList.toArray(new Event[]{});
+            newDates[i] = String.format("%td", eList.get(i).classEventsInList.get(0).getDate()) + "." +
+                    String.format("%tm", eList.get(i).classEventsInList.get(0).getDate());
         }
         datesInList1 = datesInList;
         eventsInList1 = eventsInList;
@@ -149,17 +150,17 @@ public class EventsActivity extends AppCompatActivity {
     public static class EventList1 {
         String[] datesInList;
         String[] eventsInList;
-        public Event[] classEventsInList;
+        public LinkedList<Event> classEventsInList;
 
-        public EventList1(Event[] classEventsInList) {
+        public EventList1(LinkedList<Event> classEventsInList) {
             // Set string time and names from array of events
-            String[] newDatesInList = new String[classEventsInList.length];
-            String[] newEventsInList = new String[classEventsInList.length];
-            for (int i = 0; i < classEventsInList.length; i++) {
+            String[] newDatesInList = new String[classEventsInList.size()];
+            String[] newEventsInList = new String[classEventsInList.size()];
+            for (int i = 0; i < classEventsInList.size(); i++) {
                 String stringDate;
-                stringDate = String.format("%tR", classEventsInList[i].getDate()) + " - " +
-                        String.format("%tR", classEventsInList[i].getDateEnd());
-                String stringName = classEventsInList[i].getName();
+                stringDate = String.format("%tR", classEventsInList.get(i).getDate()) + " - " +
+                        String.format("%tR", classEventsInList.get(i).getDateEnd());
+                String stringName = classEventsInList.get(i).getName();
                 newDatesInList[i] = stringDate;
                 newEventsInList[i] = stringName;
             }

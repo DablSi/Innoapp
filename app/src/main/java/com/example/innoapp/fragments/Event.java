@@ -13,7 +13,7 @@ public class Event implements Serializable {
     private String name;
     private Date date;
     private Date dateEnd;
-    private LinkedList<Group> groups;
+    private LinkedList<String> groups;
     private boolean is_optional;
     private String place;
     private String description;
@@ -33,7 +33,7 @@ public class Event implements Serializable {
 
     // Название, дата(месяцы: 0-11, остальное - нормально), дата конца, группы, кастомное,
     // место, описание, количество посетителей, идет ли
-    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<Group> newGroups,
+    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<String> newGroups,
                  boolean newIs_optional, String newPlace, String newDescription,
                  int newCountVisitors, boolean newParticipation) {
         setName(newName);
@@ -68,7 +68,7 @@ public class Event implements Serializable {
         dateEnd = newDateEnd;
     }
 
-    public void setGroups(LinkedList<Group> newGroups) {
+    public void setGroups(LinkedList<String> newGroups) {
         groups = newGroups;
     }
 
@@ -105,7 +105,7 @@ public class Event implements Serializable {
         return dateEnd;
     }
 
-    public LinkedList<Group> getGroups() {
+    public LinkedList<String> getGroups() {
         return groups;
     }
 
