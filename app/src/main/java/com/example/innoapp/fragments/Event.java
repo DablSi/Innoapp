@@ -10,6 +10,7 @@ import java.util.LinkedList;
  */
 @SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
 public class Event implements Serializable {
+    public String id;
     private String name;
     private Date date;
     private Date dateEnd;
@@ -33,9 +34,10 @@ public class Event implements Serializable {
 
     // Название, дата(месяцы: 0-11, остальное - нормально), дата конца, группы, кастомное,
     // место, описание, количество посетителей, идет ли
-    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<String> newGroups,
+    public Event(String id, String newName, Date newDate, Date newDateEnd, LinkedList<String> newGroups,
                  boolean newIs_optional, String newPlace, String newDescription,
                  int newCountVisitors, boolean newParticipation) {
+        this.id = id;
         setName(newName);
         setDate(newDate);
         setDateEnd(newDateEnd);

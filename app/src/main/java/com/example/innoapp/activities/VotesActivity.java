@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.innoapp.R;
 import com.example.innoapp.fragments.Group;
+import com.example.innoapp.fragments.Vote;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -197,17 +198,4 @@ public class VotesActivity extends Activity {
         }
     }
 
-    public static class Vote {
-        String name;
-        String[] variants;
-        boolean multiple;
-        String groupName;
-
-        public Vote(String name, String[] variants, boolean multiple, String groupName) {
-            this.name = name;
-            this.variants = variants;
-            this.multiple = multiple;
-            this.groupName = groupName;
-        }
-    }
 }

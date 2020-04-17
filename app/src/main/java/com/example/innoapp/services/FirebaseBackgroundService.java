@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
 import com.example.innoapp.activities.EventsActivity;
-import com.example.innoapp.activities.VotesActivity;
+import com.example.innoapp.fragments.Vote;
 import com.example.innoapp.fragments.Event;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,19 +50,17 @@ public class FirebaseBackgroundService extends Service {
                 Log.d("Service", "Data changed");
                 for (DataSnapshot i : dataSnapshot.child("votes").getChildren()) {
                     ArrayList variantsArray = new ArrayList();
-                    for (Object j : (List) singletonList(i.child("variants").getValue()).get(0)){
-                        variantsArray.add(j);
-                    }
-                    VotesActivity.Vote newVote = new VotesActivity.Vote(i.child("voteName").getValue().toString(), (String[]) variantsArray.toArray(new String[]{}),
+                    variantsArray.addAll((List) singletonList(i.child("variants").getValue()).get(0));
+                    Vote newVote = new Vote(i.getKey(), i.child("voteName").getValue().toString(), (String[]) variantsArray.toArray(new String[]{}),
                             (boolean) i.child("multiple").getValue(), i.child("groupName").getValue().toString());
                     boolean unique = true;
                     if (votes == null) {
-                        votes = new LinkedList<VotesActivity.Vote>();
+                        votes = new LinkedList<Vote>();
                     }
-                    for (VotesActivity.Vote j : votes) {
-
-                        if (!unique) {
-                            break;
+                    for (int j = 0; j < votes.size(); j++) {
+                        if (votes.get(j).id.equals(newVote.id)) {
+                            votes.set(j, newVote);
+                            unique = false;
                         }
                     }
                     if (unique) {
@@ -82,7 +80,7 @@ public class FirebaseBackgroundService extends Service {
                     for (Object j : (List) singletonList(i.child("invitedgroups").getValue()).get(0)) {
                         linkedList.add(j.toString());
                     }
-                    Event newEvent = new Event(i.child("name").getValue().toString(), dateStart, dateEnd,
+                    Event newEvent = new Event(i.getKey(), i.child("name").getValue().toString(), dateStart, dateEnd,
                             linkedList, (boolean) i.child("is_optional").getValue(),
                             i.child("place").getValue().toString(), i.child("description").getValue().toString(),
                             Math.toIntExact((Long) i.child("visitors").getValue()), false);
@@ -92,7 +90,7 @@ public class FirebaseBackgroundService extends Service {
                     }
                     for (EventsActivity.EventList1 j : eList) {
                         for (Event k : j.classEventsInList) {
-                            if (k.getName().equals(newEvent.getName())) {
+                            if (k.id.equals(newEvent.id)) {
                                 unique = false;
                                 j.classEventsInList.set(j.classEventsInList.indexOf(k), newEvent);
                                 break;
