@@ -20,6 +20,7 @@ public class Event implements Serializable {
     private String description;
     private int countVisitors;
     private boolean participation;
+    public String tab;
 
     public Event() {
         name = "Event";
@@ -36,7 +37,7 @@ public class Event implements Serializable {
     // место, описание, количество посетителей, идет ли
     public Event(String id, String newName, Date newDate, Date newDateEnd, LinkedList<String> newGroups,
                  boolean newIs_optional, String newPlace, String newDescription,
-                 int newCountVisitors, boolean newParticipation) {
+                 int newCountVisitors, boolean newParticipation, String tab) {
         this.id = id;
         setName(newName);
         setDate(newDate);
@@ -47,6 +48,7 @@ public class Event implements Serializable {
         setDescription(newDescription);
         setCountVisitors(newCountVisitors);
         setParticipation(newParticipation);
+        this.tab = tab;
     }
 
     public boolean compare(Event obj) {
