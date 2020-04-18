@@ -22,6 +22,8 @@ import java.io.Serializable;
 import java.security.acl.Group;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -30,7 +32,6 @@ import static com.example.innoapp.activities.ProfileActivity.darkT;
 public class EventsActivity extends AppCompatActivity {
     public static LinkedList<Event> eList;
     public static LinkedList<Date> tabDates;
-
     // Open card
     public void onMyButtonClick(@NonNull  View view)
     {
@@ -58,22 +59,45 @@ public class EventsActivity extends AppCompatActivity {
         // Array below should be taken from server
         eList = new LinkedList<Event>();
         tabDates = new LinkedList<Date>();
-        tabDates.add(new Date(2020, 3, 12, 14, 50));
+      /*  tabDates.add(new Date(2020, 3, 12, 14, 50));
         tabDates.add(new Date(2020, 3, 13, 14, 50));
-        tabDates.add(new Date(2020, 3, 14, 14, 50));
-        eList.add(new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
-                new Date(2020, 3, 12, 14, 50),
+        tabDates.add(new Date(2020, 3, 14, 14, 50));*/
+        eList.add(new Event("Презентация приложения", new Date(2020, 0, 12, 14, 40),
+                new Date(2020, 0, 12, 14, 50),
                 new LinkedList<String>(), false, "Просторы интернета",
                 "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"1"));//1
-        eList.add(new Event("Презентация приложения22", new Date(2020, 3, 12, 14, 40),
-                new Date(2020, 3, 12, 14, 50),
+        eList.add(new Event("Презентация приложения22", new Date(2020, 0, 12, 14, 40),
+                new Date(2020, 0, 12, 14, 50),
                 new LinkedList<String>(), false, "Просторы интернета",
                 "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"1"));//2
-        eList.add(new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
-                new Date(2020, 4, 12, 14, 50),
+        eList.add(new Event("Презентация приложения", new Date(2020, 0, 12, 14, 40),
+                new Date(2020, 0, 12, 14, 50),
                 new LinkedList<String>(), false, "Просторы интернета",
                 "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"2"));//1
-
+        eList.add(new Event("Презентация приложения", new Date(2020, 0, 13, 14, 40),
+                new Date(2020, 0, 13, 14, 50),
+                new LinkedList<String>(), false, "Просторы интернета",
+                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"1"));//1
+        eList.add(new Event("Презентация приложения22", new Date(2020, 0, 14, 14, 40),
+                new Date(2020, 0, 14, 14, 50),
+                new LinkedList<String>(), false, "Просторы интернета",
+                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"1"));//2
+        eList.add(new Event("Презентация приложения", new Date(2020, 0, 15, 14, 40),
+                new Date(2020, 0, 15, 14, 50),
+                new LinkedList<String>(), false, "Просторы интернета",
+                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"2"));//1
+        for(int i = 0; i < eList.size(); i++)
+        {
+            tabDates.add(eList.get(i).getDate());
+        }
+        for(int i = 0; i < tabDates.size()-1; i++) {
+            if (tabDates.get(i).equals(tabDates.get(i + 1))) {
+                tabDates.remove(i);
+                i--;
+            }
+            ;
+        }
+        Collections.sort(tabDates);
         initTabs();
     }
 
