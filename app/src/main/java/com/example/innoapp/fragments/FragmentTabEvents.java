@@ -13,9 +13,11 @@ import com.example.innoapp.adapter.MainStepperAdapter;
 import com.liefery.android.vertical_stepper_view.VerticalStepperView;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 
 import static com.example.innoapp.activities.EventsActivity.eList;
+import static com.example.innoapp.activities.EventsActivity.tabDates;
 
 public class FragmentTabEvents extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
@@ -42,13 +44,17 @@ public class FragmentTabEvents extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            LinkedList<String> eventsInList1 = new LinkedList<String>();;
-            LinkedList<String> datesInList1 = new LinkedList<String>();;
+            LinkedList<String> eventsInList1 = new LinkedList<String>();
+            LinkedList<String> datesInList1 = new LinkedList<String>();
+            String d1;
+            String d2;
+        SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy.MM.dd");
         for (int i = 0; i < eList.size(); i++) {
-            if(tabs.get(mPage - 1).equals(eList.get(i).getTabName()))
+            d1 = formatForDateNow.format(tabDates.get(mPage - 1));
+            d2 = formatForDateNow.format(eList.get(i).getDate());
+            if(d1.equals(d2))
             {
                 eventsInList1.add(eList.get(i).getName());
-                long time = (eList.get(i).getDateEnd().getTime() - eList.get(i).getDate().getTime()) / 60000;
                 datesInList1.add(Integer.toString(eList.get(i).getDate().getHours()) + ":" + Integer.toString(eList.get(i).getDate().getMinutes()) + " - " + Integer.toString(eList.get(i).getDateEnd().getHours()) + ":" + Integer.toString(eList.get(i).getDateEnd().getMinutes()));
             }
         }

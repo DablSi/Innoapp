@@ -20,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.io.Serializable;
 import java.security.acl.Group;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
@@ -28,7 +29,7 @@ import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class EventsActivity extends AppCompatActivity {
     public static LinkedList<Event> eList;
-    public LinkedList<String> tabs;
+    public static LinkedList<Date> tabDates;
 
     // Open card
     public void onMyButtonClick(@NonNull  View view)
@@ -56,10 +57,10 @@ public class EventsActivity extends AppCompatActivity {
         });
         // Array below should be taken from server
         eList = new LinkedList<Event>();
-        tabs = new LinkedList<String>();
-        tabs.add("1");
-        tabs.add("2");
-        tabs.add("3");
+        tabDates = new LinkedList<Date>();
+        tabDates.add(new Date(2020, 3, 12, 14, 50));
+        tabDates.add(new Date(2020, 3, 13, 14, 50));
+        tabDates.add(new Date(2020, 3, 14, 14, 50));
         eList.add(new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
                 new Date(2020, 3, 12, 14, 50),
                 new LinkedList<String>(), false, "Просторы интернета",
@@ -69,7 +70,7 @@ public class EventsActivity extends AppCompatActivity {
                 new LinkedList<String>(), false, "Просторы интернета",
                 "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"1"));//2
         eList.add(new Event("Презентация приложения", new Date(2020, 3, 12, 14, 40),
-                new Date(2020, 3, 12, 14, 50),
+                new Date(2020, 4, 12, 14, 50),
                 new LinkedList<String>(), false, "Просторы интернета",
                 "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false,"2"));//1
 
@@ -81,7 +82,13 @@ public class EventsActivity extends AppCompatActivity {
         TabLayout eventsTabLayout = findViewById(R.id.eventsTabLayout);
         ViewPager eventsViewPager = findViewById(R.id.eventsViewPager);
         TabsAdapterForEvents adapters = new TabsAdapterForEvents(getSupportFragmentManager());
-        adapters.tabs = tabs;
+        LinkedList<String> tabs2 = new LinkedList<String>();
+        for (int i = 0;i < tabDates.size(); i++)
+        {
+            SimpleDateFormat formatForDateNow = new SimpleDateFormat("MM.dd");
+            tabs2.add(formatForDateNow.format(tabDates.get(i)));
+        }
+        adapters.tabs = tabs2;
         eventsViewPager.setAdapter(adapters);
         eventsTabLayout.setupWithViewPager(eventsViewPager);
     }
