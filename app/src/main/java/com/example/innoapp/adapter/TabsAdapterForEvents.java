@@ -7,10 +7,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.innoapp.R;
+import com.example.innoapp.fragments.Event;
 import com.example.innoapp.fragments.FragmentTabEvents;
 
+import java.util.LinkedList;
+
 public class TabsAdapterForEvents extends FragmentPagerAdapter {
-    public String[] tabs;
+    public  static LinkedList<String> tabs;
 
     private static final int LAYOUT = R.layout.fragment_tab1;
     @SuppressWarnings("deprecation")
@@ -22,7 +25,7 @@ public class TabsAdapterForEvents extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabs[position];
+        return tabs.get(position);
     }
 
     @SuppressWarnings("ConstantConditions")
@@ -30,12 +33,12 @@ public class TabsAdapterForEvents extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position)
     {
-                return FragmentTabEvents.newInstance(position + 1);
+                return FragmentTabEvents.newInstance(position + 1, tabs);
     }
 
     @Override
     public int getCount() {
-        return tabs.length;
+        return tabs.size();
     }
 
 }

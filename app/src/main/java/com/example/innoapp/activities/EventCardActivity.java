@@ -29,10 +29,10 @@ public class EventCardActivity extends AppCompatActivity {
             intParticipation = 1;
         else
             intParticipation = 0;
-        EventsActivity.classEventsInList1[tabId][eventId].setParticipation(participation);
+        EventsActivity.eList.get(eventId).setParticipation(participation);
         TextView TVCountVisitors = (TextView) findViewById(R.id.cardCountVisitors);
         countVisitors = countVisitors - 1 + 2 * intParticipation;
-        EventsActivity.classEventsInList1[tabId][eventId].setCountVisitors(countVisitors);
+        EventsActivity.eList.get(eventId).setCountVisitors(countVisitors);
         TVCountVisitors.setText(" " + countVisitors);
         // Here should be code that send information to server about join or leave event
     }

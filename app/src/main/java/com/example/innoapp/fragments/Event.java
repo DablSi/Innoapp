@@ -1,10 +1,11 @@
 package com.example.innoapp.fragments;
 // author Makar Shevchenko
+
 import java.io.Serializable;
-import java.security.acl.Group;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedList;
+
+
 
 /*
  *  Класс событий для генерации карточек событий
@@ -14,15 +15,15 @@ public class Event implements Serializable {
     private String name;
     private Date date;
     private Date dateEnd;
-    private LinkedList<Group> groups;
+    private LinkedList<String> groups;
     private boolean is_optional;
     private String place;
     private String description;
     private int countVisitors;
     private boolean participation;
+    private String tabName;
 
-    public Event()
-    {
+    public Event() {
         name = "Event";
         date = new Date();
         dateEnd = new Date();
@@ -31,13 +32,14 @@ public class Event implements Serializable {
         description = "";
         countVisitors = 0;
         participation = false;
+        tabName = "01.01";
     }
 
     // Название, дата(месяцы: 0-11, остальное - нормально), дата конца, группы, кастомное,
     // место, описание, количество посетителей, идет ли
-    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<Group> newGroups,
+    public Event(String newName, Date newDate, Date newDateEnd, LinkedList<String> newGroups,
                  boolean newIs_optional, String newPlace, String newDescription,
-                 int newCountVisitors, boolean newParticipation) {
+                 int newCountVisitors, boolean newParticipation, String newTabName) {
         setName(newName);
         setDate(newDate);
         setDateEnd(newDateEnd);
@@ -47,6 +49,15 @@ public class Event implements Serializable {
         setDescription(newDescription);
         setCountVisitors(newCountVisitors);
         setParticipation(newParticipation);
+        setTabName(newTabName);
+    }
+
+    public boolean compare(Event obj) {
+        if (name.equals(obj.getName()) && date.equals(obj.getDate()) &&
+                dateEnd.equals(obj.getDateEnd()) && is_optional == obj.is_optional &&
+                groups.equals(obj.getGroups()))
+            return true;
+        return false;
     }
 
     // setters
@@ -62,7 +73,7 @@ public class Event implements Serializable {
         dateEnd = newDateEnd;
     }
 
-    public void setGroups(LinkedList<Group> newGroups) {
+    public void setGroups(LinkedList<String> newGroups) {
         groups = newGroups;
     }
 
@@ -86,6 +97,8 @@ public class Event implements Serializable {
         participation = newParticipation;
     }
 
+    public void setTabName(String newTabName) { tabName = newTabName; }
+
     // getters
     public String getName() {
         return name;
@@ -99,7 +112,7 @@ public class Event implements Serializable {
         return dateEnd;
     }
 
-    public LinkedList<Group> getGroups() {
+    public LinkedList<String> getGroups() {
         return groups;
     }
 
@@ -121,5 +134,9 @@ public class Event implements Serializable {
 
     public boolean getParticipation() {
         return participation;
+    }
+
+    public String getTabName() {
+        return tabName;
     }
 }

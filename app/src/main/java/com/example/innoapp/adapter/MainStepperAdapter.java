@@ -3,18 +3,21 @@ package com.example.innoapp.adapter;
 import android.content.Context;
 import android.view.View;
 
+import com.example.innoapp.fragments.Event;
 import com.example.innoapp.fragments.MainItemView;
 import com.liefery.android.vertical_stepper_view.VerticalStepperAdapter;
 
+import java.util.LinkedList;
+
 public class MainStepperAdapter extends VerticalStepperAdapter {
-    String [] dataArray;
-    public String [] eventsArray;
+    LinkedList<String> dataArray;
+    LinkedList<String> eventsArray;
     int count;
     int tabId;
-    public MainStepperAdapter( Context context, String [] array1, String [] array2, int newTabId ) {
+    public MainStepperAdapter(Context context, LinkedList<String> array1, LinkedList<String> array2, int newTabId ) {
         super( context );
         dataArray = array1;
-        count = array1.length;
+        count = array1.size();
         eventsArray = array2;
         tabId = newTabId;
     }
