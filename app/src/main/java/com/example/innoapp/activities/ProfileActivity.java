@@ -4,7 +4,6 @@ package com.example.innoapp.activities;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import com.example.innoapp.R;
@@ -29,6 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView txt_language;
     private String mLanguageCode = "en";
     public static boolean darkT = false;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_activity);
@@ -54,21 +53,16 @@ public class ProfileActivity extends AppCompatActivity {
         Switch switch1 = (Switch) findViewById(R.id.switch1);
 
 
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 SetDarkT(isChecked);
                 darkT = isChecked;
 
             }
         });
-        if (darkT)
-        {
+        if (darkT) {
             switch1.setChecked(true);
-        }
-        else
-        {
+        } else {
             switch1.setChecked(false);
         }
     }
@@ -79,8 +73,8 @@ public class ProfileActivity extends AppCompatActivity {
         mailTextView.setText(eMail);
         avaTextView.setText(Character.toString(eMail.toCharArray()[0]));
     }
-    private void SetDarkT(boolean darkT1)
-    {
+
+    private void SetDarkT(boolean darkT1) {
         ImageButton back = (ImageButton) findViewById(R.id.back);
         RelativeLayout languageLayout = (RelativeLayout) findViewById(R.id.languageLayout);
         RelativeLayout darkThemeLayout = (RelativeLayout) findViewById(R.id.darkThemeLayout);
@@ -104,8 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
         ImageView instaImageView = (ImageView) findViewById(R.id.instaImageView);
         ImageView VKImageView = (ImageView) findViewById(R.id.VKImageView);
 
-        if(darkT1)
-        {
+        if (darkT1) {
             back.setImageResource(R.drawable.back2);
             profileLinearLayout1.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
             darkThemeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
@@ -130,14 +123,12 @@ public class ProfileActivity extends AppCompatActivity {
             VKImageView.setImageResource(R.drawable.profile_image16);
             languageLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
 
-        }
-        else
-        {
+        } else {
             back.setImageResource(R.drawable.back);
             languageImage.setImageResource(R.drawable.profile_image6);
             darkThemeImage.setImageResource(R.drawable.profile_image7);
-            notificationsImage.setImageResource(R.drawable.profile_image9);
-            logOutImage.setImageResource(R.drawable.profile_image8);
+            notificationsImage.setImageResource(R.drawable.profile_image8);
+            logOutImage.setImageResource(R.drawable.profile_image9);
             faceBookImageView.setImageResource(R.drawable.profile_image3);
             instaImageView.setImageResource(R.drawable.profile_image4);
             VKImageView.setImageResource(R.drawable.profile_image5);

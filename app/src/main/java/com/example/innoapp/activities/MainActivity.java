@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
     HashSet<String> groups;
     private boolean barcodeScale = false;
     DatabaseReference mDatabase;
-    Date d = new Date();
     private NotificationManager mNotificationManager;
 
     @RequiresApi(api = Build.VERSION_CODES.O)

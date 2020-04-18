@@ -37,13 +37,10 @@ public class VotesActivity extends Activity {
             }
         });
         voteLinearLayout = (LinearLayout) findViewById(R.id.voteLinearLayout);
-        // votes = new LinkedList<Vote>();
-        groups = new LinkedList<String>();
-        groups.add("Group 1");
-        groups.add("Group 2");
-        groups.add("Group 3");
-        groups.add("Group 4");
-        groups.add("Group 5");
+        if (votes == null)
+            votes = new LinkedList<Vote>();
+        if (groups == null)
+            groups = new LinkedList<String>();
         groupsS1 = new String[groups.size()];
         for (int i = 0; i < groups.size(); i++) {
             groupsS1[i] = groups.get(i);
