@@ -47,7 +47,7 @@ public class VerticalStepperView extends ListView {
 
     private void initialize( Context context ) {
         setDivider( null );
-        setOnItemClickListener( new OnItemClickListener() {
+        /*setOnItemClickListener( new OnItemClickListener() {
             @Override
             public void onItemClick(
                 AdapterView<?> parent,
@@ -56,7 +56,7 @@ public class VerticalStepperView extends ListView {
                 long id ) {
                 getAdapter().jumpTo( position );
             }
-        } );
+        } );*/
     }
 
     @Override

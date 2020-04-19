@@ -14,14 +14,16 @@ import androidx.core.content.ContextCompat;
 import com.example.innoapp.adapter.MainStepperAdapter;
 import com.example.innoapp.R;
 
+import java.util.LinkedList;
+
 import static com.example.innoapp.activities.ProfileActivity.darkT;
 
 public class MainItemView extends LinearLayout {
-    String [] itemsList;
-    String [] dateList;
+    LinkedList<String>  itemsList;
+    LinkedList<String> dateList;
     int itemPosition;
     int tabId;
-    public MainItemView( Context context, String[] array1, String[] array2, int position, int newTabId) {
+    public MainItemView(Context context, LinkedList<String> array1, LinkedList<String> array2, int position, int newTabId) {
         super( context );
         itemsList = array2;
         dateList = array1;
@@ -48,9 +50,9 @@ public class MainItemView extends LinearLayout {
         setOrientation( VERTICAL );
         LayoutInflater.from( context ).inflate( R.layout.item, this, true );
         TextView itemDates = (TextView) findViewById(R.id.itemDates);
-        itemDates.setText(dateList[itemPosition]);
+        itemDates.setText(dateList.get(itemPosition));
         TextView itemEvents = (TextView) findViewById(R.id.itemEvents);
-        itemEvents.setText(itemsList[itemPosition]);
+        itemEvents.setText(itemsList.get(itemPosition));
         TextView itemId = (TextView) findViewById(R.id.eventId);
         itemId.setText(Integer.toString(itemPosition));
         TextView itemTabId = (TextView) findViewById(R.id.eventTabId);
