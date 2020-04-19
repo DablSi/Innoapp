@@ -51,29 +51,29 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
             // setting card parameters:
             // name
             TextView cardName = (TextView) holder.cardView.findViewById(R.id.cardName);
-            cardName.setText(mDataset[position].getName());
+            cardName.setText(mDataset[position].name);
 
             // description
             TextView cardDescription = (TextView) holder.cardView.findViewById(R.id.cardDescription);
-            String description = mDataset[position].getDescription();
+            String description = mDataset[position].description;
             cardDescription.setText(description);
 
             // date
-            Date date = mDataset[position].getDate();
+            Date date = mDataset[position].date;
             String textDate = Integer.toString(date.getDay()) + " " + Integer.toString(date.getMonth())
                     + " " + Integer.toString(date.getYear());
             TextView cardDate = (TextView) holder.cardView.findViewById(R.id.cardDate);
             cardDate.setText(textDate);
 
             // time
-            Date Time = mDataset[position].getDate();
+            Date Time = mDataset[position].date;
             String textTime = Integer.toString(date.getHours()) + ":" + Integer.toString(date.getMinutes());
             TextView cardTime = (TextView) holder.cardView.findViewById(R.id.cardTime);
             cardTime.setText(textTime);
 
             // duration
-            Date dateEnd = mDataset[position].getDateEnd();
-            Date dateStart = mDataset[position].getDate();
+            Date dateEnd = mDataset[position].dateEnd;
+            Date dateStart = mDataset[position].date;
             // time-difference
             long diffInMillies = Math.abs(dateEnd.getTime() - dateStart.getTime());
             long diffDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
@@ -125,11 +125,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.MyViewHolder> {
 
             // place
             TextView cardPlace = (TextView) holder.cardView.findViewById(R.id.cardPlace);
-            cardPlace.setText(mDataset[position].getPlace());
+            cardPlace.setText(mDataset[position].place);
 
             // countVisitors
             TextView cardCountVisitors = (TextView) holder.cardView.findViewById(R.id.cardCountVisitors);
-            int countVisitors = mDataset[position].getCountVisitors();
+            int countVisitors = mDataset[position].countVisitors;
             String textCountVisitors = Long.toString(countVisitors);
             if (countVisitors >= 10 && countVisitors <= 20) {
                 textCountVisitors += " человек";

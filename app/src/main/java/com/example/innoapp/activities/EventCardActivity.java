@@ -29,10 +29,10 @@ public class EventCardActivity extends AppCompatActivity {
             intParticipation = 1;
         else
             intParticipation = 0;
-        EventsActivity.eList.get(eventId).setParticipation(participation);
+        EventsActivity.eList.get(eventId).participation = participation;
         TextView TVCountVisitors = (TextView) findViewById(R.id.cardCountVisitors);
         countVisitors = countVisitors - 1 + 2 * intParticipation;
-        EventsActivity.eList.get(eventId).setCountVisitors(countVisitors);
+        EventsActivity.eList.get(eventId).countVisitors = countVisitors;
         TVCountVisitors.setText(" " + countVisitors);
         // Here should be code that send information to server about join or leave event
     }
@@ -57,7 +57,7 @@ public class EventCardActivity extends AppCompatActivity {
         ToggleButton TBParticipation = (ToggleButton) findViewById(R.id.cardParticipation);
 
         // duration
-        long diffInMillies = Math.abs(event.getDateEnd().getTime() - event.getDate().getTime());
+        long diffInMillies = Math.abs(event.dateEnd.getTime() - event.dateEnd.getTime());
         long diffDays = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         long diffHours = TimeUnit.HOURS.convert(diffInMillies, TimeUnit.MILLISECONDS);
         long diffMinutes = TimeUnit.MINUTES.convert(diffInMillies, TimeUnit.MILLISECONDS) % 60;
@@ -117,24 +117,24 @@ public class EventCardActivity extends AppCompatActivity {
         }
 
         // date  %tB %tY
-        TVDate.setText(String.format("%td ", event.getDate()) +
-                String.format("%tB ", event.getDate()) + Integer.toString(event.getDate().getYear()) +
-                String.format(" %tR", event.getDate()));
+        TVDate.setText(String.format("%td ", event.date) +
+                String.format("%tB ", event.date) + Integer.toString(event.date.getYear()) +
+                String.format(" %tR", event.date));
 
         // countVisitors
-        TVCountVisitors.setText(Integer.toString(event.getCountVisitors()));
-        this.countVisitors = event.getCountVisitors();
+        TVCountVisitors.setText(Integer.toString(event.countVisitors));
+        this.countVisitors = event.countVisitors;
 
         // name
-        TVName.setText(event.getName());
+        TVName.setText(event.name);
 
         // description
-        TVDescription.setText(event.getDescription());
+        TVDescription.setText(event.description);
 
         // place
-        TVPlace.setText(event.getPlace());
+        TVPlace.setText(event.place);
 
         // participation
-        TBParticipation.setChecked(event.getParticipation());
+        TBParticipation.setChecked(event.participation);
     }
 }
