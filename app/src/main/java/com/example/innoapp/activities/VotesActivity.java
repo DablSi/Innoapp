@@ -1,48 +1,35 @@
 package com.example.innoapp.activities;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.res.ColorStateList;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatCheckBox;
-import androidx.appcompat.widget.AppCompatRadioButton;
-import androidx.core.content.ContextCompat;
-
 import com.example.innoapp.R;
+import com.example.innoapp.utils.Vote;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import static com.example.innoapp.activities.ProfileActivity.darkT;
-
 public class VotesActivity extends Activity {
-    public static LinkedList<Vote> vоtes;
+    public static LinkedList<Vote> votes;
+    public static LinkedList<String> groups;
     private LinearLayout voteLinearLayout;
-    private int countID = 0;
-    private boolean b1 = false;
-    String[] groupsS = {"NTI", "Школа по информатике"};
+    String[] groupsS1;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_votes);
         ImageView back = findViewById(R.id.back);
-        TextView title = findViewById(R.id.text1);
-        title.setTypeface(Typeface.createFromAsset(this.getAssets(), "fonts/elektra_text_pro.otf"));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,53 +37,21 @@ public class VotesActivity extends Activity {
             }
         });
         voteLinearLayout = (LinearLayout) findViewById(R.id.voteLinearLayout);
-        vоtes = new LinkedList<Vote>();
-        CreateSpinner(groupsS);
-    }
-    public void onResume()
-    {
-        super.onResume();
-        SetDarkT();
-    }
-
-    private void SetDarkT() {
-        TextView text1 = (TextView) findViewById(R.id.text1);
-        RelativeLayout relativeLayoutVotes = (RelativeLayout) findViewById(R.id.relativeLayoutVotes);
-        LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
-        ScrollView scrollView1 = (ScrollView) findViewById(R.id.scrollView1);
-        Spinner groups = (Spinner) findViewById(R.id.groups);
-        ImageButton back = (ImageButton) findViewById(R.id.back);
-
-        if(darkT)
-        {
-            text1.setTextColor(ContextCompat.getColor(this, R.color.white));
-            relativeLayoutVotes.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
-            linearLayout1.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
-            scrollView1.setBackgroundColor(ContextCompat.getColor(this, R.color.inno_dark_blue));
-            groups.setBackgroundResource(R.drawable.spinner2);
-            back.setImageResource(R.drawable.back2);
+        if (votes == null)
+            votes = new LinkedList<Vote>();
+        if (groups == null)
+            groups = new LinkedList<String>();
+        groupsS1 = new String[groups.size()];
+        for (int i = 0; i < groups.size(); i++) {
+            groupsS1[i] = groups.get(i);
         }
-        else{
-            back.setImageResource(R.drawable.back);
-            text1.setTextColor(ContextCompat.getColor(this, R.color.black));
-            relativeLayoutVotes.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            linearLayout1.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            scrollView1.setBackgroundColor(ContextCompat.getColor(this, R.color.white));
-            groups.setBackgroundResource(R.drawable.spinner);
-        }
+        CreateSpinner(groupsS1);
     }
 
     private void CreateSpinner(String[] sGroups) {
         Spinner groups = (Spinner) findViewById(R.id.groups);
-        ArrayAdapter<String> adapter;
-        if (darkT){
-            adapter = new ArrayAdapter<String>(this, R.layout.spinner_text2, groupsS);
-        }
-        else{
-             adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS);
-        }
-      
-        adapter.setDropDownViewResource(R.layout.spinner_text);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_text, groupsS1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         groups.setAdapter(adapter);
 
         AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
@@ -104,22 +59,22 @@ public class VotesActivity extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 voteLinearLayout.removeAllViews();
                 // Получаем выбранный объект
-                vоtes.removeAll(vоtes);
                 String item = (String) parent.getItemAtPosition(position);
-                switch (item) {
-                    case ("NTI"):
-                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, false));
-                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, true));
-                        vоtes.add(new Vote("Любимое время года?", new String[]{"Зима", "Весна", "Лето", "Осень"}, true));
-                        CreateVotes(vоtes);
-                        break;
-                    case ("Школа по информатике"):
-                        vоtes.add(new Vote("Любимый палец?", new String[]{"Мизинец", "Безымянный", "Средний", "Указательный", "Большой"}, false));
-                        vоtes.add(new Vote("Любимый палец?", new String[]{"Мизинец", "Безымянный", "Средний", "Указательный", "Большой"}, true));
-                        CreateVotes(vоtes);
-                        break;
-                }
+                for (int i = 0; i < groupsS1.length; i++) {
+                    if (item.equals(groupsS1[i])) {
+                        LinkedList<Vote> votes2 = new LinkedList<Vote>();
+                        for (int i2 = 0; i2 < votes.size(); i2++) {
 
+                            if (votes.get(i2).groupName.equals(item)) {
+                                votes2.add(votes.get(i2));
+                            }
+                        }
+
+
+                        CreateVotes(votes2);
+                        break;
+                    }
+                }
             }
 
             @Override
@@ -130,37 +85,24 @@ public class VotesActivity extends Activity {
         groups.setOnItemSelectedListener(itemSelectedListener);
     }
 
-    @SuppressLint("RestrictedApi")
     private void CreateVotes(LinkedList<Vote> list) {
-        Typeface elektra = Typeface.createFromAsset(this.getAssets(), "fonts/elektra_text_pro.otf");
         for (Vote i : list) {
             ArrayList<RadioButton> radioButtonsArrayList = new ArrayList<RadioButton>(); // array for RadioButtons
             ArrayList<CheckBox> checkBoxArrayList = new ArrayList<CheckBox>();
-            int[] voted = new int[i.variants.length];
+            Integer[] voted = i.voted;
             RelativeLayout relativeLayout1 = new RelativeLayout(this);
             RelativeLayout.LayoutParams relativeLayout1Params = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             relativeLayout1Params.setMargins(0, 50, 0, 0);
             relativeLayout1.setLayoutParams(relativeLayout1Params);
-            if(darkT) {
-                relativeLayout1.setBackgroundColor(getResources().getColor(R.color.inno_dark_blue));
-            }
-            else {
-                relativeLayout1.setBackgroundColor(getResources().getColor(R.color.white));
-            }
-
+            relativeLayout1.setBackgroundColor(getResources().getColor(R.color.white));
             voteLinearLayout.addView(relativeLayout1);
 
             RelativeLayout relativeLayout2 = new RelativeLayout(this);
             RelativeLayout.LayoutParams relativeLayout2Params = new RelativeLayout.LayoutParams(920, LinearLayout.LayoutParams.WRAP_CONTENT);
             relativeLayout2Params.addRule(RelativeLayout.CENTER_IN_PARENT);
             relativeLayout2.setLayoutParams(relativeLayout2Params);
-
-            if(darkT) {
-                relativeLayout2.setBackgroundResource(R.drawable.rectangle3);
-            }
-            else {
-                relativeLayout2.setBackgroundResource(R.drawable.rectangle);
-            }
+            relativeLayout2.setBackgroundColor(getResources().getColor(R.color.inno_green));
+            relativeLayout2.setBackgroundResource(R.drawable.rectangle);
             relativeLayout2.setPadding(25, 10, 0, 25);
             relativeLayout1.addView(relativeLayout2);
             relativeLayout1.setId(RelativeLayout.generateViewId());
@@ -170,7 +112,6 @@ public class VotesActivity extends Activity {
             voteTextView.setText(i.name);
             voteTextView.setTextSize(22);
             voteTextView.setPadding(0, 0, 0, 10);
-            voteTextView.setTypeface(elektra);
             relativeLayout2.addView(voteTextView);
             voteTextView.setTextColor(getResources().getColor(R.color.white));
             voteTextView.setId(TextView.generateViewId());
@@ -184,19 +125,12 @@ public class VotesActivity extends Activity {
 
 
                 for (int j = 0; j < i.variants.length; j++) {
-                    AppCompatRadioButton voteRadioButton = new AppCompatRadioButton(this);
+                    RadioButton voteRadioButton = new RadioButton(this);
                     RelativeLayout.LayoutParams voteRadioButtonParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     voteRadioButton.setLayoutParams(voteRadioButtonParams);
                     voteRadioButton.setText(i.variants[j]);
                     voteRadioButton.setTextColor(getResources().getColor(R.color.white));
                     voteRadioButton.setTextSize(17);
-                    ColorStateList colorStateList = new ColorStateList(
-                            new int[][]{
-                                    new int[]{android.R.attr.state_enabled} //enabled
-                            },
-                            new int[] {getResources().getColor(R.color.white) }
-                    );
-                    voteRadioButton.setSupportButtonTintList(colorStateList);
                     voteRadioGroup.addView(voteRadioButton);
                     radioButtonsArrayList.add(voteRadioButton);
                     int finalI2 = list.indexOf(i);
@@ -221,7 +155,7 @@ public class VotesActivity extends Activity {
                 }
             } else {
                 for (int j = 0; j < i.variants.length; j++) {
-                    AppCompatCheckBox voteCheckBox = new AppCompatCheckBox(this);
+                    CheckBox voteCheckBox = new CheckBox(this);
                     RelativeLayout.LayoutParams voteCheckBoxParams = new RelativeLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     if (j > 0) {
                         voteCheckBoxParams.addRule(RelativeLayout.BELOW, checkBoxArrayList.get(j - 1).getId());
@@ -232,14 +166,6 @@ public class VotesActivity extends Activity {
                     voteCheckBox.setText(i.variants[j]);
                     voteCheckBox.setTextColor(getResources().getColor(R.color.white));
                     voteCheckBox.setTextSize(17);
-                    ColorStateList colorStateList = new ColorStateList(
-                            new int[][]{
-                                    new int[]{android.R.attr.state_enabled} //enabled
-                            },
-                            new int[] {getResources().getColor(R.color.white) }
-                    );
-                    voteCheckBox.setSupportButtonTintList(colorStateList);
-                    voteCheckBox.setTypeface(elektra);
                     relativeLayout2.addView(voteCheckBox);
                     voteCheckBox.setId(CheckBox.generateViewId());
                     checkBoxArrayList.add(voteCheckBox);
@@ -268,15 +194,4 @@ public class VotesActivity extends Activity {
         }
     }
 
-    class Vote {
-        String name;
-        String[] variants;
-        boolean multiple;
-
-        public Vote(String name, String[] variants, boolean multiple) {
-            this.name = name;
-            this.variants = variants;
-            this.multiple = multiple;
-        }
-    }
 }

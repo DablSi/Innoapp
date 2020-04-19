@@ -19,10 +19,7 @@ import com.example.innoapp.fragments.Event;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.Serializable;
-import java.security.acl.Group;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedList;
@@ -57,35 +54,15 @@ public class EventsActivity extends AppCompatActivity {
             }
         });
         // Array below should be taken from server
-        eList = new LinkedList<Event>();
+        if (eList == null)
+            eList = new LinkedList<Event>();
         tabDates = new LinkedList<Date>();
-        eList.add(new Event("Презентация приложения1", new Date(2020, 3, 19, 10, 30),
-                new Date(2020, 3, 19, 11, 00),
-                new LinkedList<String>(), false, "Просторы интернета",
-                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false));//1
-        eList.add(new Event("Презентация приложения1", new Date(2020, 3, 19, 10, 30),
-                new Date(2020, 3, 19, 11, 00),
-                new LinkedList<String>(), false, "Просторы интернета",
-                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false));//1
-        eList.add(new Event("Презентация приложения2", new Date(2020, 3, 19, 13, 00),
-                new Date(2020, 3, 19, 14, 30),
-                new LinkedList<String>(), false, "Просторы интернета",
-                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false));//1
-        eList.add(new Event("Презентация приложения2", new Date(2020, 3, 19, 14, 30),
-                new Date(2020, 3, 19, 15, 00),
-                new LinkedList<String>(), false, "Просторы интернета",
-                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false));//1
-        eList.add(new Event("Презентация приложения3", new Date(2020, 3, 19, 20, 30),
-                new Date(2020, 3, 19, 21, 00),
-                new LinkedList<String>(), false, "Просторы интернета",
-                "Показ приложения, сделанного школьниками за 2 недели, которое будет использоваться университетом Иннополиса.", 0, false));//1
 
         SimpleDateFormat formatForDateNow = new SimpleDateFormat("yyyy.dd.MM");
         for (int i = 0; i < eList.size(); i++) {
             tabDates.add(eList.get(i).date);
         }
         for (int i = 0; i < tabDates.size() - 1; i++) {
-
             String d1 = formatForDateNow.format(tabDates.get(i));
             String d2 = formatForDateNow.format(tabDates.get(i + 1));
             if (d1.equals(d2)) {
